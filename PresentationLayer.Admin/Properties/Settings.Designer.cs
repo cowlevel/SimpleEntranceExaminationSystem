@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SimpleEntranceExaminationSystem.Properties
+namespace PresentationLayer.Admin.Properties
 {
 
 

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C487E961-D881-4D57-BB1F-BF5F9EC70FEA}</ProjectGuid>
+    <ProjectGuid>{11697099-0F8D-4EC4-96BE-2A2FF7526CAB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SimpleEntranceExaminationSystem</RootNamespace>
-    <AssemblyName>SimpleEntranceExaminationSystem</AssemblyName>
+    <RootNamespace>PresentationLayer.Examinee</RootNamespace>
+    <AssemblyName>PresentationLayer.Examinee</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

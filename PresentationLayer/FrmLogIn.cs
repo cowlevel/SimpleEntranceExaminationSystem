@@ -16,5 +16,15 @@ namespace PresentationLayer
         {
             InitializeComponent();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnLogIn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

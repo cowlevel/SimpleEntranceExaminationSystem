@@ -29,7 +29,7 @@ namespace ValueObject
         public string MiddleName { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(64)]
         public string Username { get; set; }
 
         //[Required]

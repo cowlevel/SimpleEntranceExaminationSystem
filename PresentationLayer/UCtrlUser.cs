@@ -62,7 +62,7 @@ namespace PresentationLayer
                 string username = txtUsername.Text;
 
                 _userCount = _userViewModelList.Where(u => u.Username == username)
-                                               .Select(u => u.UserId).Single<int>();
+                                               .Select(u => u.UserId).Single();
 
                 SetUIProperty(Operation.Editing);
             }
@@ -146,7 +146,7 @@ namespace PresentationLayer
                 user = _userViewModelList.Where(u => u.UserId == _userId)
                                             .Select(u => new User
                                             {
-                                                UserId = u.UserId,
+                                                UserId = u.UserId,  //  assign user id (Primary Key) so it can be tracked by EF
                                                 LastName = u.LastName,
                                                 FirstName = u.FirstName,
                                                 MiddleName = u.MiddleName,

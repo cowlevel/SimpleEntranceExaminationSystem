@@ -18,14 +18,14 @@ namespace ValueObject
         public int ExamineeId { get; set; }
 
         [Required]
-        [StringLength(40)]
+        [StringLength(60)]
         public string LastName { get; set; }
 
         [Required]
-        [StringLength(40)]
+        [StringLength(60)]
         public string FirstName { get; set; }
 
-        [StringLength(40)]
+        [StringLength(60)]
         public string MiddleName { get; set; }
 
         [Required]

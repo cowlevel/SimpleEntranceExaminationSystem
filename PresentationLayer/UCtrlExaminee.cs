@@ -46,50 +46,15 @@ namespace PresentationLayer
             }
         }
 
-        private void UCtrlExaminee_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (btnAdd.Text == "&ADD NEW")
             {
                 SetUIProperty(Operation.Adding);
-
-                //Console.WriteLine(_pageNumber+" "+ MINIMUM_PAGE_NUMBER);
-                //if (_pageNumber > MINIMUM_PAGE_NUMBER)
-                //{
-                //    btnPrevious.Enabled = true;
-                //}
-                //else
-                //{
-                //    btnPrevious.Enabled = false;
-                //}
-
-                
             }
             else
             {
                 SetUIProperty(Operation.Clear);
-                //Console.WriteLine(_pageNumber + " " + MINIMUM_PAGE_NUMBER);
-                //if (_pageNumber > MINIMUM_PAGE_NUMBER)
-                //{
-                //    btnPrevious.Enabled = true;
-                //}
-                //else
-                //{
-                //    btnPrevious.Enabled = false;
-                //}
-
-                //if (_pageNumber < _examineeViewModelList.PageCount)
-                //{
-                //    btnNext.Enabled = true;
-                //}
-                //else
-                //{
-                //    btnNext.Enabled = false;
-                //}
             }
         }
 
@@ -102,25 +67,6 @@ namespace PresentationLayer
             else
             {
                 SetUIProperty(Operation.Clear);
-
-                //Console.WriteLine(_pageNumber + " " + MINIMUM_PAGE_NUMBER);
-                //if (_pageNumber > MINIMUM_PAGE_NUMBER)
-                //{
-                //    btnPrevious.Enabled = true;
-                //}
-                //else
-                //{
-                //    btnPrevious.Enabled = false;
-                //}
-
-                //if (_pageNumber < _examineeViewModelList.PageCount)
-                //{
-                //    btnNext.Enabled = true;
-                //}
-                //else
-                //{
-                //    btnNext.Enabled = false;
-                //}
             }
         }
 
@@ -161,7 +107,6 @@ namespace PresentationLayer
                             SetControlFocus(0, txtFirstName);
                             break;
                         }
-
                         else if (error.Contains("Address"))
                         {
                             SetControlFocus(1, txtAddress);
@@ -182,7 +127,6 @@ namespace PresentationLayer
                             SetControlFocus(1, txtEmail);
                             break;
                         }
-
                         else if (error.Contains("LastSchoolAttended"))
                         {
                             SetControlFocus(2, txtSchoolName);
@@ -197,41 +141,7 @@ namespace PresentationLayer
                 }
                 else    //  no error
                 {
-                    //if (dgvExaminee.Rows.Count < PAGE_SIZE)
-                    //{
-                    //    _examineeViewModelList.Results.Add(new ExamineeViewModel
-                    //    {
-                    //        ExamineeId = examinee.ExamineeId,
-                    //        LastName = examinee.LastName,
-                    //        FirstName = examinee.FirstName,
-                    //        MiddleName = examinee.MiddleName,
-                    //        Address = examinee.Address,
-                    //        City = examinee.City,
-                    //        ContactNo = examinee.ContactNo,
-                    //        Email = examinee.Email,
-                    //        LastSchoolAttended = examinee.LastSchoolAttended,
-                    //        YearGraduated = examinee.YearGraduated,
-                    //        ExamTakes = examinee.ExamTakes,
-                    //        DateTimeAdded = examinee.DateTimeAdded
-                    //    });
-
-                    //    //SetSelectedDatagridviewRow(dgvRowIndex);
-                    //}
-                    //else
-                    //{
-                    //    PopulateExamineeDatagrid();     //  repopulate datagridview
-                    //}
-
-                    //  repopulate datagridview
-                    if (_isFromSearch)
-                    {
-                        SearchExamineeByNameOrEmail(_nameOrEmailPart);
-                    }
-                    else
-                    {
-                        PopulateExamineeDatagridView();
-                    }
-                    
+                    SetDatasourceSearchModeOrDefault();
                     SetUIProperty(Operation.Clear);
 
                     //  message adding user success
@@ -288,7 +198,6 @@ namespace PresentationLayer
                             SetControlFocus(0, txtFirstName);
                             break;
                         }
-
                         else if (error.Contains("Address"))
                         {
                             SetControlFocus(1, txtAddress);
@@ -309,7 +218,6 @@ namespace PresentationLayer
                             SetControlFocus(1, txtEmail);
                             break;
                         }
-
                         else if (error.Contains("LastSchoolAttended"))
                         {
                             SetControlFocus(2, txtSchoolName);
@@ -338,8 +246,7 @@ namespace PresentationLayer
                         examineeViewModel.LastSchoolAttended = txtSchoolName.Text;
                         examineeViewModel.YearGraduated = (int)numYearGraduated.Value;
                     }
-
-                   // Console.WriteLine(examineeViewModel.DateTimeAdded.ToString());
+                    // Console.WriteLine(examineeViewModel.DateTimeAdded.ToString());
 
                     RefreshDataSource();
                     SetUIProperty(Operation.Clear);
@@ -363,46 +270,22 @@ namespace PresentationLayer
                 if (rows == 1 && _examineeViewModelList.PageCount != 1)
                 {
                     _pageNumber -= 1;
-                    Console.WriteLine("more page count");
 
-                    if (_isFromSearch)
-                    {
-                        SearchExamineeByNameOrEmail(_nameOrEmailPart);
-                    }
-                    else
-                    {
-                        PopulateExamineeDatagridView();
-                    }
+                    SetDatasourceSearchModeOrDefault();
                 }
                 else if (rows == 1 && _examineeViewModelList.PageCount <= 1)
                 {
+                    //  do reset the search
                     _isFromSearch = false;
                     _pageNumber = 1;
-                    Console.WriteLine("reset");
 
-                    if (_isFromSearch)
-                    {
-                        SearchExamineeByNameOrEmail(_nameOrEmailPart);
-                    }
-                    else
-                    {
-                        PopulateExamineeDatagridView();
-                    }
+                    SetDatasourceSearchModeOrDefault();
                 }
                 else
                 {
-                    Console.WriteLine("last line");
-                    if (_isFromSearch)
-                    {
-                        SearchExamineeByNameOrEmail(_nameOrEmailPart);
-                    }
-                    else
-                    {
-                        PopulateExamineeDatagridView();
-                    }
+                    SetDatasourceSearchModeOrDefault();
                 }
 
-                //PopulateExamineeDatagridView();
                 SetUIProperty(Operation.Clear);
             }
         }
@@ -413,27 +296,9 @@ namespace PresentationLayer
 
             if (_pageNumber >= MINIMUM_PAGE_NUMBER)
             {
-                if (_isFromSearch)
-                {
-                    Console.WriteLine("SEARCH PREV");
-                    SearchExamineeByNameOrEmail(_nameOrEmailPart);
-                }
-                else
-                {
-                    PopulateExamineeDatagridView();
-                }
-
-                //SetUIProperty(Operation.Clear);
+                SetDatasourceSearchModeOrDefault();
                 ClearExamineeUI();
                 SetNavButtonEnabled();
-
-
-                //btnNext.Enabled = true;
-
-                //if (_pageNumber == MINIMUM_PAGE_NUMBER)  
-                //{
-                //    btnPrevious.Enabled = false;
-                //}
             }
         }
 
@@ -443,30 +308,11 @@ namespace PresentationLayer
 
             if (_pageNumber <= _examineeViewModelList.PageCount)
             {
-                if (_isFromSearch)
-                {
-                    Console.WriteLine("SEARCH NEXT");
-                    SearchExamineeByNameOrEmail(_nameOrEmailPart);
-                }
-                else
-                {
-                    PopulateExamineeDatagridView();
-                }
-
-                //SetUIProperty(Operation.Clear);
+                SetDatasourceSearchModeOrDefault();
                 ClearExamineeUI();
                 SetNavButtonEnabled();
-
-
-                //btnPrevious.Enabled = true;
-
-                //if (_pageNumber == _examineeViewModelList.PageCount)
-                //{
-                //    btnNext.Enabled = false;
-                //}
             }
         }
-
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -509,28 +355,7 @@ namespace PresentationLayer
             _examineeViewModelList = _examineeBLL.GetExamineeListByNameOrEmailViewModel(_pageNumber, PAGE_SIZE, nameOrEmailPart);
 
             SetDataSourceAndPageText();
-
             SetNavButtonEnabled();
-
-            //if (_pageNumber < _examineeViewModelList.PageCount)
-            //{
-            //    btnPrevious.Enabled = true;
-            //}
-            //else
-            //{
-            //    btnPrevious.Enabled = false;
-            //}
-            ////btnPrevious.Enabled = _pageNumber < _examineeViewModelList.PageCount;
-
-            //if (_examineeViewModelList.PageCount > MINIMUM_PAGE_NUMBER)
-            //{
-            //    btnNext.Enabled = true;
-            //}
-            //else
-            //{
-            //    btnNext.Enabled = false;
-            //}
-            ////btnNext.Enabled = _examineeViewModelList.PageCount > MINIMUM_PAGE_NUMBER;
         }
 
         private void PopulateExamineeDatagridView()
@@ -552,6 +377,18 @@ namespace PresentationLayer
             {
                 dgvExaminee.DataSource = null;
                 lblPage.Text = string.Format("Page {0} of {1}", 0, 0);
+            }
+        }
+
+        private void SetDatasourceSearchModeOrDefault()
+        {
+            if (_isFromSearch)
+            {
+                SearchExamineeByNameOrEmail(_nameOrEmailPart);
+            }
+            else
+            {
+                PopulateExamineeDatagridView();
             }
         }
 
@@ -802,7 +639,6 @@ namespace PresentationLayer
                 //{
                 //    btnDelete.Enabled = false;
                 //}
-
                 btnDelete.Enabled = _examineeViewModelList.Results[index].ExamTakes == 0 ? true : false;
             }
         }

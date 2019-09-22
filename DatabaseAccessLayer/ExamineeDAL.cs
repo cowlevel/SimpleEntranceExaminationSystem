@@ -33,7 +33,7 @@ namespace DatabaseAccessLayer
             using (_context = new ExaminationContext())
             {
                 _context.Entry(examinee).State = EntityState.Modified;
-                _context.Entry(examinee).Property(p => p.DateTimeAdded).IsModified = false;
+                _context.Entry(examinee).Property(p => p.DateTimeAdded).IsModified = false; //  DateTimeAdded should not be modified
                 _context.SaveChanges();
             }
         }
@@ -107,29 +107,7 @@ namespace DatabaseAccessLayer
                         DateTimeAdded = e.DateTimeAdded
                     })
                     .GetPaged(pageNumber, pageSize);
-
-
-                //var ex = _context.Examinee.Where(e => e.DateTimeAdded.Value.Year == 2019)
-                //    .ToList();
-
-                //foreach (var e in ex)
-                //{
-                //    Console.WriteLine(e.LastName);
-                //}
-
-                //Console.WriteLine("First Row On Page: " + examineeListViewModel.FirstRowOnPage);
-                //Console.WriteLine("Last Row On Page: " + examineeListViewModel.LastRowOnPage);
-
-                //Console.WriteLine("Page Size: " + examineeListViewModel.PageSize);
-                //Console.WriteLine("Current Page: " + examineeListViewModel.CurrentPage);
-                //Console.WriteLine("Row Count: " + examineeListViewModel.RowCount);
-                //Console.WriteLine("Page Count: " + examineeListViewModel.PageCount);
-                //Console.WriteLine("List Row Count: " + examineeListViewModel.Results.Count);
-
-                //DateTime dbServerTime = GetServerDateTime(_context);
-                //Console.WriteLine("Database date and time: " + dbServerTime);
             }
-
 
             return examineeListViewModel;
         }

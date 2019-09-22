@@ -8,20 +8,20 @@ using DatabaseAccessLayer;
 
 namespace BusinessLogicLayer
 {
-    public class UserBLL
+    public class SystemUserBLL
     {
+        private bool _isValid;
         private ValueObjectValidator _objectValidator;
         private List<ValidationResult> _validationResults;
-        private UserDAL _userDAL;
-        private bool _isValid;
+        private SystemUserDAL _userDAL;
 
 
-        public UserBLL()
+        public SystemUserBLL()
         {
-            _userDAL = new UserDAL();
+            _userDAL = new SystemUserDAL();
         }
 
-        public bool InsertUser(User user, out List<string> errorList)
+        public bool InsertUser(SystemUser user, out List<string> errorList)
         {
             errorList = new List<string>();
             _objectValidator = new ValueObjectValidator();
@@ -29,8 +29,6 @@ namespace BusinessLogicLayer
 
             if (!_isValid)
             {
-                
-
                 foreach (var error in _validationResults)
                 {
                     errorList.Add(error.ErrorMessage);
@@ -45,7 +43,7 @@ namespace BusinessLogicLayer
             return true;
         }
 
-        public bool UpdateUser(User user, out List<string> errorList)
+        public bool UpdateUser(SystemUser user, out List<string> errorList)
         {
             errorList = new List<string>();
             _objectValidator = new ValueObjectValidator();
@@ -66,19 +64,19 @@ namespace BusinessLogicLayer
             return true;
         }
 
-        public bool DeleteUser(User user)
-        {
-            _userDAL.DeleteUser(user);
+        //public bool DeleteUser(SystemUser user)
+        //{
+        //    _userDAL.DeleteUser(user);
 
-            return false;
-        }
+        //    return false;
+        //}
 
-        public List<UserViewModel> GetUserListViewModel()
+        public List<SystemUserViewModel> GetUserListViewModel()
         {
             return _userDAL.GetUserListViewModel();
         }
 
-        public List<UserViewModel> GetUserListByNameViewModel(string namePart)
+        public List<SystemUserViewModel> GetUserListByNameViewModel(string namePart)
         {
             return _userDAL.GetUserListByNameViewModel(namePart);
         }

@@ -1,21 +1,22 @@
-namespace ConsoleApp2EF
+namespace ValueObject
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+    //using System.Data.Entity.Spatial;
 
-    [Table("ExamTake")]
-    public partial class ExamTake
+    [Table("ExamineeTake")]
+    public partial class ExamineeTake
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ExamTake()
+        public ExamineeTake()
         {
-            ExamineeResults = new HashSet<ExamineeResult>();
+            ExamineeResult = new HashSet<ExamineeResult>();
         }
 
-        public int ExamTakeId { get; set; }
+        [Key]
+        public int ExamineeTakeId { get; set; }
 
         public int ExamId { get; set; }
 
@@ -41,6 +42,6 @@ namespace ConsoleApp2EF
         public virtual Examinee Examinee { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExamineeResult> ExamineeResults { get; set; }
+        public virtual ICollection<ExamineeResult> ExamineeResult { get; set; }
     }
 }

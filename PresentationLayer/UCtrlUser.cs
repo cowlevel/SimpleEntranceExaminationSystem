@@ -15,26 +15,20 @@ namespace PresentationLayer
         #region PRIVATE VARIABLES
         private int _userCount;
         private int _userId;
-        private UserBLL _userBLL;
-        private List<UserViewModel> _userViewModelList;
+        private SystemUserBLL _userBLL;
+        private List<SystemUserViewModel> _userViewModelList;
         #endregion
 
-        #region ENUM
-        public enum Operation
-        {
-            Adding = 0,
-            Editing = 1,
-            Clear = 2
-        }
-        #endregion
 
         #region CONSTRUCTOR
         public UCtrlUser()
         {
             InitializeComponent();
-            
-            _userBLL = new UserBLL();   //  create UserBLL object
-            PopulateUserDatagrid(); //  populate user datagridview
+
+            dgvUser.AutoGenerateColumns = false;    //  set to false because I'm using view model with more columns that are not needed
+
+            _userBLL = new SystemUserBLL();   //  create UserBLL object
+            PopulateUserDatagridView(); //  populate user datagridview
         }
         #endregion
 
@@ -44,8 +38,8 @@ namespace PresentationLayer
         {
             if (btnAdd.Text == "&ADD NEW")
             {
-                _userCount = _userBLL.GetUserCount() + 1;   //  get current number of users
-                //_userCount = 1009;    //  testing :p
+                _userCount = _userBLL.GetUserCount() + 1;   //  get current number of users plus 1 for new user and for its username
+                //_userCount = 1009;    //  testing
 
                 SetUIProperty(Operation.Adding);
             }
@@ -59,9 +53,9 @@ namespace PresentationLayer
         {
             if (btnEdit.Text == "&EDIT")
             {
-                string username = txtUsername.Text;
+                string username = lblUsernameOutput.Text;
 
-                _userCount = _userViewModelList.Where(u => u.Username == username)
+                _userId = _userViewModelList.Where(u => u.Username == username)
                                                .Select(u => u.UserId).Single();
 
                 SetUIProperty(Operation.Editing);
@@ -75,22 +69,21 @@ namespace PresentationLayer
         private void btnSave_Click(object sender, EventArgs e)
         {
             List<string> errorList; //  list of string to store error message, for validation
-            User user;
+            SystemUser user;
             int dgvRowIndex;
 
             if (btnAdd.Text == "&CANCEL")   //  ADD NEW=====
             {
-                errorList = new List<string>();
-
-                user = new User(); //  create new User
+                user = new SystemUser(); //  create new User
                 user.LastName = txtLastName.Text;
                 user.FirstName = txtFirstName.Text;
                 user.MiddleName = txtMiddleName.Text;
-                user.Username = txtUsername.Text;
+                user.Username = lblUsernameOutput.Text;
                 user.UserLevel = cboUserLevel.Text;
-                user.Pword = cboUserLevel.Text;
+                user.Pword = lblUsernameOutput.Text;
                 user.AccountStatus = true;
 
+                errorList = new List<string>();
                 bool newUserNoError = _userBLL.InsertUser(user, out errorList);
 
                 if (!newUserNoError)   //  if got error/validation result
@@ -117,20 +110,23 @@ namespace PresentationLayer
                 }
                 else    //  no error
                 {
-                    _userViewModelList.Add(new UserViewModel
-                    {
-                        UserId = user.UserId,
-                        LastName = user.LastName,
-                        FirstName = user.FirstName,
-                        MiddleName = user.MiddleName,
-                        Username = user.Username,
-                        UserLevel = user.UserLevel,
-                        AccountStatus = user.AccountStatus
-                    });
+                    //_userViewModelList.Add(new SystemUserViewModel
+                    //{
+                    //    UserId = user.UserId,
+                    //    LastName = user.LastName,
+                    //    FirstName = user.FirstName,
+                    //    MiddleName = user.MiddleName,
+                    //    Username = user.Username,
+                    //    UserLevel = user.UserLevel,
+                    //    AccountStatus = user.AccountStatus
+                    //});
 
-                    dgvRowIndex = dgvUser.Rows.Count;
+                    //dgvUser.DataSource = null;
+                    //dgvUser.DataSource = _userViewModelList;
 
-                    SetSelectedDatagridviewRow(dgvRowIndex);
+                    PopulateUserDatagridView();
+                    lblSearchResult.Text = "Search result: ";
+
                     SetUIProperty(Operation.Clear);
 
                     //  message adding user success
@@ -140,11 +136,9 @@ namespace PresentationLayer
 
             if (btnEdit.Text == "&CANCEL")  //  EDIT=====
             {
-                errorList = new List<string>();
-
                 //  editing so get user from the selected user in the datagridview
                 user = _userViewModelList.Where(u => u.UserId == _userId)
-                                            .Select(u => new User
+                                            .Select(u => new SystemUser
                                             {
                                                 UserId = u.UserId,  //  assign user id (Primary Key) so it can be tracked by EF
                                                 LastName = u.LastName,
@@ -158,11 +152,12 @@ namespace PresentationLayer
                 user.LastName = txtLastName.Text;
                 user.FirstName = txtFirstName.Text;
                 user.MiddleName = txtMiddleName.Text;
-                user.Username = txtUsername.Text;
+                user.Username = lblUsernameOutput.Text;
                 user.UserLevel = cboUserLevel.Text;
                 user.Pword = cboUserLevel.Text;
                 user.AccountStatus = chkStatus.Checked;
 
+                errorList = new List<string>();
                 bool editUserOk = _userBLL.UpdateUser(user, out errorList);
 
                 if (!editUserOk)   //  if got error/validation result
@@ -189,21 +184,19 @@ namespace PresentationLayer
                 }
                 else    //  no error
                 {
-                    UserViewModel userViewModel = _userViewModelList.Where(u => u.UserId == _userId).SingleOrDefault();
+                    SystemUserViewModel userViewModel = _userViewModelList.Where(u => u.UserId == _userId).SingleOrDefault();
                     
                     if (userViewModel != null)
                     {
                         userViewModel.LastName = txtLastName.Text;
                         userViewModel.FirstName = txtFirstName.Text;
                         userViewModel.MiddleName = txtMiddleName.Text;
-                        userViewModel.Username = txtUsername.Text;
+                        userViewModel.Username = lblUsernameOutput.Text;
                         userViewModel.UserLevel = cboUserLevel.Text;
                         userViewModel.AccountStatus = chkStatus.Checked;
                     }
 
-                    dgvRowIndex = _userViewModelList.IndexOf(userViewModel);
-
-                    SetSelectedDatagridviewRow(dgvRowIndex);
+                    RefreshDataSource();
                     SetUIProperty(Operation.Clear);
 
                     //  message edit user success
@@ -226,7 +219,7 @@ namespace PresentationLayer
                 txtFirstName.Text = _userViewModelList[index].FirstName;
                 txtMiddleName.Text = _userViewModelList[index].MiddleName;
 
-                txtUsername.Text = _userViewModelList[index].Username;
+                lblUsernameOutput.Text = _userViewModelList[index].Username;
                 cboUserLevel.Text = _userViewModelList[index].UserLevel;
                 chkStatus.Checked = _userViewModelList[index].AccountStatus;
 
@@ -234,12 +227,39 @@ namespace PresentationLayer
             }
         }
 
+        private void dgvUser_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //Console.WriteLine(e.RowIndex.ToString());
+            /*
+            int index = e.RowIndex;
+
+            if (btnAdd.Text == "&ADD NEW"
+                && btnEdit.Text == "&EDIT"
+                && index > -1)
+            {
+                _userId = _userViewModelList[index].UserId; //  important for EDIT, get user id from selected user in datagridview
+
+                txtLastName.Text = _userViewModelList[index].LastName;
+                txtFirstName.Text = _userViewModelList[index].FirstName;
+                txtMiddleName.Text = _userViewModelList[index].MiddleName;
+
+                lblUsernameOutput.Text = _userViewModelList[index].Username;
+                cboUserLevel.Text = _userViewModelList[index].UserLevel;
+                chkStatus.Checked = _userViewModelList[index].AccountStatus;
+
+                btnEdit.Enabled = true; //  enable EDIT button
+            }*/
+        }
+
         private void txtLastName_Leave(object sender, EventArgs e)
         {
-            if ((btnAdd.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0)
-                || (btnEdit.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0))
+            if ((btnAdd.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0))    //  ADD NEW
             {
-                txtUsername.Text = txtLastName.Text.ToLower().Replace(" ", "") + _userCount.ToString("000");
+                lblUsernameOutput.Text = txtLastName.Text.ToLower().Replace(" ", "") + _userCount.ToString("000");
+            }
+            else if ((btnEdit.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0))  //  EDIT
+            {
+                lblUsernameOutput.Text = txtLastName.Text.ToLower().Replace(" ", "") + _userId.ToString("000");
             }
         }
 
@@ -259,19 +279,17 @@ namespace PresentationLayer
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
-            PopulateUserDatagrid();
+            PopulateUserDatagridView();
             lblSearchResult.Text = string.Format("Search result: found {0} user(s)", _userViewModelList.Count);
         }
         #endregion
 
 
         #region PRIVATE METHODS
-        private void PopulateUserDatagrid()
+        private void PopulateUserDatagridView()
         {
             _userViewModelList = _userBLL.GetUserListViewModel();
             
-            dgvUser.AutoGenerateColumns = false;
-
             //  check always if list got record, if got zero record then dont use it as data source to avoid some error. NOTE: must have at least 1 record before to use it as data source.
             if (_userViewModelList.Count > 0)
             {
@@ -289,6 +307,8 @@ namespace PresentationLayer
                 _userViewModelList = _userBLL.GetUserListByNameViewModel(namePart);
                 dgvUser.DataSource = _userViewModelList;
                 lblSearchResult.Text = string.Format("Search result: found {0} that contains '{1}'", _userViewModelList.Count, namePart);
+
+                SetUIProperty(Operation.Clear);
             }
             else
             {
@@ -314,8 +334,8 @@ namespace PresentationLayer
                     txtFirstName.Text = string.Empty;
                     txtMiddleName.Enabled = true;
                     txtMiddleName.Text = string.Empty;
-                    txtUsername.Enabled = true;
-                    txtUsername.Text = string.Empty;
+                    lblUsernameOutput.Enabled = true;
+                    lblUsernameOutput.Text = string.Empty;
                     cboUserLevel.Enabled = true;
                     cboUserLevel.SelectedIndex = -1;
                     chkStatus.Enabled = false;
@@ -338,7 +358,7 @@ namespace PresentationLayer
                     txtLastName.Enabled = true;
                     txtFirstName.Enabled = true;
                     txtMiddleName.Enabled = true;
-                    txtUsername.Enabled = true;
+                    lblUsernameOutput.Enabled = true;
                     cboUserLevel.Enabled = true;
                     chkStatus.Enabled = true;
 
@@ -352,12 +372,10 @@ namespace PresentationLayer
                     btnAdd.Text = "&ADD NEW";
                     btnAdd.BackColor = Color.FromArgb(67, 166, 235);
                     btnAdd.Enabled = true;
-
                     btnEdit.Text = "&EDIT";
                     btnEdit.BackColor = Color.LightGray;
                     btnEdit.Enabled = false;
-
-                    btnSave.Enabled = true;
+                    btnSave.Enabled = false;
 
                     txtLastName.Enabled = false;
                     txtLastName.Text = string.Empty;
@@ -365,8 +383,8 @@ namespace PresentationLayer
                     txtFirstName.Text = string.Empty;
                     txtMiddleName.Enabled = false;
                     txtMiddleName.Text = string.Empty;
-                    txtUsername.Enabled = false;
-                    txtUsername.Text = string.Empty;
+                    lblUsernameOutput.Enabled = false;
+                    lblUsernameOutput.Text = string.Empty;
                     cboUserLevel.Enabled = false;
                     cboUserLevel.SelectedIndex = -1;
                     chkStatus.Enabled = false;
@@ -379,13 +397,10 @@ namespace PresentationLayer
             }
         }
 
-        private void SetSelectedDatagridviewRow(int index)
+        private void RefreshDataSource()
         {
             dgvUser.DataSource = null;
             dgvUser.DataSource = _userViewModelList;
-
-            dgvUser.FirstDisplayedScrollingRowIndex = index;   //  scroll datagridview to selected index
-            dgvUser.Rows[index].Selected = true;   //  set datagridview selected index
         }
 
         private void SetSearchingStatus(bool isEnabled)
@@ -398,7 +413,7 @@ namespace PresentationLayer
         private void ShowRequiredLabels(bool show)
         {
             lblReqLastName.Visible = show;
-            lblReqFistName.Visible = show;
+            lblReqFirstName.Visible = show;
             lblReqUserLevel.Visible = show;
         }
         #endregion

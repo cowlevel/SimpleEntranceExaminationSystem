@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ValueObject.ViewModel
 {
-    public class UserViewModel
+    public class SystemUserViewModel
     {
         
-        public UserViewModel()
+        public SystemUserViewModel()
         {
             
         }

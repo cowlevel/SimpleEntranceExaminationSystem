@@ -28,20 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.chkStatus = new System.Windows.Forms.CheckBox();
             this.lblReqUserLevel = new System.Windows.Forms.Label();
-            this.lblReqFistName = new System.Windows.Forms.Label();
+            this.lblReqFirstName = new System.Windows.Forms.Label();
             this.lblReqLastName = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUserLevel = new System.Windows.Forms.Label();
             this.cboUserLevel = new System.Windows.Forms.ComboBox();
             this.lblMiddleName = new System.Windows.Forms.Label();
@@ -64,6 +63,7 @@
             this.colMiddleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUserLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblUsernameOutput = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +74,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(344, 233);
+            this.btnSearch.Location = new System.Drawing.Point(340, 218);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(88, 26);
             this.btnSearch.TabIndex = 4;
@@ -87,7 +87,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Teal;
-            this.label1.Location = new System.Drawing.Point(24, 233);
+            this.label1.Location = new System.Drawing.Point(20, 218);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 26);
             this.label1.TabIndex = 46;
@@ -99,7 +99,7 @@
             this.chkStatus.Enabled = false;
             this.chkStatus.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkStatus.ForeColor = System.Drawing.Color.Teal;
-            this.chkStatus.Location = new System.Drawing.Point(560, 122);
+            this.chkStatus.Location = new System.Drawing.Point(521, 105);
             this.chkStatus.Name = "chkStatus";
             this.chkStatus.Size = new System.Drawing.Size(225, 26);
             this.chkStatus.TabIndex = 12;
@@ -111,7 +111,7 @@
             this.lblReqUserLevel.BackColor = System.Drawing.Color.LightCoral;
             this.lblReqUserLevel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReqUserLevel.ForeColor = System.Drawing.Color.White;
-            this.lblReqUserLevel.Location = new System.Drawing.Point(785, 84);
+            this.lblReqUserLevel.Location = new System.Drawing.Point(744, 72);
             this.lblReqUserLevel.Name = "lblReqUserLevel";
             this.lblReqUserLevel.Size = new System.Drawing.Size(65, 26);
             this.lblReqUserLevel.TabIndex = 45;
@@ -119,25 +119,25 @@
             this.lblReqUserLevel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblReqUserLevel.Visible = false;
             // 
-            // lblReqFistName
+            // lblReqFirstName
             // 
-            this.lblReqFistName.BackColor = System.Drawing.Color.LightCoral;
-            this.lblReqFistName.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReqFistName.ForeColor = System.Drawing.Color.White;
-            this.lblReqFistName.Location = new System.Drawing.Point(342, 84);
-            this.lblReqFistName.Name = "lblReqFistName";
-            this.lblReqFistName.Size = new System.Drawing.Size(65, 26);
-            this.lblReqFistName.TabIndex = 44;
-            this.lblReqFistName.Text = "Required";
-            this.lblReqFistName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblReqFistName.Visible = false;
+            this.lblReqFirstName.BackColor = System.Drawing.Color.LightCoral;
+            this.lblReqFirstName.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReqFirstName.ForeColor = System.Drawing.Color.White;
+            this.lblReqFirstName.Location = new System.Drawing.Point(338, 72);
+            this.lblReqFirstName.Name = "lblReqFirstName";
+            this.lblReqFirstName.Size = new System.Drawing.Size(65, 26);
+            this.lblReqFirstName.TabIndex = 44;
+            this.lblReqFirstName.Text = "Required";
+            this.lblReqFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblReqFirstName.Visible = false;
             // 
             // lblReqLastName
             // 
             this.lblReqLastName.BackColor = System.Drawing.Color.LightCoral;
             this.lblReqLastName.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReqLastName.ForeColor = System.Drawing.Color.White;
-            this.lblReqLastName.Location = new System.Drawing.Point(342, 47);
+            this.lblReqLastName.Location = new System.Drawing.Point(338, 40);
             this.lblReqLastName.Name = "lblReqLastName";
             this.lblReqLastName.Size = new System.Drawing.Size(65, 26);
             this.lblReqLastName.TabIndex = 43;
@@ -149,7 +149,7 @@
             // 
             this.txtSearch.BackColor = System.Drawing.Color.White;
             this.txtSearch.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(113, 233);
+            this.txtSearch.Location = new System.Drawing.Point(109, 218);
             this.txtSearch.MaxLength = 120;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(225, 26);
@@ -164,7 +164,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(248, 158);
+            this.btnSave.Location = new System.Drawing.Point(246, 146);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 40);
             this.btnSave.TabIndex = 2;
@@ -180,7 +180,7 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(132, 158);
+            this.btnEdit.Location = new System.Drawing.Point(130, 146);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(110, 40);
             this.btnEdit.TabIndex = 1;
@@ -195,7 +195,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(16, 158);
+            this.btnAdd.Location = new System.Drawing.Point(14, 146);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 40);
             this.btnAdd.TabIndex = 0;
@@ -208,34 +208,21 @@
             this.lblUsername.BackColor = System.Drawing.Color.Transparent;
             this.lblUsername.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.Teal;
-            this.lblUsername.Location = new System.Drawing.Point(456, 47);
+            this.lblUsername.Location = new System.Drawing.Point(439, 40);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(98, 26);
+            this.lblUsername.Size = new System.Drawing.Size(76, 26);
             this.lblUsername.TabIndex = 42;
             this.lblUsername.Text = "Username";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.BackColor = System.Drawing.Color.White;
-            this.txtUsername.Enabled = false;
-            this.txtUsername.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(560, 47);
-            this.txtUsername.MaxLength = 64;
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.ReadOnly = true;
-            this.txtUsername.Size = new System.Drawing.Size(225, 26);
-            this.txtUsername.TabIndex = 10;
-            this.txtUsername.TabStop = false;
             // 
             // lblUserLevel
             // 
             this.lblUserLevel.BackColor = System.Drawing.Color.Transparent;
             this.lblUserLevel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserLevel.ForeColor = System.Drawing.Color.Teal;
-            this.lblUserLevel.Location = new System.Drawing.Point(456, 85);
+            this.lblUserLevel.Location = new System.Drawing.Point(439, 72);
             this.lblUserLevel.Name = "lblUserLevel";
-            this.lblUserLevel.Size = new System.Drawing.Size(98, 26);
+            this.lblUserLevel.Size = new System.Drawing.Size(76, 26);
             this.lblUserLevel.TabIndex = 39;
             this.lblUserLevel.Text = "User Level";
             this.lblUserLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -250,7 +237,7 @@
             this.cboUserLevel.Items.AddRange(new object[] {
             "Exam Creator",
             "Administrator"});
-            this.cboUserLevel.Location = new System.Drawing.Point(560, 84);
+            this.cboUserLevel.Location = new System.Drawing.Point(521, 72);
             this.cboUserLevel.Name = "cboUserLevel";
             this.cboUserLevel.Size = new System.Drawing.Size(225, 26);
             this.cboUserLevel.TabIndex = 11;
@@ -260,9 +247,9 @@
             this.lblMiddleName.BackColor = System.Drawing.Color.Transparent;
             this.lblMiddleName.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMiddleName.ForeColor = System.Drawing.Color.Teal;
-            this.lblMiddleName.Location = new System.Drawing.Point(13, 121);
+            this.lblMiddleName.Location = new System.Drawing.Point(13, 104);
             this.lblMiddleName.Name = "lblMiddleName";
-            this.lblMiddleName.Size = new System.Drawing.Size(98, 26);
+            this.lblMiddleName.Size = new System.Drawing.Size(94, 26);
             this.lblMiddleName.TabIndex = 36;
             this.lblMiddleName.Text = "Middle Name";
             this.lblMiddleName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -272,9 +259,9 @@
             this.lblFirstName.BackColor = System.Drawing.Color.Transparent;
             this.lblFirstName.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFirstName.ForeColor = System.Drawing.Color.Teal;
-            this.lblFirstName.Location = new System.Drawing.Point(13, 84);
+            this.lblFirstName.Location = new System.Drawing.Point(13, 72);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(98, 26);
+            this.lblFirstName.Size = new System.Drawing.Size(94, 26);
             this.lblFirstName.TabIndex = 34;
             this.lblFirstName.Text = "First Name";
             this.lblFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -284,7 +271,7 @@
             this.txtMiddleName.BackColor = System.Drawing.Color.White;
             this.txtMiddleName.Enabled = false;
             this.txtMiddleName.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMiddleName.Location = new System.Drawing.Point(117, 121);
+            this.txtMiddleName.Location = new System.Drawing.Point(113, 104);
             this.txtMiddleName.MaxLength = 60;
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(225, 26);
@@ -295,7 +282,7 @@
             this.txtFirstName.BackColor = System.Drawing.Color.White;
             this.txtFirstName.Enabled = false;
             this.txtFirstName.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstName.Location = new System.Drawing.Point(117, 84);
+            this.txtFirstName.Location = new System.Drawing.Point(113, 72);
             this.txtFirstName.MaxLength = 60;
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(225, 26);
@@ -306,7 +293,7 @@
             this.txtLastName.BackColor = System.Drawing.Color.White;
             this.txtLastName.Enabled = false;
             this.txtLastName.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(117, 47);
+            this.txtLastName.Location = new System.Drawing.Point(113, 40);
             this.txtLastName.MaxLength = 60;
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(225, 26);
@@ -318,9 +305,9 @@
             this.lblLastName.BackColor = System.Drawing.Color.Transparent;
             this.lblLastName.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLastName.ForeColor = System.Drawing.Color.Teal;
-            this.lblLastName.Location = new System.Drawing.Point(13, 47);
+            this.lblLastName.Location = new System.Drawing.Point(13, 40);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(98, 26);
+            this.lblLastName.Size = new System.Drawing.Size(94, 26);
             this.lblLastName.TabIndex = 31;
             this.lblLastName.Text = "Last Name";
             this.lblLastName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -332,11 +319,11 @@
             this.btnShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowAll.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowAll.ForeColor = System.Drawing.Color.White;
-            this.btnShowAll.Location = new System.Drawing.Point(438, 233);
+            this.btnShowAll.Location = new System.Drawing.Point(434, 218);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(88, 26);
             this.btnShowAll.TabIndex = 5;
-            this.btnShowAll.Text = "SHOW ALL";
+            this.btnShowAll.Text = "S&HOW ALL";
             this.btnShowAll.UseVisualStyleBackColor = false;
             this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
@@ -344,9 +331,9 @@
             // 
             this.rectangleShape1.BorderColor = System.Drawing.Color.Gainsboro;
             this.rectangleShape1.Enabled = false;
-            this.rectangleShape1.Location = new System.Drawing.Point(15, 225);
+            this.rectangleShape1.Location = new System.Drawing.Point(13, 209);
             this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(1060, 310);
+            this.rectangleShape1.Size = new System.Drawing.Size(1060, 372);
             // 
             // shapeContainer1
             // 
@@ -355,7 +342,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.rectangleShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(1148, 603);
+            this.shapeContainer1.Size = new System.Drawing.Size(1148, 666);
             this.shapeContainer1.TabIndex = 48;
             this.shapeContainer1.TabStop = false;
             // 
@@ -366,7 +353,7 @@
             this.lblStatus.ForeColor = System.Drawing.Color.White;
             this.lblStatus.Location = new System.Drawing.Point(1, 1);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(1122, 26);
+            this.lblStatus.Size = new System.Drawing.Size(1088, 26);
             this.lblStatus.TabIndex = 49;
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -375,7 +362,7 @@
             this.lblSearchResult.BackColor = System.Drawing.Color.Transparent;
             this.lblSearchResult.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearchResult.ForeColor = System.Drawing.Color.Teal;
-            this.lblSearchResult.Location = new System.Drawing.Point(541, 233);
+            this.lblSearchResult.Location = new System.Drawing.Point(537, 218);
             this.lblSearchResult.Name = "lblSearchResult";
             this.lblSearchResult.Size = new System.Drawing.Size(530, 26);
             this.lblSearchResult.TabIndex = 50;
@@ -390,14 +377,14 @@
             this.dgvUser.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.dgvUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvUser.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colUserId,
@@ -409,17 +396,18 @@
             this.colUserLevel,
             this.colStatus});
             this.dgvUser.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgvUser.Location = new System.Drawing.Point(16, 266);
+            this.dgvUser.Location = new System.Drawing.Point(14, 251);
             this.dgvUser.MultiSelect = false;
             this.dgvUser.Name = "dgvUser";
             this.dgvUser.ReadOnly = true;
             this.dgvUser.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvUser.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvUser.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUser.Size = new System.Drawing.Size(1059, 268);
+            this.dgvUser.Size = new System.Drawing.Size(1059, 329);
             this.dgvUser.TabIndex = 6;
             this.dgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellClick);
+            this.dgvUser.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellEnter);
             // 
             // colUserId
             // 
@@ -493,11 +481,24 @@
             this.colStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colStatus.Width = 120;
             // 
+            // lblUsernameOutput
+            // 
+            this.lblUsernameOutput.BackColor = System.Drawing.Color.Transparent;
+            this.lblUsernameOutput.Enabled = false;
+            this.lblUsernameOutput.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsernameOutput.ForeColor = System.Drawing.Color.Black;
+            this.lblUsernameOutput.Location = new System.Drawing.Point(521, 40);
+            this.lblUsernameOutput.Name = "lblUsernameOutput";
+            this.lblUsernameOutput.Size = new System.Drawing.Size(225, 26);
+            this.lblUsernameOutput.TabIndex = 10;
+            this.lblUsernameOutput.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // UCtrlUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblUsernameOutput);
             this.Controls.Add(this.dgvUser);
             this.Controls.Add(this.lblSearchResult);
             this.Controls.Add(this.lblStatus);
@@ -506,14 +507,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkStatus);
             this.Controls.Add(this.lblReqUserLevel);
-            this.Controls.Add(this.lblReqFistName);
+            this.Controls.Add(this.lblReqFirstName);
             this.Controls.Add(this.lblReqLastName);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblUserLevel);
             this.Controls.Add(this.cboUserLevel);
             this.Controls.Add(this.lblMiddleName);
@@ -524,7 +524,7 @@
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.shapeContainer1);
             this.Name = "UCtrlUser";
-            this.Size = new System.Drawing.Size(1148, 603);
+            this.Size = new System.Drawing.Size(1148, 666);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -537,14 +537,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkStatus;
         private System.Windows.Forms.Label lblReqUserLevel;
-        private System.Windows.Forms.Label lblReqFistName;
+        private System.Windows.Forms.Label lblReqFirstName;
         private System.Windows.Forms.Label lblReqLastName;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label lblUserLevel;
         private System.Windows.Forms.ComboBox cboUserLevel;
         private System.Windows.Forms.Label lblMiddleName;
@@ -567,5 +566,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colMiddleName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUserLevel;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
+        private System.Windows.Forms.Label lblUsernameOutput;
     }
 }

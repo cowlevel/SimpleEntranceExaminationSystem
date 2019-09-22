@@ -12,9 +12,10 @@ namespace ValueObject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Examinee()
         {
-            ExamTake = new HashSet<ExamTake>();
+            ExamineeTake = new HashSet<ExamineeTake>();
         }
 
+        [Key]
         public int ExamineeId { get; set; }
 
         [Required]
@@ -29,14 +30,32 @@ namespace ValueObject
         public string MiddleName { get; set; }
 
         [Required]
-        [Column(TypeName = "date")]
-        public DateTime? Birthdate { get; set; }
+        [StringLength(150)]
+        public string Address { get; set; }
+
+        [Required]
+        [StringLength(60)]
+        public string City { get; set; }
+
+        [Required]
+        [StringLength(15)]
+        public string ContactNo { get; set; }
+
+        [Required]
+        [StringLength(60)]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(150)]
         public string LastSchoolAttended { get; set; }
 
+        public int YearGraduated { get; set; }
+
+        public int ExamTakes { get; set; }
+
+        public DateTime? DateTimeAdded { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExamTake> ExamTake { get; set; }
+        public virtual ICollection<ExamineeTake> ExamineeTake { get; set; }
     }
 }

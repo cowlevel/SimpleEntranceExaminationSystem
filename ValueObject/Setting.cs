@@ -6,7 +6,8 @@ namespace ValueObject
     using System.ComponentModel.DataAnnotations.Schema;
     //using System.Data.Entity.Spatial;
 
-    public partial class Settings
+    [Table("Setting")]
+    public partial class Setting
     {
         [Key]
         public int SettingsId { get; set; }

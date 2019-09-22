@@ -166,6 +166,10 @@
       <Project>{eca4d3df-157d-40cb-a698-8c7a0840b715}</Project>
       <Name>BusinessLogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{f96785f9-baec-430d-a870-e21fb8bb5d63}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ValueObject\ValueObject.csproj">
       <Project>{0b989ed7-a822-4eda-b624-68da7fc7419b}</Project>
       <Name>ValueObject</Name>

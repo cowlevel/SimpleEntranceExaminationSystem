@@ -6,6 +6,7 @@ namespace ConsoleApp2EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("Setting")]
     public partial class Setting
     {
         [Key]

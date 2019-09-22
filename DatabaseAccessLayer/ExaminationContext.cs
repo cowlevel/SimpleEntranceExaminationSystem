@@ -15,16 +15,16 @@ namespace DatabaseAccessLayer
 
         public virtual DbSet<Exam> Exam { get; set; }
         public virtual DbSet<Examinee> Examinee { get; set; }
-        public virtual DbSet<ExamTake> ExamTake { get; set; }
+        public virtual DbSet<ExamineeTake> ExamineeTake { get; set; }
         public virtual DbSet<QuestionBank> QuestionBank { get; set; }
-        public virtual DbSet<Settings> Settings { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Setting> Setting { get; set; }
+        public virtual DbSet<SystemUser> SystemUser { get; set; }
         public virtual DbSet<ExamineeResult> ExamineeResult { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Exam>()
-                .HasMany(e => e.ExamTake)
+                .HasMany(e => e.ExamineeTake)
                 .WithRequired(e => e.Exam)
                 .WillCascadeOnDelete(false);
 
@@ -34,13 +34,13 @@ namespace DatabaseAccessLayer
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Examinee>()
-                .HasMany(e => e.ExamTake)
+                .HasMany(e => e.ExamineeTake)
                 .WithRequired(e => e.Examinee)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ExamTake>()
+            modelBuilder.Entity<ExamineeTake>()
                 .HasMany(e => e.ExamineeResult)
-                .WithRequired(e => e.ExamTake)
+                .WithRequired(e => e.ExamineeTake)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<QuestionBank>()
@@ -48,9 +48,9 @@ namespace DatabaseAccessLayer
                 .WithRequired(e => e.QuestionBank)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<SystemUser>()
                 .HasMany(e => e.Exam)
-                .WithRequired(e => e.User)
+                .WithRequired(e => e.SystemUser)
                 .WillCascadeOnDelete(false);
         }
     }

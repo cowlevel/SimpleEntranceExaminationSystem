@@ -46,16 +46,21 @@
     <Compile Include="ExamineeBLL.cs" />
     <Compile Include="ExamineeResultBLL.cs" />
     <Compile Include="ExamTakeBLL.cs" />
+    <Compile Include="LoginViewModelBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionBankBLL.cs" />
     <Compile Include="SettingsBLL.cs" />
-    <Compile Include="UserBLL.cs" />
+    <Compile Include="SystemUserBLL.cs" />
     <Compile Include="ValueObjectValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatabaseAccessLayer\DatabaseAccessLayer.csproj">
       <Project>{298e92e5-2e70-450f-872d-ab077020c2d4}</Project>
       <Name>DatabaseAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{f96785f9-baec-430d-a870-e21fb8bb5d63}</Project>
+      <Name>Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\ValueObject\ValueObject.csproj">
       <Project>{0b989ed7-a822-4eda-b624-68da7fc7419b}</Project>

@@ -12,44 +12,45 @@ namespace ConsoleApp2EF
         {
         }
 
-        public virtual DbSet<Exam> Exams { get; set; }
-        public virtual DbSet<Examinee> Examinees { get; set; }
-        public virtual DbSet<ExamTake> ExamTakes { get; set; }
-        public virtual DbSet<QuestionBank> QuestionBanks { get; set; }
-        public virtual DbSet<Setting> Settings { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<ExamineeResult> ExamineeResults { get; set; }
+        public virtual DbSet<Exam> Exam { get; set; }
+        public virtual DbSet<Examinee> Examinee { get; set; }
+        public virtual DbSet<ExamineeTake> ExamineeTake { get; set; }
+        public virtual DbSet<QuestionBank> QuestionBank { get; set; }
+        public virtual DbSet<Setting> Setting { get; set; }
+        public virtual DbSet<SystemUser> SystemUser { get; set; }
+        public virtual DbSet<ExamineeResult> ExamineeResult { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Exam>()
-                .HasMany(e => e.ExamTakes)
+                .HasMany(e => e.ExamineeTake)
                 .WithRequired(e => e.Exam)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Exam>()
-                .HasMany(e => e.QuestionBanks)
+                .HasMany(e => e.QuestionBank)
                 .WithRequired(e => e.Exam)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Examinee>()
-                .HasMany(e => e.ExamTakes)
+                .HasMany(e => e.ExamineeTake)
                 .WithRequired(e => e.Examinee)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ExamTake>()
-                .HasMany(e => e.ExamineeResults)
-                .WithRequired(e => e.ExamTake)
+            modelBuilder.Entity<ExamineeTake>()
+                .HasMany(e => e.ExamineeResult)
+                .WithRequired(e => e.ExamineeTake)
+                .HasForeignKey(e => e.ExamTakeId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<QuestionBank>()
-                .HasMany(e => e.ExamineeResults)
+                .HasMany(e => e.ExamineeResult)
                 .WithRequired(e => e.QuestionBank)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.Exams)
-                .WithRequired(e => e.User)
+            modelBuilder.Entity<SystemUser>()
+                .HasMany(e => e.Exam)
+                .WithRequired(e => e.SystemUser)
                 .WillCascadeOnDelete(false);
         }
     }

@@ -28,7 +28,7 @@ namespace ValueObject
         [Column(Order = 3)]
         public bool CorrectAnswer { get; set; }
 
-        public virtual ExamTake ExamTake { get; set; }
+        public virtual ExamineeTake ExamineeTake { get; set; }
 
         public virtual QuestionBank QuestionBank { get; set; }
     }

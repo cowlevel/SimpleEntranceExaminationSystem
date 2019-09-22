@@ -5,55 +5,86 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using ValueObject;
+using ValueObject.ViewModel;
+using DatabaseAccessLayer;
+using Utility;
 
 namespace BusinessLogicLayer
 {
-    class ExamineeBLL
+    public class ExamineeBLL
     {
+        private bool _isValid;
+        private ValueObjectValidator _objectValidator;
+        private List<ValidationResult> _validationResults;
+        private ExamineeDAL _examineeDAL;
+
+
         public ExamineeBLL()
         {
-
+            _examineeDAL = new ExamineeDAL();
         }
 
-        private Examinee _examinee;
-
-        public Examinee Examinee
+        public bool InsertExaminee(Examinee examinee, out List<string> errorList)
         {
-            get { return _examinee; }
-            set { _examinee = value; }
+            errorList = new List<string>();
+            _objectValidator = new ValueObjectValidator();
+            _isValid = _objectValidator.TryValidate(examinee, out _validationResults);
+
+            if (!_isValid)
+            {
+                foreach (var error in _validationResults)
+                {
+                    errorList.Add(error.ErrorMessage);
+                }
+
+                return false;
+            }
+
+            examinee.DateTimeAdded = _examineeDAL.GetServerDateTime();
+            _examineeDAL.InsertExaminee(examinee);
+
+            return true;
         }
 
-        public Examinee GetExamineeX()
+        public bool UpdateExaminee(Examinee examinee, out List<string> errorList)
         {
-            _examinee = new Examinee();
-            _examinee.ExamineeId = 1;
-            _examinee.LastName = "Canon";
-            _examinee.FirstName = "Zergjill";
-            _examinee.Birthdate = new DateTime(1989, 9, 1);
-            _examinee.LastSchoolAttended = "STI";
+            errorList = new List<string>();
+            _objectValidator = new ValueObjectValidator();
+            _isValid = _objectValidator.TryValidate(examinee, out _validationResults);
 
-            return _examinee;
+            if (!_isValid)
+            {
+                foreach (var error in _validationResults)
+                {
+                    errorList.Add(error.ErrorMessage);
+                }
+
+                return false;
+            }
+            //Console.WriteLine("BLL " + examinee.DateTimeAdded.ToString());
+            _examineeDAL.UpdateExaminee(examinee);
+
+            return true;
         }
 
-
-        public void InsertExaminee()
+        public void DeleteExaminee(int examineeId)
         {
-
-        }
-
-        public void UpdateExaminee()
-        {
-
-        }
-
-        public void DeleteExaminee()
-        {
-
+            _examineeDAL.DeleteExaminee(examineeId);
         }
 
         public void GetExaminee()
         {
+            //var v = GetExamineeListViewModel(1, 5);
+        }
 
+        public PagedResult<ExamineeViewModel> GetExamineeListViewModel(int pageNumber, int pageSize)
+        {
+            return _examineeDAL.GetExamineeListViewModel(pageNumber, pageSize);
+        }
+
+        public PagedResult<ExamineeViewModel> GetExamineeListByNameOrEmailViewModel(int pageNumber, int pageSize, string nameOrEmail)
+        {
+            return _examineeDAL.GetExamineeListByNameOrEmailViewModel(pageNumber, pageSize, nameOrEmail);
         }
     }
 }

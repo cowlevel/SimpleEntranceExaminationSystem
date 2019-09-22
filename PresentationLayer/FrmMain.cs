@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ValueObject.ViewModel;
 
 namespace PresentationLayer
 {
@@ -121,6 +122,17 @@ namespace PresentationLayer
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            /* remove comment later
+            ((FrmLogIn)Owner).Visible = true;
+            ((FrmLogIn)Owner).Controls["txtUsername"].Focus();
+            UserInfo.UserId = 0;
+            UserInfo.CurrentUser = string.Empty;
+            UserInfo.UserLevel = string.Empty;
+             */
         }
     }
 }

@@ -6,25 +6,25 @@ using ValueObject.ViewModel;
 
 namespace DatabaseAccessLayer
 {
-    public class UserDAL
+    public class SystemUserDAL
     {
         private ExaminationContext _context;
 
-        public UserDAL()
+        public SystemUserDAL()
         {
             //_context = new ExaminationContext();
         }
 
-        public void InsertUser(User user)
+        public void InsertUser(SystemUser user)
         {
             using (_context = new ExaminationContext())
             {
-                _context.User.Add(user); //_context.Entry(user).State = EntityState.Added;
+                _context.SystemUser.Add(user); //_context.Entry(user).State = EntityState.Added;
                 _context.SaveChanges();
             }
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(SystemUser user)
         {
             using (_context = new ExaminationContext())
             {
@@ -33,25 +33,26 @@ namespace DatabaseAccessLayer
             }
         }
 
-        public void DeleteUser(User user)
+        //public void DeleteUser(SystemUser user)
+        //{
+        //    using (_context = new ExaminationContext())
+        //    {
+        //        _context.Entry(user).State = EntityState.Deleted;
+        //        _context.SaveChanges();
+        //    }
+        //}
+
+        public List<SystemUserViewModel> GetUserListByNameViewModel(string namePart)
         {
+            List<SystemUserViewModel> userListViewModel;
+
             using (_context = new ExaminationContext())
             {
-                _context.Entry(user).State = EntityState.Deleted;
-                _context.SaveChanges();
-            }
-        }
-
-        public List<UserViewModel> GetUserListByNameViewModel(string namePart)
-        {
-            List<UserViewModel> userListViewModel;
-
-            using (_context = new ExaminationContext())
-            {
-                userListViewModel = _context.User
+                userListViewModel = _context.SystemUser
                     .Where(u => u.LastName.Contains(namePart) ||
-                                u.FirstName.Contains(namePart))
-                        .Select(u => new UserViewModel
+                                u.FirstName.Contains(namePart) ||
+                                u.MiddleName.Contains(namePart))
+                        .Select(u => new SystemUserViewModel
                         {
                             UserId = u.UserId,
                             LastName = u.LastName,
@@ -67,14 +68,14 @@ namespace DatabaseAccessLayer
             return userListViewModel;
         }
 
-        public List<UserViewModel> GetUserListViewModel()
+        public List<SystemUserViewModel> GetUserListViewModel()
         {
-            List<UserViewModel> userListViewModel;
+            List<SystemUserViewModel> userListViewModel;
 
             using (_context = new ExaminationContext())
             {
-                userListViewModel = _context.User
-                    .Select(u => new UserViewModel {
+                userListViewModel = _context.SystemUser
+                    .Select(u => new SystemUserViewModel {
                         UserId = u.UserId,
                         LastName = u.LastName,
                         FirstName = u.FirstName,
@@ -95,7 +96,7 @@ namespace DatabaseAccessLayer
 
             using (_context = new ExaminationContext())
             {
-                userCount = _context.User.Count();
+                userCount = _context.SystemUser.Count();
             }
 
             return userCount;

@@ -70,7 +70,6 @@ namespace PresentationLayer
         {
             List<string> errorList; //  list of string to store error message, for validation
             SystemUser user;
-            int dgvRowIndex;
 
             if (btnAdd.Text == "&CANCEL")   //  ADD NEW=====
             {
@@ -294,6 +293,10 @@ namespace PresentationLayer
             if (_userViewModelList.Count > 0)
             {
                 dgvUser.DataSource = _userViewModelList;
+            }
+            else
+            {
+                dgvUser.DataSource = null;
             }
             //MessageBox.Show(_userViewModelList.Count.ToString());
         }

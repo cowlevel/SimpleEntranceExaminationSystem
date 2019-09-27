@@ -20,11 +20,15 @@ namespace ConsoleApp2EF
 
         public int UserId { get; set; }
 
-        public int Subject { get; set; }
+        public int SubjectId { get; set; }
 
         public int ItemCount { get; set; }
 
         public bool ExamStatus { get; set; }
+
+        public DateTime? DateTimeAdded { get; set; }
+
+        public virtual Subject Subject { get; set; }
 
         public virtual SystemUser SystemUser { get; set; }
 

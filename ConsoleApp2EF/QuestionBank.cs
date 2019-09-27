@@ -27,19 +27,19 @@ namespace ConsoleApp2EF
         public string Question { get; set; }
 
         [Required]
-        [StringLength(150)]
+        [StringLength(200)]
         public string CorrectAnswer { get; set; }
 
         [Required]
-        [StringLength(150)]
+        [StringLength(200)]
         public string WrongAnswer1 { get; set; }
 
         [Required]
-        [StringLength(150)]
+        [StringLength(200)]
         public string WrongAnswer2 { get; set; }
 
         [Required]
-        [StringLength(150)]
+        [StringLength(200)]
         public string WrongAnswer3 { get; set; }
 
         public virtual Exam Exam { get; set; }

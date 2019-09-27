@@ -34,13 +34,14 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnExaminee = new System.Windows.Forms.Button();
             this.btnCreateExam = new System.Windows.Forms.Button();
-            this.btnSubject = new System.Windows.Forms.Button();
             this.btnUser = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.lblMarker = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.btnSubject = new System.Windows.Forms.Button();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblWelcome
@@ -48,11 +49,11 @@
             this.lblWelcome.BackColor = System.Drawing.Color.Transparent;
             this.lblWelcome.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.ForeColor = System.Drawing.Color.Teal;
-            this.lblWelcome.Location = new System.Drawing.Point(12, 9);
+            this.lblWelcome.Location = new System.Drawing.Point(219, 25);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(601, 26);
+            this.lblWelcome.Size = new System.Drawing.Size(507, 26);
             this.lblWelcome.TabIndex = 9;
-            this.lblWelcome.Text = "Welcome PEPITO MANALOTO.";
+            this.lblWelcome.Text = "Welcome PEPING PILOSOPO";
             this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlMain
@@ -71,9 +72,9 @@
             this.btnChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangePassword.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangePassword.ForeColor = System.Drawing.Color.Teal;
-            this.btnChangePassword.Location = new System.Drawing.Point(8, 502);
+            this.btnChangePassword.Location = new System.Drawing.Point(9, 503);
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(200, 50);
+            this.btnChangePassword.Size = new System.Drawing.Size(198, 50);
             this.btnChangePassword.TabIndex = 36;
             this.btnChangePassword.Text = "Ch&ange Password";
             this.btnChangePassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -88,9 +89,9 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.Teal;
-            this.btnExit.Location = new System.Drawing.Point(8, 552);
+            this.btnExit.Location = new System.Drawing.Point(9, 553);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(200, 50);
+            this.btnExit.Size = new System.Drawing.Size(198, 50);
             this.btnExit.TabIndex = 37;
             this.btnExit.Text = "E&xit";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -105,9 +106,9 @@
             this.btnExaminee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExaminee.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExaminee.ForeColor = System.Drawing.Color.Teal;
-            this.btnExaminee.Location = new System.Drawing.Point(8, 54);
+            this.btnExaminee.Location = new System.Drawing.Point(9, 55);
             this.btnExaminee.Name = "btnExaminee";
-            this.btnExaminee.Size = new System.Drawing.Size(200, 50);
+            this.btnExaminee.Size = new System.Drawing.Size(198, 50);
             this.btnExaminee.TabIndex = 31;
             this.btnExaminee.Text = "&Examinee";
             this.btnExaminee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -122,31 +123,14 @@
             this.btnCreateExam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateExam.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateExam.ForeColor = System.Drawing.Color.Teal;
-            this.btnCreateExam.Location = new System.Drawing.Point(8, 104);
+            this.btnCreateExam.Location = new System.Drawing.Point(9, 105);
             this.btnCreateExam.Name = "btnCreateExam";
-            this.btnCreateExam.Size = new System.Drawing.Size(200, 50);
+            this.btnCreateExam.Size = new System.Drawing.Size(198, 50);
             this.btnCreateExam.TabIndex = 32;
             this.btnCreateExam.Text = "&Create Exam";
             this.btnCreateExam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreateExam.UseVisualStyleBackColor = false;
             this.btnCreateExam.Click += new System.EventHandler(this.btnCreateExam_Click);
-            // 
-            // btnSubject
-            // 
-            this.btnSubject.BackColor = System.Drawing.Color.White;
-            this.btnSubject.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSubject.FlatAppearance.BorderSize = 0;
-            this.btnSubject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubject.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubject.ForeColor = System.Drawing.Color.Teal;
-            this.btnSubject.Location = new System.Drawing.Point(8, 154);
-            this.btnSubject.Name = "btnSubject";
-            this.btnSubject.Size = new System.Drawing.Size(200, 50);
-            this.btnSubject.TabIndex = 33;
-            this.btnSubject.Text = "&Subject";
-            this.btnSubject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubject.UseVisualStyleBackColor = false;
-            this.btnSubject.Click += new System.EventHandler(this.btnSubject_Click);
             // 
             // btnUser
             // 
@@ -156,9 +140,9 @@
             this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUser.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUser.ForeColor = System.Drawing.Color.Teal;
-            this.btnUser.Location = new System.Drawing.Point(8, 204);
+            this.btnUser.Location = new System.Drawing.Point(9, 155);
             this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(200, 50);
+            this.btnUser.Size = new System.Drawing.Size(198, 50);
             this.btnUser.TabIndex = 34;
             this.btnUser.Text = "&User";
             this.btnUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -173,9 +157,9 @@
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSettings.ForeColor = System.Drawing.Color.Teal;
-            this.btnSettings.Location = new System.Drawing.Point(8, 254);
+            this.btnSettings.Location = new System.Drawing.Point(9, 205);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(200, 50);
+            this.btnSettings.Size = new System.Drawing.Size(198, 50);
             this.btnSettings.TabIndex = 35;
             this.btnSettings.Text = "Se&ttings";
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -187,9 +171,9 @@
             this.lblMarker.BackColor = System.Drawing.Color.Teal;
             this.lblMarker.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMarker.ForeColor = System.Drawing.Color.White;
-            this.lblMarker.Location = new System.Drawing.Point(209, 502);
+            this.lblMarker.Location = new System.Drawing.Point(210, 502);
             this.lblMarker.Name = "lblMarker";
-            this.lblMarker.Size = new System.Drawing.Size(10, 50);
+            this.lblMarker.Size = new System.Drawing.Size(8, 50);
             this.lblMarker.TabIndex = 38;
             this.lblMarker.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblMarker.Visible = false;
@@ -220,18 +204,48 @@
             this.rectangleShape1.Name = "rectangleShape1";
             this.rectangleShape1.Size = new System.Drawing.Size(201, 595);
             // 
+            // btnSubject
+            // 
+            this.btnSubject.BackColor = System.Drawing.Color.White;
+            this.btnSubject.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSubject.FlatAppearance.BorderSize = 0;
+            this.btnSubject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubject.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubject.ForeColor = System.Drawing.Color.Teal;
+            this.btnSubject.Location = new System.Drawing.Point(9, 261);
+            this.btnSubject.Name = "btnSubject";
+            this.btnSubject.Size = new System.Drawing.Size(198, 50);
+            this.btnSubject.TabIndex = 41;
+            this.btnSubject.Text = "&Subject";
+            this.btnSubject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubject.UseVisualStyleBackColor = false;
+            this.btnSubject.Click += new System.EventHandler(this.btnSubject_Click);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.BackColor = System.Drawing.Color.Teal;
+            this.lblStatus.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.White;
+            this.lblStatus.Location = new System.Drawing.Point(7, 6);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(202, 45);
+            this.lblStatus.TabIndex = 95;
+            this.lblStatus.Text = "UNKNOWN SCHOOL";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1318, 654);
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.btnSubject);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.btnChangePassword);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnExaminee);
             this.Controls.Add(this.btnCreateExam);
-            this.Controls.Add(this.btnSubject);
             this.Controls.Add(this.btnUser);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.lblMarker);
@@ -254,12 +268,13 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnExaminee;
         private System.Windows.Forms.Button btnCreateExam;
-        private System.Windows.Forms.Button btnSubject;
         private System.Windows.Forms.Button btnUser;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Label lblMarker;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
+        private System.Windows.Forms.Button btnSubject;
+        private System.Windows.Forms.Label lblStatus;
     }
 }

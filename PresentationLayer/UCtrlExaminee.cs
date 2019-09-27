@@ -252,7 +252,7 @@ namespace PresentationLayer
                     SetUIProperty(Operation.Clear);
 
                     //  message edit user success
-                    MessageBox.Show("Successfuly edited user.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Successfuly edited examinee.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

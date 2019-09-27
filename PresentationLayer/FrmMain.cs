@@ -7,12 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ValueObject;
 using ValueObject.ViewModel;
 
 namespace PresentationLayer
 {
     public partial class FrmMain : Form
     {
+        private UCtrlExaminee _ctrlExaminee;
+        private UCtrlExam _ctrlExam;
+        private UCtrlUser _ctrlUser;
+        private UCtrlPassword _ctrlPassword;
+        private UCtrlSubject _ctrlSubject;
+
+        
         public FrmMain()
         {
             InitializeComponent();
@@ -51,55 +59,39 @@ namespace PresentationLayer
         private void btnExaminee_Click(object sender, EventArgs e)
         {
             SetButtonColor("btnExaminee");
-
-            lblMarker.Top = btnExaminee.Top;
-            lblMarker.Visible = true;
+            SetMarkerProperties(btnExaminee.Top);
 
             DisposePanelControl();
-            UCtrlExaminee ctrlExaminee = new UCtrlExaminee();
-            pnlMain.Controls.Add(ctrlExaminee);
+            _ctrlExaminee = new UCtrlExaminee();
+            pnlMain.Controls.Add(_ctrlExaminee);
 
         }
 
         private void btnCreateExam_Click(object sender, EventArgs e)
         {
             SetButtonColor("btnCreateExam");
-
-            lblMarker.Top = btnCreateExam.Top;
-            lblMarker.Visible = true;
+            SetMarkerProperties(btnCreateExam.Top);
 
             DisposePanelControl();
+            _ctrlExam = new UCtrlExam();
+            pnlMain.Controls.Add(_ctrlExam);
 
-
-        }
-
-        private void btnSubject_Click(object sender, EventArgs e)
-        {
-            SetButtonColor("btnSubject");
-
-            lblMarker.Top = btnSubject.Top;
-            lblMarker.Visible = true;
-
-            DisposePanelControl();
-            UCtrlSubject ctrlSubject = new UCtrlSubject();
-            pnlMain.Controls.Add(ctrlSubject);
         }
 
         private void btnUser_Click(object sender, EventArgs e)
         {
             SetButtonColor("btnUser");
-
-            lblMarker.Top = btnUser.Top;
-            lblMarker.Visible = true;
+            SetMarkerProperties(btnUser.Top);
 
             DisposePanelControl();
-            UCtrlUser ctrlUser = new UCtrlUser();
-            pnlMain.Controls.Add(ctrlUser);
+            _ctrlUser = new UCtrlUser();
+            pnlMain.Controls.Add(_ctrlUser);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
             SetButtonColor("btnSettings");
+            SetMarkerProperties(btnSettings.Top);
 
             lblMarker.Top = btnSettings.Top;
             lblMarker.Visible = true;
@@ -110,18 +102,22 @@ namespace PresentationLayer
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
             SetButtonColor("btnChangePassword");
-
-            lblMarker.Top = btnChangePassword.Top;
-            lblMarker.Visible = true;
+            SetMarkerProperties(btnChangePassword.Top);
 
             DisposePanelControl();
-            UCtrlPassword ctrlPassword = new UCtrlPassword();
-            pnlMain.Controls.Add(ctrlPassword);
+            _ctrlPassword = new UCtrlPassword();
+            pnlMain.Controls.Add(_ctrlPassword);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void SetMarkerProperties(int top)
+        {
+            lblMarker.Top = top;
+            lblMarker.Visible = true;
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -133,6 +129,16 @@ namespace PresentationLayer
             UserInfo.CurrentUser = string.Empty;
             UserInfo.UserLevel = string.Empty;
              */
+        }
+
+        private void btnSubject_Click(object sender, EventArgs e)
+        {
+            SetButtonColor("btnSubject");
+            SetMarkerProperties(btnSubject.Top);
+
+            DisposePanelControl();
+            _ctrlSubject = new UCtrlSubject();
+            pnlMain.Controls.Add(_ctrlSubject);
         }
     }
 }

@@ -61,6 +61,12 @@
     <Compile Include="FrmAbout.Designer.cs">
       <DependentUpon>FrmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreateQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateQuestion.Designer.cs">
+      <DependentUpon>FrmCreateQuestion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,12 @@
     </Compile>
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmQuestionBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmQuestionBank.Designer.cs">
+      <DependentUpon>FrmQuestionBank.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +125,9 @@
     </Compile>
     <EmbeddedResource Include="FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateQuestion.resx">
+      <DependentUpon>FrmCreateQuestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogIn.resx">
       <DependentUpon>FrmLogIn.cs</DependentUpon>

@@ -18,6 +18,7 @@ namespace DatabaseAccessLayer
         public virtual DbSet<ExamineeTake> ExamineeTake { get; set; }
         public virtual DbSet<QuestionBank> QuestionBank { get; set; }
         public virtual DbSet<Setting> Setting { get; set; }
+        public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<SystemUser> SystemUser { get; set; }
         public virtual DbSet<ExamineeResult> ExamineeResult { get; set; }
 
@@ -41,11 +42,18 @@ namespace DatabaseAccessLayer
             modelBuilder.Entity<ExamineeTake>()
                 .HasMany(e => e.ExamineeResult)
                 .WithRequired(e => e.ExamineeTake)
+                .HasForeignKey(e => e.ExamTakeId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<QuestionBank>()
                 .HasMany(e => e.ExamineeResult)
                 .WithRequired(e => e.QuestionBank)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Subject>()
+                .HasMany(e => e.Exam)
+                .WithRequired(e => e.Subject)
+                .HasForeignKey(e => e.SubjectId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SystemUser>()

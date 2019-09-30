@@ -26,6 +26,11 @@ namespace PresentationLayer
             InitializeComponent();
         }
 
+        public void SetCtrlExamDataSource()
+        {
+            _ctrlExam.SetDatagridViewDataScource();
+        }
+
         private void SetButtonColor(string buttonName)
         {
             foreach (Control control in this.Controls)

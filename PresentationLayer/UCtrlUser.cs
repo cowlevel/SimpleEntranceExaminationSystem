@@ -25,21 +25,24 @@ namespace PresentationLayer
         {
             InitializeComponent();
 
-            dgvUser.AutoGenerateColumns = false;    //  set to false because I'm using view model with more columns that are not needed
-
             _userBLL = new SystemUserBLL();   //  create UserBLL object
+            dgvUser.AutoGenerateColumns = false;    //  set to false because I'm using view model with more columns that are not needed
             PopulateUserDatagridView(); //  populate user datagridview
         }
         #endregion
 
 
         #region CONTROL EVENTS
+        private void UCtrlUser_Load(object sender, EventArgs e)
+        {
+            dgvUser.ClearSelection();
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (btnAdd.Text == "&ADD NEW")
             {
                 _userCount = _userBLL.GetUserCount() + 1;   //  get current number of users plus 1 for new user and for its username
-                //_userCount = 1009;    //  testing
 
                 SetUIProperty(Operation.Adding);
             }
@@ -68,138 +71,69 @@ namespace PresentationLayer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            List<string> errorList; //  list of string to store error message, for validation
             SystemUser user;
 
-            if (btnAdd.Text == "&CANCEL")   //  ADD NEW=====
+            if (btnAdd.Text == "&CANCEL")   //  ADD NEW
             {
-                user = new SystemUser(); //  create new User
-                user.LastName = txtLastName.Text;
-                user.FirstName = txtFirstName.Text;
-                user.MiddleName = txtMiddleName.Text;
-                user.Username = lblUsernameOutput.Text;
-                user.UserLevel = cboUserLevel.Text;
-                user.Pword = lblUsernameOutput.Text;
-                user.AccountStatus = true;
-
-                errorList = new List<string>();
-                bool newUserNoError = _userBLL.InsertUser(user, out errorList);
-
-                if (!newUserNoError)   //  if got error/validation result
+                if (InputsAreValid())
                 {
-                    foreach (string error in errorList)
-                    {
-                        //Console.WriteLine(error);
-                        if (error.Contains("LastName"))
-                        {
-                            txtLastName.Focus();
-                            break;
-                        }
-                        else if (error.Contains("FirstName"))
-                        {
-                            txtFirstName.Focus();
-                            break;
-                        }
-                        else if (error.Contains("UserLevel"))
-                        {
-                            cboUserLevel.Focus();
-                            break;
-                        }
-                    }
-                }
-                else    //  no error
-                {
-                    //_userViewModelList.Add(new SystemUserViewModel
-                    //{
-                    //    UserId = user.UserId,
-                    //    LastName = user.LastName,
-                    //    FirstName = user.FirstName,
-                    //    MiddleName = user.MiddleName,
-                    //    Username = user.Username,
-                    //    UserLevel = user.UserLevel,
-                    //    AccountStatus = user.AccountStatus
-                    //});
+                    user = new SystemUser(); //  create new User
+                    user.LastName = txtLastName.Text;
+                    user.FirstName = txtFirstName.Text;
+                    user.MiddleName = txtMiddleName.Text;
+                    user.Username = lblUsernameOutput.Text;
+                    user.UserLevel = cboUserLevel.Text;
+                    user.Pword = lblUsernameOutput.Text;
+                    user.AccountStatus = true;
 
-                    //dgvUser.DataSource = null;
-                    //dgvUser.DataSource = _userViewModelList;
+                    _userBLL.InsertUser(user);
 
                     PopulateUserDatagridView();
-                    lblSearchResult.Text = "Search result: ";
-
+                    dgvUser.ClearSelection();
                     SetUIProperty(Operation.Clear);
 
-                    //  message adding user success
-                    MessageBox.Show("Successfuly added new user.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblStatus.Text = "  Successfully added new user";
                 }
             }
 
-            if (btnEdit.Text == "&CANCEL")  //  EDIT=====
+            if (btnEdit.Text == "&CANCEL")  //  EDIT
             {
-                //  editing so get user from the selected user in the datagridview
-                user = _userViewModelList.Where(u => u.UserId == _userId)
-                                            .Select(u => new SystemUser
-                                            {
-                                                UserId = u.UserId,  //  assign user id (Primary Key) so it can be tracked by EF
-                                                LastName = u.LastName,
-                                                FirstName = u.FirstName,
-                                                MiddleName = u.MiddleName,
-                                                Username = u.Username,
-                                                UserLevel = u.UserLevel,
-                                                AccountStatus = u.AccountStatus
-                                            }).SingleOrDefault();
-
-                user.LastName = txtLastName.Text;
-                user.FirstName = txtFirstName.Text;
-                user.MiddleName = txtMiddleName.Text;
-                user.Username = lblUsernameOutput.Text;
-                user.UserLevel = cboUserLevel.Text;
-                user.Pword = cboUserLevel.Text;
-                user.AccountStatus = chkStatus.Checked;
-
-                errorList = new List<string>();
-                bool editUserOk = _userBLL.UpdateUser(user, out errorList);
-
-                if (!editUserOk)   //  if got error/validation result
+                if (InputsAreValid())
                 {
-                    foreach (string error in errorList)
-                    {
-                        //Console.WriteLine(error);
-                        if (error.Contains("LastName"))
-                        {
-                            txtLastName.Focus();
-                            break;
-                        }
-                        else if (error.Contains("FirstName"))
-                        {
-                            txtFirstName.Focus();
-                            break;
-                        }
-                        else if (error.Contains("UserLevel"))
-                        {
-                            cboUserLevel.Focus();
-                            break;
-                        }
-                    }
-                }
-                else    //  no error
-                {
+                    //  editing so get user from the selected user in the datagridview
+                    user = _userViewModelList.Where(u => u.UserId == _userId)
+                                                .Select(u => new SystemUser
+                                                {
+                                                    UserId = u.UserId,  //  assign user id (Primary Key) so it can be tracked by EF
+                                                    LastName = u.LastName,
+                                                    FirstName = u.FirstName,
+                                                    MiddleName = u.MiddleName,
+                                                    Username = u.Username,
+                                                    UserLevel = u.UserLevel,
+                                                    AccountStatus = u.AccountStatus
+                                                }).SingleOrDefault();
+
+                    user.LastName = txtLastName.Text;
+                    user.FirstName = txtFirstName.Text;
+                    user.MiddleName = txtMiddleName.Text;
+                    user.Username = lblUsernameOutput.Text;
+                    user.UserLevel = cboUserLevel.Text;
+                    user.AccountStatus = chkStatus.Checked;
+
+                    _userBLL.UpdateUser(user);
+                    //  update selected user in the list
                     SystemUserViewModel userViewModel = _userViewModelList.Where(u => u.UserId == _userId).SingleOrDefault();
-                    
-                    if (userViewModel != null)
-                    {
-                        userViewModel.LastName = txtLastName.Text;
-                        userViewModel.FirstName = txtFirstName.Text;
-                        userViewModel.MiddleName = txtMiddleName.Text;
-                        userViewModel.Username = lblUsernameOutput.Text;
-                        userViewModel.UserLevel = cboUserLevel.Text;
-                        userViewModel.AccountStatus = chkStatus.Checked;
-                    }
+                    userViewModel.LastName = txtLastName.Text;
+                    userViewModel.FirstName = txtFirstName.Text;
+                    userViewModel.MiddleName = txtMiddleName.Text;
+                    userViewModel.Username = lblUsernameOutput.Text;
+                    userViewModel.UserLevel = cboUserLevel.Text;
+                    userViewModel.AccountStatus = chkStatus.Checked;
 
                     RefreshDataSource();
                     SetUIProperty(Operation.Clear);
 
-                    //  message edit user success
-                    MessageBox.Show("Successfuly edited user.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblStatus.Text = "  Successfully updated user";
                 }
             }
         }
@@ -224,30 +158,6 @@ namespace PresentationLayer
 
                 btnEdit.Enabled = true; //  enable EDIT button
             }
-        }
-
-        private void dgvUser_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            //Console.WriteLine(e.RowIndex.ToString());
-            /*
-            int index = e.RowIndex;
-
-            if (btnAdd.Text == "&ADD NEW"
-                && btnEdit.Text == "&EDIT"
-                && index > -1)
-            {
-                _userId = _userViewModelList[index].UserId; //  important for EDIT, get user id from selected user in datagridview
-
-                txtLastName.Text = _userViewModelList[index].LastName;
-                txtFirstName.Text = _userViewModelList[index].FirstName;
-                txtMiddleName.Text = _userViewModelList[index].MiddleName;
-
-                lblUsernameOutput.Text = _userViewModelList[index].Username;
-                cboUserLevel.Text = _userViewModelList[index].UserLevel;
-                chkStatus.Checked = _userViewModelList[index].AccountStatus;
-
-                btnEdit.Enabled = true; //  enable EDIT button
-            }*/
         }
 
         private void txtLastName_Leave(object sender, EventArgs e)
@@ -279,7 +189,8 @@ namespace PresentationLayer
         private void btnShowAll_Click(object sender, EventArgs e)
         {
             PopulateUserDatagridView();
-            lblSearchResult.Text = string.Format("Search result: found {0} user(s)", _userViewModelList.Count);
+            dgvUser.ClearSelection();
+            lblSearchResult.Text = string.Format("Search result: found {0}", _userViewModelList.Count);
         }
         #endregion
 
@@ -288,17 +199,12 @@ namespace PresentationLayer
         private void PopulateUserDatagridView()
         {
             _userViewModelList = _userBLL.GetUserListViewModel();
-            
+            dgvUser.DataSource = null;
             //  check always if list got record, if got zero record then dont use it as data source to avoid some error. NOTE: must have at least 1 record before to use it as data source.
             if (_userViewModelList.Count > 0)
             {
                 dgvUser.DataSource = _userViewModelList;
             }
-            else
-            {
-                dgvUser.DataSource = null;
-            }
-            //MessageBox.Show(_userViewModelList.Count.ToString());
         }
 
         private void SearchUserByName()
@@ -308,9 +214,16 @@ namespace PresentationLayer
                 string namePart = txtSearch.Text;
 
                 _userViewModelList = _userBLL.GetUserListByNameViewModel(namePart);
-                dgvUser.DataSource = _userViewModelList;
+                dgvUser.DataSource = null;
+
+                if (_userViewModelList.Count > 0)
+                {
+                    dgvUser.DataSource = _userViewModelList;
+                }
+
                 lblSearchResult.Text = string.Format("Search result: found {0} that contains '{1}'", _userViewModelList.Count, namePart);
 
+                dgvUser.ClearSelection();
                 SetUIProperty(Operation.Clear);
             }
             else
@@ -319,12 +232,36 @@ namespace PresentationLayer
             }
         }
 
+        private bool InputsAreValid()
+        {
+            if (string.IsNullOrWhiteSpace(txtLastName.Text))
+            {
+                lblStatus.Text = "  Please enter last name";
+                txtLastName.Focus();
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txtFirstName.Text))
+            {
+                lblStatus.Text = "  Please enter first name";
+                txtFirstName.Focus();
+                return false;
+            }
+            else if (cboUserLevel.SelectedIndex == -1)
+            {
+                lblStatus.Text = "  Please choose user level";
+                cboUserLevel.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
         private void SetUIProperty(Operation operation)
         {
             switch(operation)
             {
                 case Operation.Adding:
-                    lblStatus.Text = "        You are currently adding new user.";
+                    lblStatus.Text = "  You are currently adding new user";
 
                     btnAdd.Text = "&CANCEL";
                     btnAdd.BackColor = Color.LightCoral;
@@ -351,7 +288,7 @@ namespace PresentationLayer
 
                     break;
                 case Operation.Editing:
-                    lblStatus.Text = "        You are currently editing user.";
+                    lblStatus.Text = "  You are currently editing user";
 
                     btnAdd.Enabled = false;
                     btnEdit.Text = "&CANCEL";
@@ -420,5 +357,7 @@ namespace PresentationLayer
             lblReqUserLevel.Visible = show;
         }
         #endregion
+
+        
     }
 }

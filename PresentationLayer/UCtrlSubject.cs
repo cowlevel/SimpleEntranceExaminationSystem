@@ -15,22 +15,25 @@ namespace PresentationLayer
     public partial class UCtrlSubject : UserControl
     {
         #region PRIVATE VARIABLES
-        private int _subjectCount;
-        private int _subjectId;
         private SubjectBLL _subjectBLL;
         private List<Subject> _subjectList;
+
+        private int _subjectId;
         #endregion
 
         public UCtrlSubject()
         {
             InitializeComponent();
 
-            dgvSubject.AutoGenerateColumns = false;
-
             _subjectBLL = new SubjectBLL();
+            dgvSubject.AutoGenerateColumns = false;
             PopulateSubjectDatagridView();
         }
 
+        private void UCtrlSubject_Load(object sender, EventArgs e)
+        {
+            dgvSubject.ClearSelection();
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -58,110 +61,42 @@ namespace PresentationLayer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            List<string> errorList; //  list of string to store error message, for validation
             Subject subject;
 
-            if (btnAdd.Text == "&CANCEL")   //  ADD NEW=====
+            if (btnAdd.Text == "&CANCEL")   //  ADD NEW
             {
-                subject = new Subject(); //  create new Subject
-                subject.SubjectName = txtSubject.Text;
-                subject.Description = txtDescription.Text;
-
-                errorList = new List<string>();
-                bool newUserNoError = _subjectBLL.InsertSubject(subject, out errorList);
-
-                if (!newUserNoError)   //  if got error/validation result
+                if (InputsAreValid())
                 {
-                    foreach (string error in errorList)
-                    {
-                        //Console.WriteLine(error);
-                        if (error.Contains("SubjectName"))
-                        {
-                            txtSubject.Focus();
-                            break;
-                        }
-                        else if (error.Contains("Description"))
-                        {
-                            txtDescription.Focus();
-                            break;
-                        }
-                    }
-                }
-                else    //  no error
-                {
-                    //_userViewModelList.Add(new SystemUserViewModel
-                    //{
-                    //    UserId = user.UserId,
-                    //    LastName = user.LastName,
-                    //    FirstName = user.FirstName,
-                    //    MiddleName = user.MiddleName,
-                    //    Username = user.Username,
-                    //    UserLevel = user.UserLevel,
-                    //    AccountStatus = user.AccountStatus
-                    //});
+                    subject = new Subject(); //  create new Subject
+                    subject.SubjectName = txtSubject.Text;
+                    subject.Description = txtDescription.Text;
 
-                    //dgvUser.DataSource = null;
-                    //dgvUser.DataSource = _userViewModelList;
+                    _subjectBLL.InsertSubject(subject);
 
                     PopulateSubjectDatagridView();
                     SetUIProperty(Operation.Clear);
 
-                    //  message adding user success
-                    MessageBox.Show("Successfuly added new subject.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblStatus.Text = "  Successfully added new subject";
                 }
             }
 
-            if (btnEdit.Text == "&CANCEL")  //  EDIT=====
+            if (btnEdit.Text == "&CANCEL")  //  EDIT
             {
-                //  editing so get user from the selected user in the datagridview
-                subject = _subjectList.Where(s => s.SubjectId == _subjectId)
-                                            .Select(s => new Subject
-                                            {
-                                                SubjectId = s.SubjectId,  //  assign user id (Primary Key) so it can be tracked by EF
-                                                SubjectName = s.SubjectName,
-                                                Description = s.Description
-                                            }).SingleOrDefault();
+                
 
-                subject.SubjectName = txtSubject.Text;
-                subject.Description = txtDescription.Text;
-
-                errorList = new List<string>();
-                bool editUserOk = _subjectBLL.UpdateSubject(subject, out errorList);
-
-                if (!editUserOk)   //  if got error/validation result
+                if (InputsAreValid())
                 {
-                    foreach (string error in errorList)
-                    {
-                        //Console.WriteLine(error);
-                        if (error.Contains("SubjectName"))
-                        {
-                            txtSubject.Focus();
-                            break;
-                        }
-                        else if (error.Contains("Description"))
-                        {
-                            txtDescription.Focus();
-                            break;
-                        }
-                    }
-                }
-                else    //  no error
-                {
-                    //subject = _subjectList.Where(s => s.SubjectId == _subjectId).SingleOrDefault();
+                    subject = _subjectList.Where(s => s.SubjectId == _subjectId).SingleOrDefault();
 
-                    //if (subject != null)
-                    //{
-                    //    subject.SubjectName = txtSubject.Text;
-                    //    subject.Description = txtDescription.Text;
-                    //}
+                    subject.SubjectName = txtSubject.Text;
+                    subject.Description = txtDescription.Text;
 
-                    //  RefreshDataSource();
+                    _subjectBLL.UpdateSubject(subject);
 
                     PopulateSubjectDatagridView();
                     SetUIProperty(Operation.Clear);
 
-                    //  message edit user success
-                    MessageBox.Show("Successfuly edited subject.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblStatus.Text = "  Successfully updated subject";
                 }
             }
         }
@@ -174,7 +109,6 @@ namespace PresentationLayer
             {
                 _subjectBLL.DeleteSubject(_subjectId);
 
-                //RefreshDataSource();
                 PopulateSubjectDatagridView();
                 SetUIProperty(Operation.Clear);
             }
@@ -201,23 +135,12 @@ namespace PresentationLayer
         private void PopulateSubjectDatagridView()
         {
             _subjectList = _subjectBLL.GetSubjectList();
-
+            dgvSubject.DataSource = null;
             //  check always if list got record, if got zero record then dont use it as data source to avoid some error. NOTE: must have at least 1 record before to use it as data source.
             if (_subjectList.Count > 0)
             {
                 dgvSubject.DataSource = _subjectList;
             }
-            else
-            {
-                dgvSubject.DataSource = null;
-            }
-            //MessageBox.Show(_userViewModelList.Count.ToString());
-        }
-
-        private void RefreshDataSource()
-        {
-            dgvSubject.DataSource = null;
-            dgvSubject.DataSource = _subjectList;
         }
 
         private void SetUIProperty(Operation operation)
@@ -225,7 +148,7 @@ namespace PresentationLayer
             switch (operation)
             {
                 case Operation.Adding:
-                    lblStatus.Text = "        You are currently adding new subject.";
+                    lblStatus.Text = "  You are currently adding new subject";
 
                     btnAdd.Text = "&CANCEL";
                     btnAdd.BackColor = Color.LightCoral;
@@ -243,7 +166,7 @@ namespace PresentationLayer
                     txtSubject.Focus();
                     break;
                 case Operation.Editing:
-                    lblStatus.Text = "        You are currently editing subject.";
+                    lblStatus.Text = "  You are currently editing subject";
 
                     btnAdd.Enabled = false;
                     btnEdit.Text = "&CANCEL";
@@ -283,5 +206,25 @@ namespace PresentationLayer
             lblReqSubject.Visible = show;
             lblReqDescription.Visible = show;
         }
+
+        private bool InputsAreValid()
+        {
+            if (string.IsNullOrEmpty(txtSubject.Text))
+            {
+                lblStatus.Text = "  Please enter subject";
+                txtSubject.Focus();
+                return false;
+            }
+            else if (string.IsNullOrEmpty(txtDescription.Text))
+            {
+                lblStatus.Text = "  Please enter description";
+                txtDescription.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        
     }
 }

@@ -40,10 +40,14 @@ namespace BusinessLogicLayer
                 return false;
             }
 
-            examinee.DateTimeAdded = _examineeDAL.GetServerDateTime();
             _examineeDAL.InsertExaminee(examinee);
 
             return true;
+        }
+
+        public void InsertExaminee(Examinee examinee)
+        {
+            _examineeDAL.InsertExaminee(examinee);
         }
 
         public bool UpdateExaminee(Examinee examinee, out List<string> errorList)
@@ -65,6 +69,11 @@ namespace BusinessLogicLayer
             _examineeDAL.UpdateExaminee(examinee);
 
             return true;
+        }
+
+        public void UpdateExaminee(Examinee examinee)
+        {
+            _examineeDAL.UpdateExaminee(examinee);
         }
 
         public void DeleteExaminee(int examineeId)

@@ -20,14 +20,16 @@ namespace ValueObject
         public int ExamId { get; set; }
 
         public int UserId { get; set; }
-
+                
         public int SubjectId { get; set; }
+                
+        public int ExaminationType { get; set; }
 
         public int ItemCount { get; set; }
 
-        public int ExamType { get; set; }
+        public int TimeLimit { get; set; }
 
-        public DateTime? DateTimeAdded { get; set; }
+        public DateTime DateTimeAdded { get; set; }
 
         public virtual Subject Subject { get; set; }
 

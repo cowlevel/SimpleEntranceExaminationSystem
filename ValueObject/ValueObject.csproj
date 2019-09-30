@@ -55,8 +55,15 @@
     <Compile Include="ViewModel\ExamineeViewModel.cs" />
     <Compile Include="ViewModel\ExamViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\QuestionBankViewModel.cs" />
     <Compile Include="ViewModel\UserInfo.cs" />
     <Compile Include="ViewModel\SystemUserViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{f96785f9-baec-430d-a870-e21fb8bb5d63}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

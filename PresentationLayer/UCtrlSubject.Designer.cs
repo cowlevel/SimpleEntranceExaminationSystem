@@ -307,6 +307,7 @@
             this.Controls.Add(this.shapeContainer1);
             this.Name = "UCtrlSubject";
             this.Size = new System.Drawing.Size(1092, 611);
+            this.Load += new System.EventHandler(this.UCtrlSubject_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubject)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -42,6 +42,8 @@ namespace ConsoleApp2EF
         [StringLength(200)]
         public string WrongAnswer3 { get; set; }
 
+        public DateTime DateTimeAdded { get; set; }
+
         public virtual Exam Exam { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

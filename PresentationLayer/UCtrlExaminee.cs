@@ -77,182 +77,81 @@ namespace PresentationLayer
 
             if (btnAdd.Text == "&CANCEL")   //  ADD NEW=====
             {
-                examinee = new Examinee(); //  create new Examinee
-                examinee.LastName = txtLastName.Text;
-                examinee.FirstName = txtFirstName.Text;
-                examinee.MiddleName = txtMiddleName.Text;
-                examinee.Address = txtAddress.Text;
-                examinee.City = txtCity.Text;
-                examinee.ContactNo = txtContactNo.Text;
-                examinee.Email = txtEmail.Text;
-                examinee.LastSchoolAttended = txtSchoolName.Text;
-                examinee.YearGraduated = (int)numYearGraduated.Value;
-                examinee.ExamTakes = 0;
-                //examinee.DateTimeAdded = DateTime.Now;    //  to BLL
-
-                errorList = new List<string>();
-                bool newExamineeNoError = _examineeBLL.InsertExaminee(examinee, out errorList);
-
-                if (!newExamineeNoError)   //  if got error/validation result
+                if (InputsAreValid())
                 {
-                    foreach (string error in errorList)
-                    {
-                        if (error.Contains("LastName"))
-                        {
-                            SetControlFocus(0, txtLastName);
-                            break;
-                        }
-                        else if (error.Contains("FirstName"))
-                        {
-                            SetControlFocus(0, txtFirstName);
-                            break;
-                        }
-                        else if (error.Contains("Address"))
-                        {
-                            SetControlFocus(1, txtAddress);
-                            break;
-                        }
-                        else if (error.Contains("City"))
-                        {
-                            SetControlFocus(1, txtCity);
-                            break;
-                        }
-                        else if (error.Contains("ContactNo"))
-                        {
-                            SetControlFocus(1, txtContactNo);
-                            break;
-                        }
-                        else if (error.Contains("Email"))
-                        {
-                            SetControlFocus(1, txtEmail);
-                            break;
-                        }
-                        else if (error.Contains("LastSchoolAttended"))
-                        {
-                            SetControlFocus(2, txtSchoolName);
-                            break;
-                        }
-                        else if (error.Contains("YearGraduated"))
-                        {
-                            SetControlFocus(2, numYearGraduated);
-                            break;
-                        }
-                    }
-                }
-                else    //  no error
-                {
+                    examinee = new Examinee(); //  create new Examinee
+                    examinee.LastName = txtLastName.Text;
+                    examinee.FirstName = txtFirstName.Text;
+                    examinee.MiddleName = txtMiddleName.Text;
+                    examinee.Address = txtAddress.Text;
+                    examinee.City = txtCity.Text;
+                    examinee.ContactNo = txtContactNo.Text;
+                    examinee.Email = txtEmail.Text;
+                    examinee.LastSchoolAttended = txtSchoolName.Text;
+                    examinee.YearGraduated = (int)numYearGraduated.Value;
+                    examinee.ExamTakes = 0;
+                    //examinee.DateTimeAdded = DateTime.Now;    //  to DAL
+
+                    _examineeBLL.InsertExaminee(examinee);
+
                     SetDatasourceSearchModeOrDefault();
                     SetUIProperty(Operation.Clear);
 
                     //  message adding user success
-                    MessageBox.Show("Successfuly added new examinee.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblStatus.Text = "  Successfuly added new examinee";
                 }
             }
 
             if (btnEdit.Text == "&CANCEL")  //  EDIT=====
             {
-                //  editing so get user from the selected user in the datagridview
-                examinee = _examineeViewModelList.Results.Where(ex => ex.ExamineeId == _examineeId)
-                                            .Select(ex => new Examinee
-                                            {
-                                                ExamineeId = ex.ExamineeId,  //  assign user id (Primary Key) so it can be tracked by EF
-                                                LastName = ex.LastName,
-                                                FirstName = ex.FirstName,
-                                                MiddleName = ex.MiddleName,
-                                                Address = ex.Address,
-                                                City = ex.City,
-                                                ContactNo = ex.ContactNo,
-                                                Email = ex.Email,
-                                                LastSchoolAttended = ex.LastSchoolAttended,
-                                                YearGraduated = ex.YearGraduated,
-                                                ExamTakes = ex.ExamTakes
-                                            }).SingleOrDefault();
-
-                examinee.LastName = txtLastName.Text;
-                examinee.FirstName = txtFirstName.Text;
-                examinee.MiddleName = txtMiddleName.Text;
-                examinee.Address = txtAddress.Text;
-                examinee.City = txtCity.Text;
-                examinee.ContactNo = txtContactNo.Text;
-                examinee.Email = txtEmail.Text;
-                examinee.LastSchoolAttended = txtSchoolName.Text;
-                examinee.YearGraduated = (int)numYearGraduated.Value;
-                //examinee.ExamTakes = 0;
-                //examinee.DateTimeAdded = DateTime.Now;    //  to BLL
-
-                errorList = new List<string>();
-                bool editExamineeOk = _examineeBLL.UpdateExaminee(examinee, out errorList);
-
-                if (!editExamineeOk)   //  if got error/validation result
+                if (InputsAreValid())
                 {
-                    foreach (string error in errorList)
-                    {
-                        //Console.WriteLine(error);
-                        if (error.Contains("LastName"))
-                        {
-                            SetControlFocus(0, txtLastName);
-                            break;
-                        }
-                        else if (error.Contains("FirstName"))
-                        {
-                            SetControlFocus(0, txtFirstName);
-                            break;
-                        }
-                        else if (error.Contains("Address"))
-                        {
-                            SetControlFocus(1, txtAddress);
-                            break;
-                        }
-                        else if (error.Contains("City"))
-                        {
-                            SetControlFocus(1, txtCity);
-                            break;
-                        }
-                        else if (error.Contains("ContactNo"))
-                        {
-                            SetControlFocus(1, txtContactNo);
-                            break;
-                        }
-                        else if (error.Contains("Email"))
-                        {
-                            SetControlFocus(1, txtEmail);
-                            break;
-                        }
-                        else if (error.Contains("LastSchoolAttended"))
-                        {
-                            SetControlFocus(2, txtSchoolName);
-                            break;
-                        }
-                        else if (error.Contains("YearGraduated"))
-                        {
-                            SetControlFocus(2, numYearGraduated);
-                            break;
-                        }
-                    }
-                }
-                else    //  no error
-                {
+                    //  editing so get user from the selected user in the datagridview
+                    examinee = _examineeViewModelList.Results.Where(ex => ex.ExamineeId == _examineeId)
+                                                .Select(ex => new Examinee
+                                                {
+                                                    ExamineeId = ex.ExamineeId,  //  assign user id (Primary Key) so it can be tracked by EF
+                                                    LastName = ex.LastName,
+                                                    FirstName = ex.FirstName,
+                                                    MiddleName = ex.MiddleName,
+                                                    Address = ex.Address,
+                                                    City = ex.City,
+                                                    ContactNo = ex.ContactNo,
+                                                    Email = ex.Email,
+                                                    LastSchoolAttended = ex.LastSchoolAttended,
+                                                    YearGraduated = ex.YearGraduated,
+                                                    ExamTakes = ex.ExamTakes
+                                                }).SingleOrDefault();
+
+                    examinee.LastName = txtLastName.Text;
+                    examinee.FirstName = txtFirstName.Text;
+                    examinee.MiddleName = txtMiddleName.Text;
+                    examinee.Address = txtAddress.Text;
+                    examinee.City = txtCity.Text;
+                    examinee.ContactNo = txtContactNo.Text;
+                    examinee.Email = txtEmail.Text;
+                    examinee.LastSchoolAttended = txtSchoolName.Text;
+                    examinee.YearGraduated = (int)numYearGraduated.Value;
+                    //examinee.ExamTakes = 0;
+                    //examinee.DateTimeAdded = DateTime.Now;    //  to DAL
+
                     ExamineeViewModel examineeViewModel = _examineeViewModelList.Results.Where(ex => ex.ExamineeId == _examineeId).SingleOrDefault();
 
-                    if (examineeViewModel != null)
-                    {
-                        examineeViewModel.LastName = txtLastName.Text;
-                        examineeViewModel.FirstName = txtFirstName.Text;
-                        examineeViewModel.MiddleName = txtMiddleName.Text;
-                        examineeViewModel.Address = txtAddress.Text;
-                        examineeViewModel.City = txtCity.Text;
-                        examineeViewModel.ContactNo = txtContactNo.Text;
-                        examineeViewModel.Email = txtEmail.Text;
-                        examineeViewModel.LastSchoolAttended = txtSchoolName.Text;
-                        examineeViewModel.YearGraduated = (int)numYearGraduated.Value;
-                    }
-                    // Console.WriteLine(examineeViewModel.DateTimeAdded.ToString());
+                    examineeViewModel.LastName = txtLastName.Text;
+                    examineeViewModel.FirstName = txtFirstName.Text;
+                    examineeViewModel.MiddleName = txtMiddleName.Text;
+                    examineeViewModel.Address = txtAddress.Text;
+                    examineeViewModel.City = txtCity.Text;
+                    examineeViewModel.ContactNo = txtContactNo.Text;
+                    examineeViewModel.Email = txtEmail.Text;
+                    examineeViewModel.LastSchoolAttended = txtSchoolName.Text;
+                    examineeViewModel.YearGraduated = (int)numYearGraduated.Value;
 
                     RefreshDataSource();
                     SetUIProperty(Operation.Clear);
 
                     //  message edit user success
-                    MessageBox.Show("Successfuly edited examinee.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblStatus.Text = "  Successfuly updated examinee";
                 }
             }
         }
@@ -316,7 +215,7 @@ namespace PresentationLayer
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (txtSearch.Text.Replace(" ", "").Length != 0)
+            if (!string.IsNullOrWhiteSpace(txtSearch.Text))
             {
                 _isFromSearch = true;   //  from searching
                 _pageNumber = 1;    //  reset page number to 1
@@ -367,6 +266,7 @@ namespace PresentationLayer
 
         private void SetDataSourceAndPageText()
         {
+            dgvExaminee.DataSource = null;
             //  check always if list got record, if got zero record then dont use it as data source to avoid some error. NOTE: must have at least 1 record before to use it as data source.
             if (_examineeViewModelList.Results.Count > 0)
             {
@@ -375,7 +275,6 @@ namespace PresentationLayer
             }
             else
             {
-                dgvExaminee.DataSource = null;
                 lblPage.Text = string.Format("Page {0} of {1}", 0, 0);
             }
         }
@@ -390,6 +289,54 @@ namespace PresentationLayer
             {
                 PopulateExamineeDatagridView();
             }
+        }
+
+        private bool InputsAreValid()
+        {
+            if (string.IsNullOrWhiteSpace(txtLastName.Text))
+            {
+                lblStatus.Text = "  Please enter last name";
+                txtLastName.Focus();
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txtFirstName.Text))
+            {
+                lblStatus.Text = "  Please enter first name";
+                txtFirstName.Focus();
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txtAddress.Text))
+            {
+                lblStatus.Text = "  Please enter address";
+                txtAddress.Focus();
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txtCity.Text))
+            {
+                lblStatus.Text = "  Pleas enter city";
+                txtCity.Focus();
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txtContactNo.Text))
+            {
+                lblStatus.Text = "  Please enter contact no.";
+                txtContactNo.Focus();
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                lblStatus.Text = "  Please enter email";
+                txtEmail.Focus();
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txtSchoolName.Text))
+            {
+                lblStatus.Text = "  Please enter school name";
+                txtSchoolName.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         private void ClearExamineeUI()

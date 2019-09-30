@@ -801,7 +801,7 @@
             this.numYearGraduated.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numYearGraduated.Location = new System.Drawing.Point(128, 77);
             this.numYearGraduated.Maximum = new decimal(new int[] {
-            1950,
+            2000,
             0,
             0,
             0});

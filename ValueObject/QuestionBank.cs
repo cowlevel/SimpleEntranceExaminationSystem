@@ -22,23 +22,23 @@ namespace ValueObject
 
         public int QuestionNumber { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(350)]
         public string Question { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(200)]
         public string CorrectAnswer { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(200)]
         public string WrongAnswer1 { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(200)]
         public string WrongAnswer2 { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(200)]
         public string WrongAnswer3 { get; set; }
 

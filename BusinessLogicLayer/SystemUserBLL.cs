@@ -43,6 +43,12 @@ namespace BusinessLogicLayer
             return true;
         }
 
+        public void InsertUser(SystemUser user)
+        {
+            user.Pword = SetHashText(user.Pword);   //  set new user password
+            _userDAL.InsertUser(user);
+        }
+
         public bool UpdateUser(SystemUser user, out List<string> errorList)
         {
             errorList = new List<string>();
@@ -62,6 +68,11 @@ namespace BusinessLogicLayer
             _userDAL.UpdateUser(user);
 
             return true;
+        }
+
+        public void UpdateUser(SystemUser user)
+        {
+            _userDAL.UpdateUser(user);
         }
 
         //public bool DeleteUser(SystemUser user)

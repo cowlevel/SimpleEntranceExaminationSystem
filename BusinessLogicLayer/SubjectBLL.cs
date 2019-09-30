@@ -23,11 +23,6 @@ namespace BusinessLogicLayer
 
         public bool InsertSubject(Subject subject, out List<string> errorList)
         {
-            if (subject == null)
-            {
-                throw new ArgumentNullException(nameof(subject));
-            }
-
             errorList = new List<string>();
             _objectValidator = new ValueObjectValidator();
             _isValid = _objectValidator.TryValidate(subject, out _validationResults);
@@ -45,6 +40,11 @@ namespace BusinessLogicLayer
             _subjectDAL.InsertSubject(subject);
 
             return true;
+        }
+
+        public void InsertSubject(Subject subject)
+        {
+            _subjectDAL.InsertSubject(subject);
         }
 
         public bool UpdateSubject(Subject subject, out List<string> errorList)
@@ -66,6 +66,11 @@ namespace BusinessLogicLayer
             _subjectDAL.UpdateSubject(subject);
 
             return true;
+        }
+
+        public void UpdateSubject(Subject subject)
+        {
+            _subjectDAL.UpdateSubject(subject);
         }
 
         public bool DeleteSubject(int subjectId)

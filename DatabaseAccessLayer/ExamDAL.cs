@@ -22,12 +22,13 @@ namespace DatabaseAccessLayer
         {
             using (_context = new ExaminationContext())
             {
+                exam.DateTimeAdded = GetServerDateTime(_context);
                 _context.Exam.Add(exam);
                 _context.SaveChanges();
             }
         }
 
-        public void DeleteExaminee(int examId)
+        public void DeleteExam(int examId)
         {
             using (_context = new ExaminationContext())
             {
@@ -47,6 +48,7 @@ namespace DatabaseAccessLayer
             {
                 examViewModelList = _context.Exam.Include(u => u.SystemUser)
                     .Include(s => s.Subject)
+                    .Include(q => q.QuestionBank)
                     .OrderBy(e => e.ExamId)
                     .Select(e => new ExamViewModel
                     {
@@ -58,14 +60,24 @@ namespace DatabaseAccessLayer
                         ExamId = e.ExamId,
                         SubjectId = e.SubjectId,
                         SubjectName = e.Subject.SubjectName,
+                        ExaminationType = e.ExaminationType,
                         ItemCount = e.ItemCount,
-                        ExamType = e.ExamType,
-                        DateTimeAdded = e.DateTimeAdded
+                        TimeLimit = e.TimeLimit,
+                        DateTimeAdded = e.DateTimeAdded,
+                        IncompleteQuestionCount = e.QuestionBank
+                        .Where(q => q.Question != null && q.Question != string.Empty).Count()
                     })
                     .ToList();
             }
 
             return examViewModelList;
+        }
+
+        public DateTime GetServerDateTime(ExaminationContext context)
+        {
+            //DateTime dbServerDateTime = _context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
+            //return dbServerDateTime;
+            return context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
         }
     }
 }

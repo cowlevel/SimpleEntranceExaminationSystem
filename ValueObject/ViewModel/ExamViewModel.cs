@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utility;
 
 namespace ValueObject.ViewModel
 {
@@ -22,11 +23,20 @@ namespace ValueObject.ViewModel
         public int ExamId { get; set; }
         public int SubjectId { get; set; }
         public string SubjectName { get; set; }
+        public int ExaminationType { get; set; }
         public int ItemCount { get; set; }
-        public int ExamType { get; set; }
-        public DateTime? DateTimeAdded { get; set; }
+        public int TimeLimit { get; set; }
+        public DateTime DateTimeAdded { get; set; }
 
-        
+        public int IncompleteQuestionCount { get; set; }
+
+        public string FullQuestionCount
+        {
+            get
+            {
+                return string.Format("{0}/{1}", IncompleteQuestionCount, ItemCount);
+            }
+        }
 
         public string FullName
         {
@@ -57,20 +67,34 @@ namespace ValueObject.ViewModel
             //set;
         }
 
-        public string ExamTypeDescription
+        public string TimeLimitString
         {
             get
             {
-                if (ExamType == 0)
+                return Conversions.TimeMinuteToString(this.TimeLimit);
+            }
+        }
+
+        public string ExaminationTypeString
+        {
+            get
+            {
+                string output = null;
+
+                if (ExaminationType == (int)ExamType.MultipleChoice)
                 {
-                    return "Multiple Choice";
+                    output = "Multiple Choice";
                 }
-                else if (ExamType == 1)
+                else if (ExaminationType == (int)ExamType.TrueOrFalse)
                 {
-                    return "True or False";
+                    output = "True or False";
+                }
+                else if (ExaminationType == (int)ExamType.WriteTheAnswer)
+                {
+                    output = "Write the Answer";
                 }
 
-                return "Fill in the Blank";
+                return output;
             }
         }
     }

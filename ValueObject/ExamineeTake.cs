@@ -25,8 +25,6 @@ namespace ValueObject
         [StringLength(10)]
         public string ExamCode { get; set; }
 
-        public int? TimeLimit { get; set; }
-
         public DateTime? DateTimeTaken { get; set; }
 
         public DateTime? DateTimeEnded { get; set; }

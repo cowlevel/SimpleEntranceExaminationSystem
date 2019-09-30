@@ -23,6 +23,7 @@ namespace DatabaseAccessLayer
         {
             using (_context = new ExaminationContext())
             {
+                examinee.DateTimeAdded = GetServerDateTime(_context);
                 _context.Examinee.Add(examinee); //_context.Entry(examinee).State = EntityState.Added;
                 _context.SaveChanges();
             }
@@ -125,6 +126,11 @@ namespace DatabaseAccessLayer
             {
                 return _context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
             }
+        }
+
+        public DateTime GetServerDateTime(ExaminationContext context)
+        {
+            return context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
         }
 
         public int GetExamineeCount()

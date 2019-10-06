@@ -38,11 +38,20 @@ namespace PresentationLayer
             dgvExaminee.AutoGenerateColumns = false;
 
             _examineeBLL = new ExamineeBLL();
+
             PopulateExamineeDatagridView();
 
             if (_examineeViewModelList.PageCount > MINIMUM_PAGE_NUMBER)
             {
                 btnNext.Enabled = true;
+            }
+        }
+
+        private void UCtrlExaminee_Load(object sender, EventArgs e)
+        {
+            if (_examineeViewModelList.RowCount > 0)
+            {
+                dgvExaminee.ClearSelection();
             }
         }
 
@@ -72,7 +81,6 @@ namespace PresentationLayer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            List<string> errorList;//  list of string to store error message, for validation
             Examinee examinee;
 
             if (btnAdd.Text == "&CANCEL")   //  ADD NEW=====
@@ -120,7 +128,8 @@ namespace PresentationLayer
                                                     Email = ex.Email,
                                                     LastSchoolAttended = ex.LastSchoolAttended,
                                                     YearGraduated = ex.YearGraduated,
-                                                    ExamTakes = ex.ExamTakes
+                                                    ExamTakes = ex.ExamTakes,
+                                                    DateTimeAdded = ex.DateTimeAdded
                                                 }).SingleOrDefault();
 
                     examinee.LastName = txtLastName.Text;
@@ -132,8 +141,8 @@ namespace PresentationLayer
                     examinee.Email = txtEmail.Text;
                     examinee.LastSchoolAttended = txtSchoolName.Text;
                     examinee.YearGraduated = (int)numYearGraduated.Value;
-                    //examinee.ExamTakes = 0;
-                    //examinee.DateTimeAdded = DateTime.Now;    //  to DAL
+
+                    _examineeBLL.UpdateExaminee(examinee);  //  save edited examinee
 
                     ExamineeViewModel examineeViewModel = _examineeViewModelList.Results.Where(ex => ex.ExamineeId == _examineeId).SingleOrDefault();
 
@@ -271,6 +280,7 @@ namespace PresentationLayer
             if (_examineeViewModelList.Results.Count > 0)
             {
                 dgvExaminee.DataSource = _examineeViewModelList.Results;
+                dgvExaminee.ClearSelection();
                 lblPage.Text = string.Format("Page {0} of {1}", _pageNumber, _examineeViewModelList.PageCount);
             }
             else
@@ -375,7 +385,7 @@ namespace PresentationLayer
             switch (operation)
             {
                 case Operation.Adding:
-                    lblStatus.Text = "        You are currently adding new examinee.";
+                    lblStatus.Text = "  You are currently adding new examinee.";
 
                     btnAdd.Text = "&CANCEL";
                     btnAdd.BackColor = Color.LightCoral;
@@ -419,7 +429,7 @@ namespace PresentationLayer
                     
                     break;
                 case Operation.Editing:
-                    lblStatus.Text = "        You are currently editing examinee.";
+                    lblStatus.Text = "  You are currently editing examinee.";
 
                     btnAdd.Enabled = false;
                     btnEdit.Text = "&CANCEL";

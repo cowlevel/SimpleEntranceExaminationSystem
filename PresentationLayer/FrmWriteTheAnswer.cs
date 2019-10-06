@@ -79,7 +79,7 @@ namespace PresentationLayer
 
                 _questionBankBLL.UpdateQuestion(_question);
 
-                lblStatus.Text = string.Format("    Successfully updated Item No. {0}", numItemNo.Value);
+                lblStatus.Text = string.Format("  Successfully updated Item No. {0}", numItemNo.Value);
             }
         }
 

@@ -15,7 +15,6 @@ namespace ValueObject
             Exam = new HashSet<Exam>();
         }
 
-        [Key]
         public int SubjectId { get; set; }
 
         [Required]

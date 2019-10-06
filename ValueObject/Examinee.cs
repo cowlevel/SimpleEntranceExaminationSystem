@@ -15,7 +15,6 @@ namespace ValueObject
             ExamineeTake = new HashSet<ExamineeTake>();
         }
 
-        [Key]
         public int ExamineeId { get; set; }
 
         [Required]

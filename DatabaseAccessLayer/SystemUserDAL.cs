@@ -29,6 +29,7 @@ namespace DatabaseAccessLayer
             using (_context = new ExaminationContext())
             {
                 _context.Entry(user).State = EntityState.Modified;
+                _context.Entry(user).Property(u => u.Pword).IsModified = false;
                 _context.SaveChanges();
             }
         }

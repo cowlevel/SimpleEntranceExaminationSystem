@@ -162,13 +162,10 @@ namespace PresentationLayer
 
         private void txtLastName_Leave(object sender, EventArgs e)
         {
-            if ((btnAdd.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0))    //  ADD NEW
+            if ((btnAdd.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0) 
+                || (btnEdit.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0))    //  ADD NEW
             {
                 lblUsernameOutput.Text = txtLastName.Text.ToLower().Replace(" ", "") + _userCount.ToString("000");
-            }
-            else if ((btnEdit.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0))  //  EDIT
-            {
-                lblUsernameOutput.Text = txtLastName.Text.ToLower().Replace(" ", "") + _userId.ToString("000");
             }
         }
 
@@ -251,6 +248,25 @@ namespace PresentationLayer
                 lblStatus.Text = "  Please choose user level";
                 cboUserLevel.Focus();
                 return false;
+            }
+            else if (UserInfo.UserId == _userId
+                    && UserInfo.UserLevel == "Administrator")
+                    //&& string.Equals(cboUserLevel.Text, "Administrator", StringComparison.CurrentCultureIgnoreCase))
+                    //&& chkStatus.Checked == true)
+            {
+                if (!string.Equals(cboUserLevel.Text, "Administrator", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    lblStatus.Text = "  You cannot change your user level from being an administrator to clerk";
+                    return false;
+                }
+                else
+                {
+                    if (chkStatus.Checked == false)
+                    {
+                        lblStatus.Text = "  You cannot deactivate your account";
+                        return false;
+                    }
+                }
             }
 
             return true;
@@ -357,7 +373,5 @@ namespace PresentationLayer
             lblReqUserLevel.Visible = show;
         }
         #endregion
-
-        
     }
 }

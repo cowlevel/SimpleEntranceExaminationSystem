@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ValueObject;
@@ -19,46 +20,36 @@ namespace PresentationLayer
         private UCtrlUser _ctrlUser;
         private UCtrlPassword _ctrlPassword;
         private UCtrlSubject _ctrlSubject;
-
+        private UCtrlSettings _ctrlSettings;
         
         public FrmMain()
         {
             InitializeComponent();
         }
 
-        public void SetCtrlExamDataSource()
+
+        private void FrmMain_Load(object sender, EventArgs e)
         {
-            _ctrlExam.SetDatagridViewDataScource();
+            //lblWelcome.Text = string.Format("WELCOME {0}", UserInfo.CurrentUser.ToUpper());
         }
 
-        private void SetButtonColor(string buttonName)
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            foreach (Control control in this.Controls)
-            {
-                if (control is Button)
-                {
-                    if (control.Name != buttonName)
-                    {
-                        control.ForeColor = Color.Teal;
-                        //(control as Button).FlatAppearance.BorderColor = Color.White;
-                        (control as Button).BackColor = Color.White;
-                    }
-                    else
-                    {
-                        control.ForeColor = Color.White;
-                        //(control as Button).FlatAppearance.BorderColor = Color.Teal;
-                        (control as Button).BackColor = Color.Teal;
-                    }
-                }
-            }
-        }
+            //DialogResult result = MessageBox.Show(this, "Are you sure you want to exit?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-        private void DisposePanelControl()
-        {
-            if (pnlMain.Controls.Count > 0)
-            {
-                pnlMain.Controls[0].Dispose();
-            }
+            //if (result == DialogResult.Yes)
+            //{
+            //    Thread thread = new Thread(() =>
+            //    {
+            //        Application.Run(new FrmLogIn());
+            //    });
+            //    thread.SetApartmentState(ApartmentState.STA);
+            //    thread.Start();
+            //}
+            //else
+            //{
+            //    e.Cancel = true;
+            //}
         }
 
         private void btnExaminee_Click(object sender, EventArgs e)
@@ -98,10 +89,9 @@ namespace PresentationLayer
             SetButtonColor("btnSettings");
             SetMarkerProperties(btnSettings.Top);
 
-            lblMarker.Top = btnSettings.Top;
-            lblMarker.Visible = true;
-
             DisposePanelControl();
+            _ctrlSettings = new UCtrlSettings();
+            pnlMain.Controls.Add(_ctrlSettings);
         }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
@@ -119,23 +109,6 @@ namespace PresentationLayer
             this.Close();
         }
 
-        private void SetMarkerProperties(int top)
-        {
-            lblMarker.Top = top;
-            lblMarker.Visible = true;
-        }
-
-        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            /* remove comment later
-            ((FrmLogIn)Owner).Visible = true;
-            ((FrmLogIn)Owner).Controls["txtUsername"].Focus();
-            UserInfo.UserId = 0;
-            UserInfo.CurrentUser = string.Empty;
-            UserInfo.UserLevel = string.Empty;
-             */
-        }
-
         private void btnSubject_Click(object sender, EventArgs e)
         {
             SetButtonColor("btnSubject");
@@ -144,6 +117,47 @@ namespace PresentationLayer
             DisposePanelControl();
             _ctrlSubject = new UCtrlSubject();
             pnlMain.Controls.Add(_ctrlSubject);
+        }
+
+        public void SetCtrlExamDataSource()
+        {
+            _ctrlExam.SetExamDatagridViewDataScource();
+        }
+
+        private void SetMarkerProperties(int top)
+        {
+            lblMarker.Top = top;
+            lblMarker.Visible = true;
+        }
+
+        private void SetButtonColor(string buttonName)
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button)
+                {
+                    if (control.Name != buttonName)
+                    {
+                        control.ForeColor = Color.Teal;
+                        //(control as Button).FlatAppearance.BorderColor = Color.White;
+                        (control as Button).BackColor = Color.White;
+                    }
+                    else
+                    {
+                        control.ForeColor = Color.White;
+                        //(control as Button).FlatAppearance.BorderColor = Color.Teal;
+                        (control as Button).BackColor = Color.Teal;
+                    }
+                }
+            }
+        }
+
+        private void DisposePanelControl()
+        {
+            if (pnlMain.Controls.Count > 0)
+            {
+                pnlMain.Controls[0].Dispose();
+            }
         }
     }
 }

@@ -29,11 +29,11 @@ namespace Utility
                 }
                 else if (minute == 1)
                 {
-                    output = string.Format("{0} hour & {1} minute", hour, minute);
+                    output = string.Format("{0} hour && {1} minute", hour, minute);
                 }
                 else
                 {
-                    output = string.Format("{0} hour & {1} minutes", hour, minute);
+                    output = string.Format("{0} hour && {1} minutes", hour, minute);
                 }
             }
             else
@@ -44,11 +44,11 @@ namespace Utility
                 }
                 else if (minute == 1)
                 {
-                    output = string.Format("{0} hours & {1} minute", hour, minute);
+                    output = string.Format("{0} hours && {1} minute", hour, minute);
                 }
                 else
                 {
-                    output = string.Format("{0} hours & {1} minutes", hour, minute);
+                    output = string.Format("{0} hours && {1} minutes", hour, minute);
                 }
             }
 

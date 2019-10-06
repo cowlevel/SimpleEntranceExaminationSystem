@@ -34,7 +34,7 @@ namespace DatabaseAccessLayer
             using (_context = new ExaminationContext())
             {
                 _context.Entry(examinee).State = EntityState.Modified;
-                _context.Entry(examinee).Property(p => p.DateTimeAdded).IsModified = false; //  DateTimeAdded should not be modified
+                //_context.Entry(examinee).Property(p => p.DateTimeAdded).IsModified = false; //  DateTimeAdded should not be modified
                 _context.SaveChanges();
             }
         }
@@ -47,8 +47,7 @@ namespace DatabaseAccessLayer
                 //_context.Entry(examinee).State = EntityState.Deleted;
                 _context.Examinee.Remove(_context.Examinee
                     //.Single(e => e.ExamineeId == examineeId));
-                    .SingleOrDefault(e => e.ExamineeId == examineeId
-                              && e.ExamTakes == 0));
+                    .SingleOrDefault(e => e.ExamineeId == examineeId && e.ExamTakes == 0));
                 _context.SaveChanges();
             }
         }

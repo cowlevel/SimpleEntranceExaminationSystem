@@ -26,7 +26,7 @@ namespace ValueObject.ViewModel
         public int ExaminationType { get; set; }
         public int ItemCount { get; set; }
         public int TimeLimit { get; set; }
-        public DateTime DateTimeAdded { get; set; }
+        public DateTime? DateTimeAdded { get; set; }
 
         public int IncompleteQuestionCount { get; set; }
 

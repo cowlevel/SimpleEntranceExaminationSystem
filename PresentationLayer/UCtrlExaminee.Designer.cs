@@ -907,6 +907,7 @@
             this.Controls.Add(this.shapeContainer1);
             this.Name = "UCtrlExaminee";
             this.Size = new System.Drawing.Size(1102, 609);
+            this.Load += new System.EventHandler(this.UCtrlExaminee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvExaminee)).EndInit();
             this.tabExaminee.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

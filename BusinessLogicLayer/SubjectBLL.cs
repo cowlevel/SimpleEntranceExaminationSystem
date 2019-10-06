@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ValueObject;
+using ValueObject.ViewModel;
 
 namespace BusinessLogicLayer
 {
@@ -78,6 +79,16 @@ namespace BusinessLogicLayer
             _subjectDAL.DeleteSubject(subjectId);
 
             return false;
+        }
+
+        public bool IsSubjectDuplicate(Subject subject)
+        {
+            return _subjectDAL.IsSubjectDuplicate(subject);
+        }
+
+        public List<SubjectViewModel> GetSubjectViewModelList()
+        {
+            return _subjectDAL.GetSubjectViewModelList();
         }
 
         public List<Subject> GetSubjectList()

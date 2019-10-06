@@ -38,8 +38,7 @@ namespace DatabaseAccessLayer
                 _context.SaveChanges();
             }
         }
-
-
+        
         public List<ExamViewModel> GetExamViewModelList()
         {
             List<ExamViewModel> examViewModelList;
@@ -49,6 +48,7 @@ namespace DatabaseAccessLayer
                 examViewModelList = _context.Exam.Include(u => u.SystemUser)
                     .Include(s => s.Subject)
                     .Include(q => q.QuestionBank)
+                    .Where(e => e.Archieved == false)
                     .OrderBy(e => e.ExamId)
                     .Select(e => new ExamViewModel
                     {
@@ -64,8 +64,7 @@ namespace DatabaseAccessLayer
                         ItemCount = e.ItemCount,
                         TimeLimit = e.TimeLimit,
                         DateTimeAdded = e.DateTimeAdded,
-                        IncompleteQuestionCount = e.QuestionBank
-                        .Where(q => q.Question != null && q.Question != string.Empty).Count()
+                        IncompleteQuestionCount = e.QuestionBank.Where(q => q.Question != null && q.Question != string.Empty).Count()
                     })
                     .ToList();
             }

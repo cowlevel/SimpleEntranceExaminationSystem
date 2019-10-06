@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ValueObject;
 using BusinessLogicLayer;
+using ValueObject.ViewModel;
 
 namespace PresentationLayer
 {
@@ -16,7 +17,7 @@ namespace PresentationLayer
     {
         #region PRIVATE VARIABLES
         private SubjectBLL _subjectBLL;
-        private List<Subject> _subjectList;
+        private List<SubjectViewModel> _subjectViewModelList;
 
         private int _subjectId;
         #endregion
@@ -71,32 +72,53 @@ namespace PresentationLayer
                     subject.SubjectName = txtSubject.Text;
                     subject.Description = txtDescription.Text;
 
-                    _subjectBLL.InsertSubject(subject);
+                    if (_subjectBLL.IsSubjectDuplicate(subject))
+                    {
+                        _subjectBLL.InsertSubject(subject);
 
-                    PopulateSubjectDatagridView();
-                    SetUIProperty(Operation.Clear);
+                        PopulateSubjectDatagridView();
+                        SetUIProperty(Operation.Clear);
 
-                    lblStatus.Text = "  Successfully added new subject";
+                        lblStatus.Text = "  Successfully added new subject";
+                    }
+                    else
+                    {
+                        txtSubject.Focus();
+                        lblStatus.Text = "  Subject name already exists";
+                    }
                 }
             }
 
             if (btnEdit.Text == "&CANCEL")  //  EDIT
             {
-                
-
                 if (InputsAreValid())
                 {
-                    subject = _subjectList.Where(s => s.SubjectId == _subjectId).SingleOrDefault();
+                    subject = _subjectViewModelList.Where(s => s.SubjectId == _subjectId)
+                        .Select(s => new Subject
+                        {
+                            SubjectId = s.SubjectId,
+                            SubjectName = s.SubjectName,
+                            Description = s.Description
+                        })
+                        .SingleOrDefault();
 
                     subject.SubjectName = txtSubject.Text;
                     subject.Description = txtDescription.Text;
 
-                    _subjectBLL.UpdateSubject(subject);
+                    if (_subjectBLL.IsSubjectDuplicate(subject))
+                    {
+                        _subjectBLL.UpdateSubject(subject);
 
-                    PopulateSubjectDatagridView();
-                    SetUIProperty(Operation.Clear);
+                        PopulateSubjectDatagridView();
+                        SetUIProperty(Operation.Clear);
 
-                    lblStatus.Text = "  Successfully updated subject";
+                        lblStatus.Text = "  Successfully updated subject";
+                    }
+                    else
+                    {
+                        txtSubject.Focus();
+                        lblStatus.Text = "  Subject name already exists";
+                    }
                 }
             }
         }
@@ -122,24 +144,26 @@ namespace PresentationLayer
                 && btnEdit.Text == "&EDIT"
                 && index > -1)
             {
-                _subjectId = _subjectList[index].SubjectId; //  important for EDIT, get user id from selected user in datagridview
+                _subjectId = _subjectViewModelList[index].SubjectId; //  important for EDIT, get user id from selected user in datagridview
 
-                txtSubject.Text = _subjectList[index].SubjectName;
-                txtDescription.Text = _subjectList[index].Description;
+                txtSubject.Text = _subjectViewModelList[index].SubjectName;
+                txtDescription.Text = _subjectViewModelList[index].Description;
 
                 btnEdit.Enabled = true; //  enable EDIT button
-                btnDelete.Enabled = true;   //  enable DELETE button
+
+                bool isInExam = _subjectViewModelList[index].InExam;
+                btnDelete.Enabled = isInExam ? false : true;   //  enable if no existing exam/disable if existing
             }
         }
 
         private void PopulateSubjectDatagridView()
         {
-            _subjectList = _subjectBLL.GetSubjectList();
+            _subjectViewModelList = _subjectBLL.GetSubjectViewModelList();
             dgvSubject.DataSource = null;
             //  check always if list got record, if got zero record then dont use it as data source to avoid some error. NOTE: must have at least 1 record before to use it as data source.
-            if (_subjectList.Count > 0)
+            if (_subjectViewModelList.Count > 0)
             {
-                dgvSubject.DataSource = _subjectList;
+                dgvSubject.DataSource = _subjectViewModelList;
             }
         }
 
@@ -224,7 +248,5 @@ namespace PresentationLayer
 
             return true;
         }
-
-        
     }
 }

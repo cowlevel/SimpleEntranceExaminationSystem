@@ -35,7 +35,7 @@ namespace PresentationLayer
 
             _subjectBLL = new SubjectBLL();
             _subjectList = _subjectBLL.GetSubjectList();
-
+            
             cboSubject.ValueMember = "SubjectId";
             cboSubject.DisplayMember = "SubjectName";
             cboSubject.DataSource = _subjectList;
@@ -52,12 +52,15 @@ namespace PresentationLayer
             cboExamType.SelectedIndex = -1;
 
             _examBLL = new ExamBLL();
+
             dgvExam.AutoGenerateColumns = false;
+            dgvTotal.AutoGenerateColumns = false;
         }
 
         private void UCtrlExam_Load(object sender, EventArgs e)
         {
-            SetDatagridViewDataScource();
+            SetExamDatagridViewDataScource();
+            SetExamTotalDataGridViewDataSource();
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -91,6 +94,7 @@ namespace PresentationLayer
                     exam.ExaminationType = (int)cboExamType.SelectedValue;
                     exam.TimeLimit = (int)numTimeLimit.Value;
                     exam.ItemCount = (int)numItems.Value;
+                    exam.Archieved = false;
                     //exam.DateTimeAdded to DAL
 
                     for (int i = 1; i <= exam.ItemCount; i++)
@@ -106,7 +110,8 @@ namespace PresentationLayer
                     numTimeLimit.Value = 60;
                     lblStatus.Text = "  Successfully created new exam";
 
-                    SetDatagridViewDataScource();
+                    SetExamDatagridViewDataScource();
+                    SetExamTotalDataGridViewDataSource();
                     ShowQuestionFrom(exam.ExamId);
                 }
             }
@@ -192,18 +197,53 @@ namespace PresentationLayer
             }
         }
 
-        public void SetDatagridViewDataScource()
+        public void SetExamDatagridViewDataScource()
         {
             _examViewModelList = _examBLL.GetExamViewModelList();
             dgvExam.DataSource = null;
-            dgvExam.DataSource = _examViewModelList;
 
-            if (dgvExam.Rows.Count != 0)
+            if (_examViewModelList.Count > 0)
             {
-                dgvExam.CurrentCell.Selected = false;
+                dgvExam.DataSource = _examViewModelList;
+                dgvExam.ClearSelection();
             }
+            //if (dgvExam.Rows.Count != 0)
+            //{
+            //    dgvExam.CurrentCell.Selected = false;
+            //}
 
             SetItemCountWarning();
+        }
+
+        public void SetExamTotalDataGridViewDataSource()
+        {
+            var examTotal = _examViewModelList
+                .GroupBy(g => new
+                {
+                    g.SubjectId,
+                    g.SubjectName
+                })
+                .Select(s => new
+                {
+                    s.Key.SubjectId,
+                    s.Key.SubjectName,
+                    TimeLimit = s.Sum(t => t.TimeLimit),
+                    TotalTimeLimit = Conversions.TimeMinuteToString(s.Sum(t => t.TimeLimit)),
+                    TotalIncompleteItem = s.Sum(t => t.ItemCount - t.IncompleteQuestionCount),
+                    TotalItem = s.Sum(t => t.ItemCount)
+                })
+                .ToList();
+
+            dgvTotal.DataSource = null;
+
+            if (examTotal.Count > 0)
+            {
+                dgvTotal.DataSource = examTotal;
+
+                lblTotalExam.Text = string.Format("No. Of Subject With Exam: {0}", examTotal.Count);
+                lblTotalTimeLimit.Text = string.Format("Total Time Limit: {0}", Conversions.TimeMinuteToString(examTotal.Sum(e => e.TimeLimit)));
+                lblTotalItem.Text = string.Format("Total No. Of Item: {0}", examTotal.Sum(e => e.TotalItem));
+            }
         }
     }
 }

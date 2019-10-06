@@ -40,15 +40,16 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvSubject = new System.Windows.Forms.DataGridView();
-            this.colSubjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblReqDescription = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.colSubjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInExam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubject)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,7 +97,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(362, 146);
+            this.btnDelete.Location = new System.Drawing.Point(361, 146);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 40);
             this.btnDelete.TabIndex = 3;
@@ -112,7 +113,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(246, 146);
+            this.btnSave.Location = new System.Drawing.Point(245, 146);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 40);
             this.btnSave.TabIndex = 2;
@@ -128,7 +129,7 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(130, 146);
+            this.btnEdit.Location = new System.Drawing.Point(129, 146);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(110, 40);
             this.btnEdit.TabIndex = 1;
@@ -143,7 +144,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(14, 146);
+            this.btnAdd.Location = new System.Drawing.Point(13, 146);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 40);
             this.btnAdd.TabIndex = 0;
@@ -171,7 +172,8 @@
             this.dgvSubject.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSubjectId,
             this.colSubject,
-            this.colDescription});
+            this.colDescription,
+            this.colInExam});
             this.dgvSubject.Location = new System.Drawing.Point(14, 212);
             this.dgvSubject.MultiSelect = false;
             this.dgvSubject.Name = "dgvSubject";
@@ -183,41 +185,6 @@
             this.dgvSubject.Size = new System.Drawing.Size(1059, 370);
             this.dgvSubject.TabIndex = 4;
             this.dgvSubject.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSubject_CellClick);
-            // 
-            // colSubjectId
-            // 
-            this.colSubjectId.DataPropertyName = "SubjectId";
-            this.colSubjectId.HeaderText = "Subject Id";
-            this.colSubjectId.Name = "colSubjectId";
-            this.colSubjectId.ReadOnly = true;
-            this.colSubjectId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.colSubjectId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colSubjectId.Visible = false;
-            // 
-            // colSubject
-            // 
-            this.colSubject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colSubject.DataPropertyName = "SubjectName";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colSubject.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colSubject.HeaderText = "Subject";
-            this.colSubject.MinimumWidth = 500;
-            this.colSubject.Name = "colSubject";
-            this.colSubject.ReadOnly = true;
-            this.colSubject.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colDescription
-            // 
-            this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colDescription.DataPropertyName = "Description";
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colDescription.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colDescription.HeaderText = "Description";
-            this.colDescription.MinimumWidth = 500;
-            this.colDescription.Name = "colDescription";
-            this.colDescription.ReadOnly = true;
-            this.colDescription.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.colDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // lblDescription
             // 
@@ -287,6 +254,51 @@
             this.shapeContainer1.TabIndex = 97;
             this.shapeContainer1.TabStop = false;
             // 
+            // colSubjectId
+            // 
+            this.colSubjectId.DataPropertyName = "SubjectId";
+            this.colSubjectId.HeaderText = "Subject Id";
+            this.colSubjectId.Name = "colSubjectId";
+            this.colSubjectId.ReadOnly = true;
+            this.colSubjectId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colSubjectId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colSubjectId.Visible = false;
+            // 
+            // colSubject
+            // 
+            this.colSubject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colSubject.DataPropertyName = "SubjectName";
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colSubject.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colSubject.HeaderText = "Subject";
+            this.colSubject.MinimumWidth = 300;
+            this.colSubject.Name = "colSubject";
+            this.colSubject.ReadOnly = true;
+            this.colSubject.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colDescription
+            // 
+            this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colDescription.DataPropertyName = "Description";
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colDescription.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colDescription.HeaderText = "Description";
+            this.colDescription.MinimumWidth = 400;
+            this.colDescription.Name = "colDescription";
+            this.colDescription.ReadOnly = true;
+            this.colDescription.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colInExam
+            // 
+            this.colInExam.DataPropertyName = "InExamSymbol";
+            this.colInExam.HeaderText = "In Exam";
+            this.colInExam.Name = "colInExam";
+            this.colInExam.ReadOnly = true;
+            this.colInExam.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colInExam.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colInExam.Width = 80;
+            // 
             // UCtrlSubject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,5 +345,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colSubjectId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colInExam;
     }
 }

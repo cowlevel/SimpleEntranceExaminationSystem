@@ -6,40 +6,28 @@ namespace ValueObject
     using System.ComponentModel.DataAnnotations.Schema;
     //using System.Data.Entity.Spatial;
 
-    [Table("QuestionBank")]
-    public partial class QuestionBank
+    [Table("ExamineeExam")]
+    public partial class ExamineeExam
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public QuestionBank()
+        public ExamineeExam()
         {
             ExamineeAnswer = new HashSet<ExamineeAnswer>();
         }
 
+        public int ExamineeExamId { get; set; }
+
+        public int ExamineeTakeId { get; set; }
+
         public int ExamId { get; set; }
 
-        [Key]
-        public int QuestionId { get; set; }
-
-        public int QuestionNumber { get; set; }
-
-        [StringLength(350)]
-        public string Question { get; set; }
-
-        [StringLength(200)]
-        public string CorrectAnswer { get; set; }
-
-        [StringLength(200)]
-        public string WrongAnswer1 { get; set; }
-
-        [StringLength(200)]
-        public string WrongAnswer2 { get; set; }
-
-        [StringLength(200)]
-        public string WrongAnswer3 { get; set; }
+        public int Score { get; set; }
 
         public virtual Exam Exam { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamineeAnswer> ExamineeAnswer { get; set; }
+
+        public virtual ExamineeTake ExamineeTake { get; set; }
     }
 }

@@ -9,26 +9,29 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ValueObject.ViewModel;
 using BusinessLogicLayer;
+using System.Threading;
 
 namespace PresentationLayer
 {
     public partial class FrmLogIn : Form
     {
-        private FrmMain _frmMain;
-
         public FrmLogIn()
         {
             InitializeComponent();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            DoLogIn();
+            if (InputsAreValid())
+            {
+                DoLogIn();
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)
@@ -49,6 +52,24 @@ namespace PresentationLayer
             }
         }
 
+        private void OpenMainForm()
+        {
+            Application.Run(new FrmMain());
+        }
+
+        private bool InputsAreValid()
+        {
+            if (string.IsNullOrWhiteSpace(txtUsername.Text)
+                || string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show(this, "Invalid Username or Password!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return false;
+            }
+
+            return true;
+        }
+
         private void DoLogIn()
         {
             LoginViewModel loginUser = new LoginViewModel();
@@ -56,28 +77,27 @@ namespace PresentationLayer
             loginUser.Password = txtPassword.Text;
 
             LoginViewModelBLL checkLoginUser = new LoginViewModelBLL();
-            bool isLoginUserExist = checkLoginUser.CheckLogIn(loginUser);
+            bool loginUserExists = checkLoginUser.CheckLogIn(loginUser);
 
-            if (isLoginUserExist)
+            if (loginUserExists)
             {
-                this.Visible = false;
-                txtUsername.Text = string.Empty;
-                txtPassword.Text = string.Empty;
-
-                _frmMain = new FrmMain();
-                _frmMain.Show(this);
+                this.Close();
+                //Console.WriteLine(UserInfo.CurrentUser);
+                Thread thread = new Thread(() =>
+                {
+                    Application.Run(new FrmMain());
+                });
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+                //this.Visible = false;
+                //txtUsername.Text = string.Empty;
+                //txtPassword.Text = string.Empty;
+                //_frmMain = new FrmMain();
+                //_frmMain.Show(this);
             }
             else
             {
-                MessageBox.Show("Invalid Username or Password!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void FrmLogIn_VisibleChanged(object sender, EventArgs e)
-        {
-            if (this.Visible == true)
-            {
-                this.CenterToScreen();
+                MessageBox.Show(this, "Invalid Username or Password!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

@@ -38,6 +38,7 @@
             this.btnSettings = new System.Windows.Forms.Button();
             this.lblMarker = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.btnSubject = new System.Windows.Forms.Button();
@@ -46,14 +47,15 @@
             // 
             // lblWelcome
             // 
+            this.lblWelcome.AutoSize = true;
             this.lblWelcome.BackColor = System.Drawing.Color.Transparent;
             this.lblWelcome.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.ForeColor = System.Drawing.Color.Teal;
-            this.lblWelcome.Location = new System.Drawing.Point(219, 25);
+            this.lblWelcome.Location = new System.Drawing.Point(220, 23);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(507, 26);
+            this.lblWelcome.Size = new System.Drawing.Size(73, 18);
             this.lblWelcome.TabIndex = 9;
-            this.lblWelcome.Text = "Welcome PEPING PILOSOPO";
+            this.lblWelcome.Text = "WELCOME";
             this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlMain
@@ -72,10 +74,10 @@
             this.btnChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangePassword.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangePassword.ForeColor = System.Drawing.Color.Teal;
-            this.btnChangePassword.Location = new System.Drawing.Point(9, 503);
+            this.btnChangePassword.Location = new System.Drawing.Point(9, 547);
             this.btnChangePassword.Name = "btnChangePassword";
             this.btnChangePassword.Size = new System.Drawing.Size(198, 50);
-            this.btnChangePassword.TabIndex = 36;
+            this.btnChangePassword.TabIndex = 5;
             this.btnChangePassword.Text = "Ch&ange Password";
             this.btnChangePassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChangePassword.UseVisualStyleBackColor = false;
@@ -89,10 +91,10 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.Teal;
-            this.btnExit.Location = new System.Drawing.Point(9, 553);
+            this.btnExit.Location = new System.Drawing.Point(9, 597);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(198, 50);
-            this.btnExit.TabIndex = 37;
+            this.btnExit.TabIndex = 6;
             this.btnExit.Text = "E&xit";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExit.UseVisualStyleBackColor = false;
@@ -109,7 +111,7 @@
             this.btnExaminee.Location = new System.Drawing.Point(9, 55);
             this.btnExaminee.Name = "btnExaminee";
             this.btnExaminee.Size = new System.Drawing.Size(198, 50);
-            this.btnExaminee.TabIndex = 31;
+            this.btnExaminee.TabIndex = 0;
             this.btnExaminee.Text = "&Examinee";
             this.btnExaminee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExaminee.UseVisualStyleBackColor = false;
@@ -126,7 +128,7 @@
             this.btnCreateExam.Location = new System.Drawing.Point(9, 105);
             this.btnCreateExam.Name = "btnCreateExam";
             this.btnCreateExam.Size = new System.Drawing.Size(198, 50);
-            this.btnCreateExam.TabIndex = 32;
+            this.btnCreateExam.TabIndex = 1;
             this.btnCreateExam.Text = "&Create Exam";
             this.btnCreateExam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreateExam.UseVisualStyleBackColor = false;
@@ -143,7 +145,7 @@
             this.btnUser.Location = new System.Drawing.Point(9, 155);
             this.btnUser.Name = "btnUser";
             this.btnUser.Size = new System.Drawing.Size(198, 50);
-            this.btnUser.TabIndex = 34;
+            this.btnUser.TabIndex = 2;
             this.btnUser.Text = "&User";
             this.btnUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUser.UseVisualStyleBackColor = false;
@@ -157,10 +159,10 @@
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSettings.ForeColor = System.Drawing.Color.Teal;
-            this.btnSettings.Location = new System.Drawing.Point(9, 205);
+            this.btnSettings.Location = new System.Drawing.Point(9, 255);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(198, 50);
-            this.btnSettings.TabIndex = 35;
+            this.btnSettings.TabIndex = 4;
             this.btnSettings.Text = "Se&ttings";
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSettings.UseVisualStyleBackColor = false;
@@ -171,7 +173,7 @@
             this.lblMarker.BackColor = System.Drawing.Color.Teal;
             this.lblMarker.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMarker.ForeColor = System.Drawing.Color.White;
-            this.lblMarker.Location = new System.Drawing.Point(210, 502);
+            this.lblMarker.Location = new System.Drawing.Point(210, 549);
             this.lblMarker.Name = "lblMarker";
             this.lblMarker.Size = new System.Drawing.Size(8, 50);
             this.lblMarker.TabIndex = 38;
@@ -184,22 +186,35 @@
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape3,
             this.rectangleShape2,
             this.rectangleShape1});
             this.shapeContainer1.Size = new System.Drawing.Size(1318, 654);
             this.shapeContainer1.TabIndex = 40;
             this.shapeContainer1.TabStop = false;
             // 
+            // rectangleShape3
+            // 
+            this.rectangleShape3.BackColor = System.Drawing.Color.Teal;
+            this.rectangleShape3.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape3.BorderColor = System.Drawing.Color.Teal;
+            this.rectangleShape3.Enabled = false;
+            this.rectangleShape3.Location = new System.Drawing.Point(209, 44);
+            this.rectangleShape3.Name = "rectangleShape3";
+            this.rectangleShape3.Size = new System.Drawing.Size(1101, 5);
+            // 
             // rectangleShape2
             // 
-            this.rectangleShape2.BorderColor = System.Drawing.Color.Teal;
+            this.rectangleShape2.BorderColor = System.Drawing.Color.Silver;
+            this.rectangleShape2.Enabled = false;
             this.rectangleShape2.Location = new System.Drawing.Point(219, 53);
             this.rectangleShape2.Name = "rectangleShape2";
             this.rectangleShape2.Size = new System.Drawing.Size(1091, 595);
             // 
             // rectangleShape1
             // 
-            this.rectangleShape1.BorderColor = System.Drawing.Color.Teal;
+            this.rectangleShape1.BorderColor = System.Drawing.Color.Silver;
+            this.rectangleShape1.Enabled = false;
             this.rectangleShape1.Location = new System.Drawing.Point(7, 53);
             this.rectangleShape1.Name = "rectangleShape1";
             this.rectangleShape1.Size = new System.Drawing.Size(201, 595);
@@ -212,10 +227,10 @@
             this.btnSubject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubject.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubject.ForeColor = System.Drawing.Color.Teal;
-            this.btnSubject.Location = new System.Drawing.Point(9, 261);
+            this.btnSubject.Location = new System.Drawing.Point(9, 205);
             this.btnSubject.Name = "btnSubject";
             this.btnSubject.Size = new System.Drawing.Size(198, 50);
-            this.btnSubject.TabIndex = 41;
+            this.btnSubject.TabIndex = 3;
             this.btnSubject.Text = "&Subject";
             this.btnSubject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSubject.UseVisualStyleBackColor = false;
@@ -226,7 +241,7 @@
             this.lblStatus.BackColor = System.Drawing.Color.Teal;
             this.lblStatus.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.White;
-            this.lblStatus.Location = new System.Drawing.Point(7, 6);
+            this.lblStatus.Location = new System.Drawing.Point(7, 5);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(202, 45);
             this.lblStatus.TabIndex = 95;
@@ -256,7 +271,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Simple Entrance Examination System";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -276,5 +293,6 @@
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
         private System.Windows.Forms.Button btnSubject;
         private System.Windows.Forms.Label lblStatus;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape3;
     }
 }

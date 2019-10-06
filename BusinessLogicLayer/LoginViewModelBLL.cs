@@ -25,6 +25,14 @@ namespace BusinessLogicLayer
             return _loginViewModelDAL.CheckLogIn(loginUser);
         }
 
+        public bool ChangePassword(LoginViewModel loginUser)
+        {
+            loginUser.Password = SetHashText(loginUser.Password);
+            loginUser.NewPassword = SetHashText(loginUser.NewPassword);
+            
+            return _loginViewModelDAL.ChangePassword(loginUser);
+        }
+
         private string SetHashText(string text)
         {
             StringBuilder sb;

@@ -37,10 +37,10 @@
             this.txtQuestion = new System.Windows.Forms.TextBox();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.lblCorrectAnswer = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.btnSave = new System.Windows.Forms.Button();
             this.rdbTrue = new System.Windows.Forms.RadioButton();
             this.rdbFalse = new System.Windows.Forms.RadioButton();
@@ -166,6 +166,14 @@
             this.shapeContainer1.TabIndex = 170;
             this.shapeContainer1.TabStop = false;
             // 
+            // rectangleShape3
+            // 
+            this.rectangleShape3.BorderColor = System.Drawing.Color.Gainsboro;
+            this.rectangleShape3.Enabled = false;
+            this.rectangleShape3.Location = new System.Drawing.Point(13, 210);
+            this.rectangleShape3.Name = "rectangleShape3";
+            this.rectangleShape3.Size = new System.Drawing.Size(566, 52);
+            // 
             // rectangleShape2
             // 
             this.rectangleShape2.BorderColor = System.Drawing.Color.Gainsboro;
@@ -197,14 +205,6 @@
             this.label7.TabIndex = 172;
             this.label7.Text = "Required";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // rectangleShape3
-            // 
-            this.rectangleShape3.BorderColor = System.Drawing.Color.Gainsboro;
-            this.rectangleShape3.Enabled = false;
-            this.rectangleShape3.Location = new System.Drawing.Point(13, 210);
-            this.rectangleShape3.Name = "rectangleShape3";
-            this.rectangleShape3.Size = new System.Drawing.Size(566, 52);
             // 
             // btnSave
             // 

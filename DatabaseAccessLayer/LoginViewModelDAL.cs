@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ValueObject;
 using ValueObject.ViewModel;
+using System.Data.Entity;
 
 namespace DatabaseAccessLayer
 {
@@ -16,6 +18,29 @@ namespace DatabaseAccessLayer
 
         }
 
+        public bool ChangePassword(LoginViewModel loginUser)
+        {
+            using (_context = new ExaminationContext())
+            {
+                SystemUser user = _context.SystemUser.Where(u => u.UserId == loginUser.UserId 
+                                                              && u.Pword == loginUser.Password)
+                                                              .SingleOrDefault();
+
+                if (user != null)
+                {
+                    user.Pword = loginUser.NewPassword;
+                    _context.Entry(user).State = EntityState.Modified;
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public bool CheckLogIn(LoginViewModel loginUser)
         {
             SystemUserViewModel userViewModel;
@@ -23,7 +48,8 @@ namespace DatabaseAccessLayer
             using (_context = new ExaminationContext())
             {
                 userViewModel = _context.SystemUser.Where(u => u.Username == loginUser.Username
-                    && u.Pword == loginUser.Password)
+                    && u.Pword == loginUser.Password
+                    && u.AccountStatus == true)
                         .Select(u => new SystemUserViewModel
                         {
                             UserId = u.UserId,
@@ -31,7 +57,7 @@ namespace DatabaseAccessLayer
                             FirstName = u.FirstName,
                             MiddleName = u.MiddleName,
                             UserLevel = u.UserLevel
-                        } )
+                        })
                         .SingleOrDefault();
             }
 

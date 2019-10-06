@@ -207,7 +207,7 @@
             this.lblEnterAnswer.Name = "lblEnterAnswer";
             this.lblEnterAnswer.Size = new System.Drawing.Size(496, 26);
             this.lblEnterAnswer.TabIndex = 180;
-            this.lblEnterAnswer.Text = "Enter Answer";
+            this.lblEnterAnswer.Text = "Answer";
             this.lblEnterAnswer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblEnterAnswer.Click += new System.EventHandler(this.lblEnterAnswer_Click);
             // 

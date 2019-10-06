@@ -12,34 +12,24 @@ namespace ValueObject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ExamineeTake()
         {
-            ExamineeResult = new HashSet<ExamineeResult>();
+            ExamineeExam = new HashSet<ExamineeExam>();
         }
 
-        [Key]
         public int ExamineeTakeId { get; set; }
-
-        public int ExamId { get; set; }
 
         public int ExamineeId { get; set; }
 
-        [StringLength(10)]
+        [Required]
+        [StringLength(8)]
         public string ExamCode { get; set; }
 
         public DateTime? DateTimeTaken { get; set; }
 
-        public DateTime? DateTimeEnded { get; set; }
-
-        public int? Score { get; set; }
-
         public int? PassingRate { get; set; }
-
-        public bool? ExamPasser { get; set; }
-
-        public virtual Exam Exam { get; set; }
 
         public virtual Examinee Examinee { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExamineeResult> ExamineeResult { get; set; }
+        public virtual ICollection<ExamineeExam> ExamineeExam { get; set; }
     }
 }

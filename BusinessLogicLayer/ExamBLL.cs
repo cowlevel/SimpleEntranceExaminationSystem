@@ -13,15 +13,12 @@ namespace BusinessLogicLayer
     public class ExamBLL
     {
         private ExamDAL _examDAL;
-        private ValueObjectValidator _objectValidator;
-        private List<ValidationResult> _validationResults;
-        private bool _isValid;
+
 
         public ExamBLL()
         {
             _examDAL = new ExamDAL();
         }
-
 
         public bool InsertExam(Exam exam)
         {

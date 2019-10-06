@@ -150,6 +150,13 @@ namespace PresentationLayer
                 txtWrongAnswer3.Focus();
                 return false;
             }
+            else if (string.Equals(txtCorrectAnswer.Text, txtWrongAnswer1.Text, StringComparison.CurrentCultureIgnoreCase)
+                     || string.Equals(txtCorrectAnswer.Text, txtWrongAnswer2.Text, StringComparison.CurrentCultureIgnoreCase)
+                     || string.Equals(txtCorrectAnswer.Text, txtWrongAnswer3.Text, StringComparison.CurrentCultureIgnoreCase))
+            {
+                lblStatus.Text = "  Correct answer must be unique";
+                return false;
+            }
 
             return true;
         }

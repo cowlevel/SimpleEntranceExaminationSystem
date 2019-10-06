@@ -28,19 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
             this.dgvExam = new System.Windows.Forms.DataGridView();
+            this.colExamId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colExaminationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTimeLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colItemCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAddDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cboSubject = new System.Windows.Forms.ComboBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.cboExamType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.label5 = new System.Windows.Forms.Label();
             this.numTimeLimit = new System.Windows.Forms.NumericUpDown();
             this.lblOutputTimeLimit = new System.Windows.Forms.Label();
@@ -52,16 +62,19 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblAddedBy = new System.Windows.Forms.Label();
             this.lblDateTimeAdded = new System.Windows.Forms.Label();
-            this.colExamId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colExaminationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTimeLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colItemCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAddDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dgvTotal = new System.Windows.Forms.DataGridView();
+            this.lblTotalExam = new System.Windows.Forms.Label();
+            this.lblTotalItem = new System.Windows.Forms.Label();
+            this.lblTotalTimeLimit = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIncompleteItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTimeLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStatus
@@ -95,14 +108,14 @@
             this.dgvExam.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.dgvExam.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvExam.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvExam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvExam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvExam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colExamId,
@@ -113,17 +126,96 @@
             this.colAddDelete,
             this.colDelete});
             this.dgvExam.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgvExam.Location = new System.Drawing.Point(16, 180);
+            this.dgvExam.Location = new System.Drawing.Point(14, 170);
             this.dgvExam.MultiSelect = false;
             this.dgvExam.Name = "dgvExam";
             this.dgvExam.ReadOnly = true;
             this.dgvExam.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvExam.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvExam.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvExam.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExam.Size = new System.Drawing.Size(1059, 401);
+            this.dgvExam.Size = new System.Drawing.Size(1059, 223);
             this.dgvExam.TabIndex = 3;
             this.dgvExam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExam_CellClick);
+            // 
+            // colExamId
+            // 
+            this.colExamId.DataPropertyName = "ExamId";
+            this.colExamId.HeaderText = "Exam Id";
+            this.colExamId.Name = "colExamId";
+            this.colExamId.ReadOnly = true;
+            this.colExamId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colExamId.Visible = false;
+            // 
+            // colSubject
+            // 
+            this.colSubject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colSubject.DataPropertyName = "SubjectName";
+            this.colSubject.HeaderText = "Subject";
+            this.colSubject.Name = "colSubject";
+            this.colSubject.ReadOnly = true;
+            this.colSubject.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colExaminationType
+            // 
+            this.colExaminationType.DataPropertyName = "ExaminationTypeString";
+            this.colExaminationType.HeaderText = "Exam Type";
+            this.colExaminationType.Name = "colExaminationType";
+            this.colExaminationType.ReadOnly = true;
+            this.colExaminationType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colExaminationType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colExaminationType.Width = 130;
+            // 
+            // colTimeLimit
+            // 
+            this.colTimeLimit.DataPropertyName = "TimeLimitString";
+            this.colTimeLimit.HeaderText = "Time Limit";
+            this.colTimeLimit.Name = "colTimeLimit";
+            this.colTimeLimit.ReadOnly = true;
+            this.colTimeLimit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colTimeLimit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colTimeLimit.Width = 150;
+            // 
+            // colItemCount
+            // 
+            this.colItemCount.DataPropertyName = "FullQuestionCount";
+            this.colItemCount.HeaderText = "Items";
+            this.colItemCount.Name = "colItemCount";
+            this.colItemCount.ReadOnly = true;
+            this.colItemCount.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colItemCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colItemCount.Width = 80;
+            // 
+            // colAddDelete
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(166)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(166)))), ((int)(((byte)(235)))));
+            this.colAddDelete.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colAddDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colAddDelete.HeaderText = "";
+            this.colAddDelete.Name = "colAddDelete";
+            this.colAddDelete.ReadOnly = true;
+            this.colAddDelete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colAddDelete.Text = "QUESTION";
+            this.colAddDelete.UseColumnTextForButtonValue = true;
+            // 
+            // colDelete
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCoral;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightCoral;
+            this.colDelete.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colDelete.HeaderText = "";
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colDelete.Text = "DELETE";
+            this.colDelete.UseColumnTextForButtonValue = true;
+            this.colDelete.Width = 70;
             // 
             // cboSubject
             // 
@@ -178,9 +270,9 @@
             // 
             this.rectangleShape1.BorderColor = System.Drawing.Color.Gainsboro;
             this.rectangleShape1.Enabled = false;
-            this.rectangleShape1.Location = new System.Drawing.Point(15, 144);
+            this.rectangleShape1.Location = new System.Drawing.Point(13, 134);
             this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(1060, 437);
+            this.rectangleShape1.Size = new System.Drawing.Size(1060, 259);
             // 
             // shapeContainer1
             // 
@@ -188,10 +280,19 @@
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape2,
             this.rectangleShape1});
             this.shapeContainer1.Size = new System.Drawing.Size(1091, 617);
             this.shapeContainer1.TabIndex = 56;
             this.shapeContainer1.TabStop = false;
+            // 
+            // rectangleShape2
+            // 
+            this.rectangleShape2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.rectangleShape2.Enabled = false;
+            this.rectangleShape2.Location = new System.Drawing.Point(13, 411);
+            this.rectangleShape2.Name = "rectangleShape2";
+            this.rectangleShape2.Size = new System.Drawing.Size(1060, 170);
             // 
             // label5
             // 
@@ -225,7 +326,7 @@
             this.numTimeLimit.TabIndex = 62;
             this.numTimeLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numTimeLimit.Value = new decimal(new int[] {
-            60,
+            15,
             0,
             0,
             0});
@@ -240,7 +341,7 @@
             this.lblOutputTimeLimit.Name = "lblOutputTimeLimit";
             this.lblOutputTimeLimit.Size = new System.Drawing.Size(148, 26);
             this.lblOutputTimeLimit.TabIndex = 63;
-            this.lblOutputTimeLimit.Text = "1 hour";
+            this.lblOutputTimeLimit.Text = "15 minutes";
             // 
             // lblReqLastName
             // 
@@ -332,7 +433,7 @@
             this.lblAddedBy.BackColor = System.Drawing.Color.Gray;
             this.lblAddedBy.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddedBy.ForeColor = System.Drawing.Color.White;
-            this.lblAddedBy.Location = new System.Drawing.Point(21, 149);
+            this.lblAddedBy.Location = new System.Drawing.Point(19, 139);
             this.lblAddedBy.Name = "lblAddedBy";
             this.lblAddedBy.Size = new System.Drawing.Size(523, 26);
             this.lblAddedBy.TabIndex = 117;
@@ -344,97 +445,145 @@
             this.lblDateTimeAdded.BackColor = System.Drawing.Color.Gray;
             this.lblDateTimeAdded.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTimeAdded.ForeColor = System.Drawing.Color.White;
-            this.lblDateTimeAdded.Location = new System.Drawing.Point(548, 149);
+            this.lblDateTimeAdded.Location = new System.Drawing.Point(546, 139);
             this.lblDateTimeAdded.Name = "lblDateTimeAdded";
             this.lblDateTimeAdded.Size = new System.Drawing.Size(522, 26);
             this.lblDateTimeAdded.TabIndex = 118;
             this.lblDateTimeAdded.Text = "Date and Time Created:";
             this.lblDateTimeAdded.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // colExamId
+            // dgvTotal
             // 
-            this.colExamId.DataPropertyName = "ExamId";
-            this.colExamId.HeaderText = "Exam Id";
-            this.colExamId.Name = "colExamId";
-            this.colExamId.ReadOnly = true;
-            this.colExamId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colExamId.Visible = false;
+            this.dgvTotal.AllowUserToAddRows = false;
+            this.dgvTotal.AllowUserToDeleteRows = false;
+            this.dgvTotal.AllowUserToResizeRows = false;
+            this.dgvTotal.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.dgvTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvTotal.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvTotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTotal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.colIncompleteItem});
+            this.dgvTotal.GridColor = System.Drawing.Color.Gainsboro;
+            this.dgvTotal.Location = new System.Drawing.Point(14, 446);
+            this.dgvTotal.MultiSelect = false;
+            this.dgvTotal.Name = "dgvTotal";
+            this.dgvTotal.ReadOnly = true;
+            this.dgvTotal.RowHeadersVisible = false;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTotal.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvTotal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTotal.Size = new System.Drawing.Size(789, 135);
+            this.dgvTotal.TabIndex = 119;
             // 
-            // colSubject
+            // lblTotalExam
             // 
-            this.colSubject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colSubject.DataPropertyName = "SubjectName";
-            this.colSubject.HeaderText = "Subject";
-            this.colSubject.Name = "colSubject";
-            this.colSubject.ReadOnly = true;
-            this.colSubject.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.lblTotalExam.BackColor = System.Drawing.Color.Gray;
+            this.lblTotalExam.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalExam.ForeColor = System.Drawing.Color.White;
+            this.lblTotalExam.Location = new System.Drawing.Point(808, 446);
+            this.lblTotalExam.Name = "lblTotalExam";
+            this.lblTotalExam.Size = new System.Drawing.Size(260, 40);
+            this.lblTotalExam.TabIndex = 120;
+            this.lblTotalExam.Text = "No. Of Subject With Exam: 0";
+            this.lblTotalExam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // colExaminationType
+            // lblTotalItem
             // 
-            this.colExaminationType.DataPropertyName = "ExaminationTypeString";
-            this.colExaminationType.HeaderText = "Exam Type";
-            this.colExaminationType.Name = "colExaminationType";
-            this.colExaminationType.ReadOnly = true;
-            this.colExaminationType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.colExaminationType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colExaminationType.Width = 130;
+            this.lblTotalItem.BackColor = System.Drawing.Color.Gray;
+            this.lblTotalItem.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalItem.ForeColor = System.Drawing.Color.White;
+            this.lblTotalItem.Location = new System.Drawing.Point(808, 536);
+            this.lblTotalItem.Name = "lblTotalItem";
+            this.lblTotalItem.Size = new System.Drawing.Size(260, 40);
+            this.lblTotalItem.TabIndex = 121;
+            this.lblTotalItem.Text = "Total No. Of Item: 0";
+            this.lblTotalItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // colTimeLimit
+            // lblTotalTimeLimit
             // 
-            this.colTimeLimit.DataPropertyName = "TimeLimitString";
-            this.colTimeLimit.HeaderText = "Time Limit";
-            this.colTimeLimit.Name = "colTimeLimit";
-            this.colTimeLimit.ReadOnly = true;
-            this.colTimeLimit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.colTimeLimit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colTimeLimit.Width = 150;
+            this.lblTotalTimeLimit.BackColor = System.Drawing.Color.Gray;
+            this.lblTotalTimeLimit.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalTimeLimit.ForeColor = System.Drawing.Color.White;
+            this.lblTotalTimeLimit.Location = new System.Drawing.Point(808, 491);
+            this.lblTotalTimeLimit.Name = "lblTotalTimeLimit";
+            this.lblTotalTimeLimit.Size = new System.Drawing.Size(260, 40);
+            this.lblTotalTimeLimit.TabIndex = 122;
+            this.lblTotalTimeLimit.Text = "Total Time Limit: 0";
+            this.lblTotalTimeLimit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // colItemCount
+            // label9
             // 
-            this.colItemCount.DataPropertyName = "FullQuestionCount";
-            this.colItemCount.HeaderText = "Items";
-            this.colItemCount.Name = "colItemCount";
-            this.colItemCount.ReadOnly = true;
-            this.colItemCount.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.colItemCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colItemCount.Width = 80;
+            this.label9.BackColor = System.Drawing.Color.Gray;
+            this.label9.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(19, 416);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(1049, 26);
+            this.label9.TabIndex = 123;
+            this.label9.Text = "Summary";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // colAddDelete
+            // dataGridViewTextBoxColumn2
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(166)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(166)))), ((int)(((byte)(235)))));
-            this.colAddDelete.DefaultCellStyle = dataGridViewCellStyle6;
-            this.colAddDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colAddDelete.HeaderText = "";
-            this.colAddDelete.Name = "colAddDelete";
-            this.colAddDelete.ReadOnly = true;
-            this.colAddDelete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.colAddDelete.Text = "QUESTION";
-            this.colAddDelete.UseColumnTextForButtonValue = true;
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "SubjectName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Subject";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // colDelete
+            // dataGridViewTextBoxColumn4
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightCoral;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightCoral;
-            this.colDelete.DefaultCellStyle = dataGridViewCellStyle7;
-            this.colDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colDelete.HeaderText = "";
-            this.colDelete.Name = "colDelete";
-            this.colDelete.ReadOnly = true;
-            this.colDelete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.colDelete.Text = "DELETE";
-            this.colDelete.UseColumnTextForButtonValue = true;
-            this.colDelete.Width = 70;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "TotalTimeLimit";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Time Limit";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn4.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "TotalItem";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Items";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn5.Width = 80;
+            // 
+            // colIncompleteItem
+            // 
+            this.colIncompleteItem.DataPropertyName = "TotalIncompleteItem";
+            this.colIncompleteItem.HeaderText = "Incomplete Item";
+            this.colIncompleteItem.Name = "colIncompleteItem";
+            this.colIncompleteItem.ReadOnly = true;
+            this.colIncompleteItem.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colIncompleteItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colIncompleteItem.Visible = false;
+            this.colIncompleteItem.Width = 120;
             // 
             // UCtrlExam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblTotalTimeLimit);
+            this.Controls.Add(this.lblTotalItem);
+            this.Controls.Add(this.lblTotalExam);
+            this.Controls.Add(this.dgvTotal);
             this.Controls.Add(this.lblDateTimeAdded);
             this.Controls.Add(this.lblAddedBy);
             this.Controls.Add(this.label6);
@@ -460,6 +609,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvExam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTimeLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -493,5 +643,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colItemCount;
         private System.Windows.Forms.DataGridViewButtonColumn colAddDelete;
         private System.Windows.Forms.DataGridViewButtonColumn colDelete;
+        private System.Windows.Forms.DataGridView dgvTotal;
+        private System.Windows.Forms.Label lblTotalExam;
+        private System.Windows.Forms.Label lblTotalItem;
+        private System.Windows.Forms.Label lblTotalTimeLimit;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIncompleteItem;
     }
 }

@@ -12,7 +12,7 @@ namespace ConsoleApp2EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Exam()
         {
-            ExamineeTake = new HashSet<ExamineeTake>();
+            ExamineeExam = new HashSet<ExamineeExam>();
             QuestionBank = new HashSet<QuestionBank>();
         }
 
@@ -22,9 +22,11 @@ namespace ConsoleApp2EF
 
         public int SubjectId { get; set; }
 
+        public int ExaminationType { get; set; }
+
         public int ItemCount { get; set; }
 
-        public bool ExamStatus { get; set; }
+        public int TimeLimit { get; set; }
 
         public DateTime? DateTimeAdded { get; set; }
 
@@ -33,7 +35,7 @@ namespace ConsoleApp2EF
         public virtual SystemUser SystemUser { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExamineeTake> ExamineeTake { get; set; }
+        public virtual ICollection<ExamineeExam> ExamineeExam { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QuestionBank> QuestionBank { get; set; }

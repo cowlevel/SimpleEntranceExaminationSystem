@@ -9,19 +9,11 @@ namespace ValueObject
     [Table("PassingRate")]
     public partial class PassingRate
     {
-        [Key]
-        [Column(Order = 0)]
         public int PassingRateId { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int UserId { get; set; }
 
-        [Key]
-        [Column("PassingRate", Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PassingRate1 { get; set; }
+        public int Rate { get; set; }
 
         public DateTime? DateTimeModified { get; set; }
 

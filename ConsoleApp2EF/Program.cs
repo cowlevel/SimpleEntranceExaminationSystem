@@ -205,20 +205,31 @@ namespace ConsoleApp2EF
                 //}
 
 
-                var subjects = context.Subject.Include(x => x.Exam)
-                    .Select(s => new
+                //var subjects = context.Subject.Include(x => x.Exam)
+                //    .Select(s => new
+                //    {
+                //        s.SubjectId,
+                //        s.SubjectName,
+                //        s.Description,
+                //        ExamCount = s.Exam.Count()
+                //    })
+                //    .ToList();
+
+                //foreach (var s in subjects)
+                //{
+                //    Console.WriteLine(s.SubjectName + " " + s.ExamCount);
+                //}
+
+                var checkExam = context.ExamineeAnswer
+                    .Include(e => e.QuestionBank)
+                    .Include(e => e.QuestionBank.QuestionBankHistory)
+                    .Select(a => new
                     {
-                        s.SubjectId,
-                        s.SubjectName,
-                        s.Description,
-                        ExamCount = s.Exam.Count()
+                        Question = a.QuestionBank.QuestionBankHistory.Where(x => a.DateTimeAnswered > x.DateTimeModified).OrderByDescending(o => o.DateTimeModified).FirstOrDefault().Question,
+                        Answer = a.ExamineeAnswer1,
+                        a.IsCorrect
                     })
                     .ToList();
-
-                foreach (var s in subjects)
-                {
-                    Console.WriteLine(s.SubjectName + " " + s.ExamCount);
-                }
             }
 
 

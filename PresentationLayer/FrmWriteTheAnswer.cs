@@ -19,7 +19,7 @@ namespace PresentationLayer
         private QuestionBankBLL _questionBankBLL;
         private List<QuestionBank> _questionBankList;
         private QuestionBank _question;
-
+        private FrmTOFWTAHistory _frmHistory;
 
         public FrmWriteTheAnswer()
         {
@@ -68,6 +68,11 @@ namespace PresentationLayer
 
             txtQuestion.Text = _question.Question;
             txtAnswer.Text = _question.CorrectAnswer;
+
+            if (_frmHistory != null && _frmHistory.Visible == true)
+            {
+                SetItemHistory();
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -80,6 +85,11 @@ namespace PresentationLayer
                 _questionBankBLL.UpdateQuestion(_question);
 
                 lblStatus.Text = string.Format("  Successfully updated Item No. {0}", numItemNo.Value);
+
+                if (_frmHistory != null && _frmHistory.Visible == true)
+                {
+                    SetItemHistory();
+                }
             }
         }
 
@@ -91,6 +101,27 @@ namespace PresentationLayer
         private void lblEnterAnswer_Click(object sender, EventArgs e)
         {
             txtAnswer.Focus();
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            SetItemHistory();
+        }
+
+        private void SetItemHistory()
+        {
+            if (_frmHistory == null || _frmHistory.IsDisposed)
+            {
+                _frmHistory = new FrmTOFWTAHistory();
+                _frmHistory.Show(this);
+                _frmHistory.SetItemNo(_question.QuestionNumber);
+                _frmHistory.SetHistory(_question.QuestionId);
+            }
+            else
+            {
+                _frmHistory.SetItemNo(_question.QuestionNumber);
+                _frmHistory.SetHistory(_question.QuestionId);
+            }
         }
 
         private bool InputsAreValid()
@@ -110,5 +141,7 @@ namespace PresentationLayer
 
             return true;
         }
+
+        
     }
 }

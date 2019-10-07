@@ -30,6 +30,8 @@ namespace ConsoleApp2EF
 
         public DateTime? DateTimeAdded { get; set; }
 
+        public bool? Archieved { get; set; }
+
         public virtual Subject Subject { get; set; }
 
         public virtual SystemUser SystemUser { get; set; }

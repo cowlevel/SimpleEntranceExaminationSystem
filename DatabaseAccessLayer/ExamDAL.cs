@@ -72,7 +72,7 @@ namespace DatabaseAccessLayer
             return examViewModelList;
         }
 
-        public DateTime GetServerDateTime(ExaminationContext context)
+        private DateTime GetServerDateTime(ExaminationContext context)
         {
             //DateTime dbServerDateTime = _context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
             //return dbServerDateTime;

@@ -44,6 +44,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.rdbTrue = new System.Windows.Forms.RadioButton();
             this.rdbFalse = new System.Windows.Forms.RadioButton();
+            this.btnHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numItemNo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -245,12 +246,28 @@
             this.rdbFalse.Text = "FALSE";
             this.rdbFalse.UseVisualStyleBackColor = true;
             // 
+            // btnHistory
+            // 
+            this.btnHistory.BackColor = System.Drawing.Color.Gray;
+            this.btnHistory.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistory.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistory.ForeColor = System.Drawing.Color.White;
+            this.btnHistory.Location = new System.Drawing.Point(470, 269);
+            this.btnHistory.Name = "btnHistory";
+            this.btnHistory.Size = new System.Drawing.Size(110, 40);
+            this.btnHistory.TabIndex = 5;
+            this.btnHistory.Text = "&HISTORY";
+            this.btnHistory.UseVisualStyleBackColor = false;
+            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
+            // 
             // FrmTrueOrFalse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(591, 317);
+            this.Controls.Add(this.btnHistory);
             this.Controls.Add(this.rdbFalse);
             this.Controls.Add(this.rdbTrue);
             this.Controls.Add(this.btnSave);
@@ -296,5 +313,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.RadioButton rdbTrue;
         private System.Windows.Forms.RadioButton rdbFalse;
+        private System.Windows.Forms.Button btnHistory;
     }
 }

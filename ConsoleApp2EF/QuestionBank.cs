@@ -13,6 +13,7 @@ namespace ConsoleApp2EF
         public QuestionBank()
         {
             ExamineeAnswer = new HashSet<ExamineeAnswer>();
+            QuestionBankHistory = new HashSet<QuestionBankHistory>();
         }
 
         public int ExamId { get; set; }
@@ -41,5 +42,8 @@ namespace ConsoleApp2EF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamineeAnswer> ExamineeAnswer { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<QuestionBankHistory> QuestionBankHistory { get; set; }
     }
 }

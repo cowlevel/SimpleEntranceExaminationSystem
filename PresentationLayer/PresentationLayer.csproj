@@ -89,11 +89,23 @@
     <Compile Include="FrmMultipleChoice.Designer.cs">
       <DependentUpon>FrmMultipleChoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMultipleChoiceHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMultipleChoiceHistory.Designer.cs">
+      <DependentUpon>FrmMultipleChoiceHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmQuestionBank.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmQuestionBank.Designer.cs">
       <DependentUpon>FrmQuestionBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTOFWTAHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTOFWTAHistory.Designer.cs">
+      <DependentUpon>FrmTOFWTAHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmTrueOrFalse.cs">
       <SubType>Form</SubType>
@@ -165,6 +177,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMultipleChoice.resx">
       <DependentUpon>FrmMultipleChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMultipleChoiceHistory.resx">
+      <DependentUpon>FrmMultipleChoiceHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTOFWTAHistory.resx">
+      <DependentUpon>FrmTOFWTAHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTrueOrFalse.resx">
       <DependentUpon>FrmTrueOrFalse.cs</DependentUpon>

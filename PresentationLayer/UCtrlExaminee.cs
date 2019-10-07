@@ -49,10 +49,7 @@ namespace PresentationLayer
 
         private void UCtrlExaminee_Load(object sender, EventArgs e)
         {
-            if (_examineeViewModelList.RowCount > 0)
-            {
-                dgvExaminee.ClearSelection();
-            }
+            dgvExaminee.ClearSelection();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

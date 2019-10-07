@@ -47,5 +47,10 @@ namespace BusinessLogicLayer
         {
             return _questionBankDAL.GetQuestionBankList(examId);
         }
+
+        public List<QuestionBankHistoryViewModel> GetQuestionBankHistoryViewModelList(int questionId)
+        {
+            return _questionBankDAL.GetQuestionBankHistoryViewModelList(questionId);
+        }
     }
 }

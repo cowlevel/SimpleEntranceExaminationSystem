@@ -31,7 +31,19 @@ namespace DatabaseAccessLayer
         {
             using (_context = new ExaminationContext())
             {
+                QuestionBankHistory questionHistory = new QuestionBankHistory();
+                questionHistory.QuestionId = question.QuestionId;
+                questionHistory.QuestionNumber = question.QuestionNumber;
+                questionHistory.Question = question.Question;
+                questionHistory.CorrectAnswer = question.CorrectAnswer;
+                questionHistory.WrongAnswer1 = question.WrongAnswer1;
+                questionHistory.WrongAnswer2 = question.WrongAnswer2;
+                questionHistory.WrongAnswer3 = question.WrongAnswer3;
+                questionHistory.UserId = UserInfo.UserId;
+                questionHistory.DateTimeModified = GetServerDateTime(_context);
+
                 _context.Entry(question).State = EntityState.Modified;
+                _context.QuestionBankHistory.Add(questionHistory);
                 _context.SaveChanges();
             }
         }
@@ -78,14 +90,38 @@ namespace DatabaseAccessLayer
             return questionBankList;
         }
 
-        public DateTime GetServerDateTime()
+        public List<QuestionBankHistoryViewModel> GetQuestionBankHistoryViewModelList(int questionId)
+        {
+            List<QuestionBankHistoryViewModel> questionBankHistoryList;
+
+            using (_context = new ExaminationContext())
+            {
+                questionBankHistoryList = _context.QuestionBankHistory.Include(u => u.SystemUser)
+                    .Where(q => q.QuestionId == questionId)
+                    .OrderByDescending(o => o.DateTimeModified)
+                    .Select(q => new QuestionBankHistoryViewModel
+                    {
+                        Question = q.Question,
+                        CorrectAnswer = q.CorrectAnswer,
+                        WrongAnswer1 = q.WrongAnswer1,
+                        WrongAnswer2 = q.WrongAnswer2,
+                        WrongAnswer3 = q.WrongAnswer3,
+                        DateTimeModified = q.DateTimeModified,
+                        ModifiedBy = string.Concat("[", q.SystemUser.Username, "] - ", q.SystemUser.FirstName, " ", q.SystemUser.LastName)
+                    })
+                    .ToList();
+            }
+
+            return questionBankHistoryList;
+        }
+
+        private DateTime GetServerDateTime(ExaminationContext context)
         {
             //DateTime dbServerDateTime = _context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
             //return dbServerDateTime;
-            using (_context = new ExaminationContext())
-            {
-                return _context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
-            }
+            return context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
         }
+
+
     }
 }

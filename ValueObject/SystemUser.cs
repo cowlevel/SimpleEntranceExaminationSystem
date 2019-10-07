@@ -15,6 +15,7 @@ namespace ValueObject
             Exam = new HashSet<Exam>();
             ExamineeFailure = new HashSet<ExamineeFailure>();
             PassingRate = new HashSet<PassingRate>();
+            QuestionBankHistory = new HashSet<QuestionBankHistory>();
         }
 
         [Key]
@@ -52,5 +53,8 @@ namespace ValueObject
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PassingRate> PassingRate { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<QuestionBankHistory> QuestionBankHistory { get; set; }
     }
 }

@@ -54,6 +54,7 @@
             this.rectangleShape4 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.btnHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numItemNo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -374,12 +375,28 @@
             this.rectangleShape2.Name = "rectangleShape2";
             this.rectangleShape2.Size = new System.Drawing.Size(566, 27);
             // 
+            // btnHistory
+            // 
+            this.btnHistory.BackColor = System.Drawing.Color.Gray;
+            this.btnHistory.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistory.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistory.ForeColor = System.Drawing.Color.White;
+            this.btnHistory.Location = new System.Drawing.Point(469, 523);
+            this.btnHistory.Name = "btnHistory";
+            this.btnHistory.Size = new System.Drawing.Size(110, 40);
+            this.btnHistory.TabIndex = 7;
+            this.btnHistory.Text = "&HISTORY";
+            this.btnHistory.UseVisualStyleBackColor = false;
+            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
+            // 
             // FrmMultipleChoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(591, 571);
+            this.Controls.Add(this.btnHistory);
             this.Controls.Add(this.lblWrongAnswer3);
             this.Controls.Add(this.lblWrongAnswer2);
             this.Controls.Add(this.label6);
@@ -442,5 +459,6 @@
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape3;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape4;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape5;
+        private System.Windows.Forms.Button btnHistory;
     }
 }

@@ -20,7 +20,9 @@ namespace ConsoleApp2EF
         [StringLength(150)]
         public string ExamineeAnswer1 { get; set; }
 
-        public bool CorrectAnswer { get; set; }
+        public bool IsCorrect { get; set; }
+
+        public DateTime DateTimeAnswered { get; set; }
 
         public virtual ExamineeExam ExamineeExam { get; set; }
 

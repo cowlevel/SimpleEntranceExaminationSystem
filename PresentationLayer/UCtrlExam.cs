@@ -239,7 +239,7 @@ namespace PresentationLayer
             if (examTotal.Count > 0)
             {
                 dgvTotal.DataSource = examTotal;
-
+                dgvTotal.ClearSelection();
                 lblTotalExam.Text = string.Format("No. Of Subject With Exam: {0}", examTotal.Count);
                 lblTotalTimeLimit.Text = string.Format("Total Time Limit: {0}", Conversions.TimeMinuteToString(examTotal.Sum(e => e.TimeLimit)));
                 lblTotalItem.Text = string.Format("Total No. Of Item: {0}", examTotal.Sum(e => e.TotalItem));

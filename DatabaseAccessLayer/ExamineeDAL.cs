@@ -117,7 +117,7 @@ namespace DatabaseAccessLayer
         /// </summary>
         /// <param name="context">DBContext</param>
         /// <returns></returns>
-        public DateTime GetServerDateTime()
+        private DateTime GetServerDateTime()
         {
             //DateTime dbServerDateTime = _context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
             //return dbServerDateTime;
@@ -127,7 +127,7 @@ namespace DatabaseAccessLayer
             }
         }
 
-        public DateTime GetServerDateTime(ExaminationContext context)
+        private DateTime GetServerDateTime(ExaminationContext context)
         {
             return context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
         }

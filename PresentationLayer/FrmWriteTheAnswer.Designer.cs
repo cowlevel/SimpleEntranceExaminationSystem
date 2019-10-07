@@ -42,6 +42,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblEnterAnswer = new System.Windows.Forms.Label();
             this.txtAnswer = new System.Windows.Forms.TextBox();
+            this.btnHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numItemNo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,12 +224,28 @@
             this.txtAnswer.Size = new System.Drawing.Size(566, 52);
             this.txtAnswer.TabIndex = 2;
             // 
+            // btnHistory
+            // 
+            this.btnHistory.BackColor = System.Drawing.Color.Gray;
+            this.btnHistory.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistory.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistory.ForeColor = System.Drawing.Color.White;
+            this.btnHistory.Location = new System.Drawing.Point(469, 269);
+            this.btnHistory.Name = "btnHistory";
+            this.btnHistory.Size = new System.Drawing.Size(110, 40);
+            this.btnHistory.TabIndex = 4;
+            this.btnHistory.Text = "&HISTORY";
+            this.btnHistory.UseVisualStyleBackColor = false;
+            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
+            // 
             // FrmWriteTheAnswer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(591, 317);
+            this.Controls.Add(this.btnHistory);
             this.Controls.Add(this.txtAnswer);
             this.Controls.Add(this.lblEnterAnswer);
             this.Controls.Add(this.label7);
@@ -271,5 +288,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblEnterAnswer;
         private System.Windows.Forms.TextBox txtAnswer;
+        private System.Windows.Forms.Button btnHistory;
     }
 }

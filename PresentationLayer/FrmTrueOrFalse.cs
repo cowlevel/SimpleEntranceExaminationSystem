@@ -19,7 +19,7 @@ namespace PresentationLayer
         private QuestionBankBLL _questionBankBLL;
         private List<QuestionBank> _questionBankList;
         private QuestionBank _question;
-
+        private FrmTOFWTAHistory _frmHistory;
 
         public FrmTrueOrFalse()
         {
@@ -58,8 +58,8 @@ namespace PresentationLayer
             rdbTrue.Checked = false;
             rdbFalse.Checked = false;
 
-            int questionNo = (int)numItemNo.Value;
-            _question = _questionBankList.Where(q => q.QuestionNumber == questionNo)
+            int questionNumber = (int)numItemNo.Value;
+            _question = _questionBankList.Where(q => q.QuestionNumber == questionNumber)
                 .SingleOrDefault();
 
             lblStatus.Text = string.Empty;
@@ -78,6 +78,11 @@ namespace PresentationLayer
             else if (_question.CorrectAnswer == "False")
             {
                 rdbFalse.Checked = true;
+            }
+
+            if (_frmHistory != null && _frmHistory.Visible == true)
+            {
+                SetItemHistory();
             }
         }
 
@@ -100,12 +105,38 @@ namespace PresentationLayer
                 _questionBankBLL.UpdateQuestion(_question);
 
                 lblStatus.Text = string.Format("  Successfully updated Item No. {0}", numItemNo.Value);
+
+                if (_frmHistory != null && _frmHistory.Visible == true)
+                {
+                    SetItemHistory();
+                }
             }
         }
 
         private void lblQuestion_Click(object sender, EventArgs e)
         {
             txtQuestion.Focus();
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            SetItemHistory();
+        }
+
+        private void SetItemHistory()
+        {
+            if (_frmHistory == null || _frmHistory.IsDisposed)
+            {
+                _frmHistory = new FrmTOFWTAHistory();
+                _frmHistory.Show(this);
+                _frmHistory.SetItemNo(_question.QuestionNumber);
+                _frmHistory.SetHistory(_question.QuestionId);
+            }
+            else
+            {
+                _frmHistory.SetItemNo(_question.QuestionNumber);
+                _frmHistory.SetHistory(_question.QuestionId);
+            }
         }
 
         private bool InputsAreValid()

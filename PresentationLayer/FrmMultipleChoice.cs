@@ -19,7 +19,8 @@ namespace PresentationLayer
         private QuestionBankBLL _questionBankBLL;
         private List<QuestionBank> _questionBankList;
         private QuestionBank _question;
-        
+        private FrmMultipleChoiceHistory _frmHistory;
+
 
         public FrmMultipleChoice()
         {
@@ -66,6 +67,11 @@ namespace PresentationLayer
                 _questionBankBLL.UpdateQuestion(_question);
 
                 lblStatus.Text = string.Format("  Successfully updated Item No. {0}", numItemNo.Value);
+
+                if (_frmHistory != null && _frmHistory.Visible == true)
+                {
+                    SetItemHistory();
+                }
             }
         }
 
@@ -87,6 +93,11 @@ namespace PresentationLayer
             txtWrongAnswer1.Text = _question.WrongAnswer1;
             txtWrongAnswer2.Text = _question.WrongAnswer1;
             txtWrongAnswer3.Text = _question.WrongAnswer1;
+
+            if (_frmHistory != null && _frmHistory.Visible == true)
+            {
+                SetItemHistory();
+            }
         }
 
         private void lblItemNo_Click(object sender, EventArgs e)
@@ -116,6 +127,27 @@ namespace PresentationLayer
         private void lblWrongAnswer3_Click(object sender, EventArgs e)
         {
             txtWrongAnswer3.Focus();
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            SetItemHistory();
+        }
+
+        private void SetItemHistory()
+        {
+            if (_frmHistory == null || _frmHistory.IsDisposed)
+            {
+                _frmHistory = new FrmMultipleChoiceHistory();
+                _frmHistory.Show(this);
+                _frmHistory.SetItemNo(_question.QuestionNumber);
+                _frmHistory.SetHistory(_question.QuestionId);
+            }
+            else
+            {
+                _frmHistory.SetItemNo(_question.QuestionNumber);
+                _frmHistory.SetHistory(_question.QuestionId);
+            }
         }
 
         private bool InputsAreValid()
@@ -160,5 +192,7 @@ namespace PresentationLayer
 
             return true;
         }
+
+        
     }
 }

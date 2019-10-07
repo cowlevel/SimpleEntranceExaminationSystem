@@ -15,12 +15,13 @@ namespace ValueObject
 
         public int QuestionId { get; set; }
 
-        [Column("ExamineeAnswer")]
         [Required]
         [StringLength(150)]
-        public string ExamineeAnswer1 { get; set; }
+        public string Answer { get; set; }
 
-        public bool CorrectAnswer { get; set; }
+        public bool IsCorrect { get; set; }
+
+        public DateTime DateTimeAnswered { get; set; }
 
         public virtual ExamineeExam ExamineeExam { get; set; }
 

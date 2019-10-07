@@ -19,20 +19,16 @@ namespace DatabaseAccessLayer
         public virtual DbSet<ExamineeExam> ExamineeExam { get; set; }
         public virtual DbSet<ExamineeFailure> ExamineeFailure { get; set; }
         public virtual DbSet<ExamineeTake> ExamineeTake { get; set; }
+        public virtual DbSet<PassingRate> PassingRate { get; set; }
         public virtual DbSet<QuestionBank> QuestionBank { get; set; }
+        public virtual DbSet<QuestionBankHistory> QuestionBankHistory { get; set; }
         public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<SystemUser> SystemUser { get; set; }
-        public virtual DbSet<PassingRate> PassingRate { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Exam>()
                 .HasMany(e => e.ExamineeExam)
-                .WithRequired(e => e.Exam)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Exam>()
-                .HasMany(e => e.QuestionBank)
                 .WithRequired(e => e.Exam)
                 .WillCascadeOnDelete(false);
 

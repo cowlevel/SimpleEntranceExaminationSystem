@@ -15,10 +15,9 @@ namespace ConsoleApp2EF
 
         public int QuestionId { get; set; }
 
-        [Column("ExamineeAnswer")]
         [Required]
         [StringLength(150)]
-        public string ExamineeAnswer1 { get; set; }
+        public string Answer { get; set; }
 
         public bool IsCorrect { get; set; }
 

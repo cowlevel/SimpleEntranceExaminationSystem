@@ -16,6 +16,7 @@ namespace PresentationLayer
     public partial class FrmMain : Form
     {
         private UCtrlExaminee _ctrlExaminee;
+        private UCtrlExamCode _CtrlExamCode;
         private UCtrlExam _ctrlExam;
         private UCtrlUser _ctrlUser;
         private UCtrlPassword _ctrlPassword;
@@ -158,6 +159,16 @@ namespace PresentationLayer
             {
                 pnlMain.Controls[0].Dispose();
             }
+        }
+
+        private void btnExamCode_Click(object sender, EventArgs e)
+        {
+            SetButtonColor("btnExamCode");
+            SetMarkerProperties(btnExamCode.Top);
+
+            DisposePanelControl();
+            _CtrlExamCode = new UCtrlExamCode();
+            pnlMain.Controls.Add(_CtrlExamCode);
         }
     }
 }

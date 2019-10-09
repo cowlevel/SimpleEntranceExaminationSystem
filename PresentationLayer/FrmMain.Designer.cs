@@ -43,6 +43,8 @@
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.btnSubject = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.btnExamCode = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblWelcome
@@ -125,7 +127,7 @@
             this.btnCreateExam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateExam.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateExam.ForeColor = System.Drawing.Color.Teal;
-            this.btnCreateExam.Location = new System.Drawing.Point(9, 105);
+            this.btnCreateExam.Location = new System.Drawing.Point(9, 161);
             this.btnCreateExam.Name = "btnCreateExam";
             this.btnCreateExam.Size = new System.Drawing.Size(198, 50);
             this.btnCreateExam.TabIndex = 1;
@@ -142,7 +144,7 @@
             this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUser.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUser.ForeColor = System.Drawing.Color.Teal;
-            this.btnUser.Location = new System.Drawing.Point(9, 155);
+            this.btnUser.Location = new System.Drawing.Point(9, 211);
             this.btnUser.Name = "btnUser";
             this.btnUser.Size = new System.Drawing.Size(198, 50);
             this.btnUser.TabIndex = 2;
@@ -159,7 +161,7 @@
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSettings.ForeColor = System.Drawing.Color.Teal;
-            this.btnSettings.Location = new System.Drawing.Point(9, 255);
+            this.btnSettings.Location = new System.Drawing.Point(9, 361);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(198, 50);
             this.btnSettings.TabIndex = 4;
@@ -227,7 +229,7 @@
             this.btnSubject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubject.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubject.ForeColor = System.Drawing.Color.Teal;
-            this.btnSubject.Location = new System.Drawing.Point(9, 205);
+            this.btnSubject.Location = new System.Drawing.Point(9, 261);
             this.btnSubject.Name = "btnSubject";
             this.btnSubject.Size = new System.Drawing.Size(198, 50);
             this.btnSubject.TabIndex = 3;
@@ -248,12 +250,47 @@
             this.lblStatus.Text = "UNKNOWN SCHOOL";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnExamCode
+            // 
+            this.btnExamCode.BackColor = System.Drawing.Color.White;
+            this.btnExamCode.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnExamCode.FlatAppearance.BorderSize = 0;
+            this.btnExamCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExamCode.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExamCode.ForeColor = System.Drawing.Color.Teal;
+            this.btnExamCode.Location = new System.Drawing.Point(9, 105);
+            this.btnExamCode.Name = "btnExamCode";
+            this.btnExamCode.Size = new System.Drawing.Size(198, 50);
+            this.btnExamCode.TabIndex = 96;
+            this.btnExamCode.Text = "E&xam Code";
+            this.btnExamCode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExamCode.UseVisualStyleBackColor = false;
+            this.btnExamCode.Click += new System.EventHandler(this.btnExamCode_Click);
+            // 
+            // btnReport
+            // 
+            this.btnReport.BackColor = System.Drawing.Color.White;
+            this.btnReport.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnReport.FlatAppearance.BorderSize = 0;
+            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReport.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.ForeColor = System.Drawing.Color.Teal;
+            this.btnReport.Location = new System.Drawing.Point(9, 311);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(198, 50);
+            this.btnReport.TabIndex = 97;
+            this.btnReport.Text = "&Report";
+            this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReport.UseVisualStyleBackColor = false;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1318, 654);
+            this.Controls.Add(this.btnReport);
+            this.Controls.Add(this.btnExamCode);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnSubject);
             this.Controls.Add(this.pnlMain);
@@ -294,5 +331,7 @@
         private System.Windows.Forms.Button btnSubject;
         private System.Windows.Forms.Label lblStatus;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape3;
+        private System.Windows.Forms.Button btnExamCode;
+        private System.Windows.Forms.Button btnReport;
     }
 }

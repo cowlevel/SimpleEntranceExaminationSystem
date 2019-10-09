@@ -46,6 +46,7 @@
     <Compile Include="ExamineeBLL.cs" />
     <Compile Include="ExamineeFailureBLL.cs" />
     <Compile Include="ExamineeResultBLL.cs" />
+    <Compile Include="ExamineeTakeBLL.cs" />
     <Compile Include="ExamTakeBLL.cs" />
     <Compile Include="LoginViewModelBLL.cs" />
     <Compile Include="PassingRateBLL.cs" />

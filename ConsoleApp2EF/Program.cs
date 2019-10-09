@@ -220,21 +220,60 @@ namespace ConsoleApp2EF
                 //    Console.WriteLine(s.SubjectName + " " + s.ExamCount);
                 //}
 
-                var checkExam = context.ExamineeAnswer
-                    .Include(e => e.QuestionBank)
-                    .Include(e => e.QuestionBank.QuestionBankHistory)
-                    .Select(a => new
+                //  DAYS TO WAIT
+                ////var getDaysToWait = context.Examinee.Include(e => e.ExamineeTake)
+
+                ////    //.OrderByDescending(o => o.ExamineeTake.)
+                ////    .Select(e => new GetDaysToWait
+                ////    {
+                ////        ExamineeId = e.ExamineeId,
+                ////        FullName = e.LastName + ", " + e.FirstName,
+                ////        GG = e.ExamineeTake.OrderByDescending(o => o.CodeDateTimeIssued).FirstOrDefault().CodeDateTimeIssued,
+                ////        WaitDays = e.ExamineeTake.OrderByDescending(o => o.CodeDateTimeIssued).FirstOrDefault().CodeDateTimeIssued == null ?
+                ////                    null : DbFunctions.AddDays(e.ExamineeTake.OrderByDescending(o => o.CodeDateTimeIssued).FirstOrDefault().CodeDateTimeIssued, 60)
+
+                ////    })
+                ////    .ToList();
+
+                DateTime dt = context.Database.SqlQuery< DateTime>("SELECT GETDATE()").First();
+
+                var getDaysToWait = context.Examinee.Include(e => e.ExamineeTake)
+                    .GroupBy(g => new
                     {
-                        Question = a.QuestionBank.QuestionBankHistory.Where(x => a.DateTimeAnswered > x.DateTimeModified).OrderByDescending(o => o.DateTimeModified).FirstOrDefault().Question,
-                        Answer = a.ExamineeAnswer1,
-                        a.IsCorrect
+                        g.ExamineeId,
+                        CurrentDateTime = dt,
+                        FullName = string.Concat(g.LastName + ", " + g.FirstName + " " + (string.IsNullOrEmpty(g.MiddleName) ? "" : g.MiddleName)),
+                        g.Email,
+                        WaitDays = g.ExamineeTake.OrderByDescending(o => o.CodeDateTimeIssued).FirstOrDefault().CodeDateTimeIssued
+                    })
+                    .Select(e => new GetDaysToWait
+                    {
+                        ExamineeId = e.Key.ExamineeId,
+                        FullName = e.Key.FullName,
+                        EmailX = e.Key.Email,
+                        CurrentDateTime = e.Key.CurrentDateTime,
+                        WaitDays = e.Key.WaitDays == null ? null : DbFunctions.AddDays(e.Key.WaitDays, 60)
                     })
                     .ToList();
+
+                foreach (var examinee in getDaysToWait)
+                {
+                    Console.WriteLine(examinee.ExamineeId + "|" + examinee.FullName + "|" + examinee.CurrentDateTime + "|" + examinee.WaitDays);
+                }
             }
 
 
             Console.WriteLine("press any key to close.");
             Console.ReadKey();
+        }
+
+        public class GetDaysToWait
+        {
+            public int ExamineeId { get; set; }
+            public string FullName { get; set; }
+            public DateTime? WaitDays { get; set; }
+            public DateTime? CurrentDateTime { get; set; }
+            public string EmailX { get; set; }
         }
 
         public static class Conversions

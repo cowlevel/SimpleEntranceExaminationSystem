@@ -23,13 +23,21 @@ namespace ValueObject
         [StringLength(8)]
         public string ExamCode { get; set; }
 
-        public DateTime? DateTimeTaken { get; set; }
+        public int UserId { get; set; }
+
+        public DateTime CodeDateTimeIssued { get; set; }
+
+        public DateTime? ExamDateTimeTaken { get; set; }
 
         public int? PassingRate { get; set; }
+
+        public bool? Result { get; set; }
 
         public virtual Examinee Examinee { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamineeExam> ExamineeExam { get; set; }
+
+        public virtual SystemUser SystemUser { get; set; }
     }
 }

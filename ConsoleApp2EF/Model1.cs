@@ -67,6 +67,11 @@ namespace ConsoleApp2EF
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SystemUser>()
+                .HasMany(e => e.ExamineeTake)
+                .WithRequired(e => e.SystemUser)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SystemUser>()
                 .HasMany(e => e.PassingRate)
                 .WithRequired(e => e.SystemUser)
                 .WillCascadeOnDelete(false);

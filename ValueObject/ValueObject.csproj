@@ -56,6 +56,7 @@
     <Compile Include="Subject.cs" />
     <Compile Include="SystemUser.cs" />
     <Compile Include="ViewModel\ExamineeFailureViewModel.cs" />
+    <Compile Include="ViewModel\ExamineeTakeStatusViewModel.cs" />
     <Compile Include="ViewModel\ExamineeViewModel.cs" />
     <Compile Include="ViewModel\ExamViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

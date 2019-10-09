@@ -54,6 +54,7 @@
     <Compile Include="ExaminationContext.cs" />
     <Compile Include="ExamineeDAL.cs" />
     <Compile Include="ExamineeFailureDAL.cs" />
+    <Compile Include="ExamineeTakeDAL.cs" />
     <Compile Include="LoginViewModelDAL.cs" />
     <Compile Include="PassingRateDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

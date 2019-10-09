@@ -14,6 +14,7 @@ namespace ConsoleApp2EF
         {
             Exam = new HashSet<Exam>();
             ExamineeFailure = new HashSet<ExamineeFailure>();
+            ExamineeTake = new HashSet<ExamineeTake>();
             PassingRate = new HashSet<PassingRate>();
             QuestionBankHistory = new HashSet<QuestionBankHistory>();
         }
@@ -50,6 +51,9 @@ namespace ConsoleApp2EF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamineeFailure> ExamineeFailure { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExamineeTake> ExamineeTake { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PassingRate> PassingRate { get; set; }

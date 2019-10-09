@@ -127,6 +127,12 @@
     <Compile Include="UCtrlExam.Designer.cs">
       <DependentUpon>UCtrlExam.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCtrlExamCode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrlExamCode.Designer.cs">
+      <DependentUpon>UCtrlExamCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrlExaminee.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -201,6 +207,9 @@
     </Compile>
     <EmbeddedResource Include="UCtrlExam.resx">
       <DependentUpon>UCtrlExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrlExamCode.resx">
+      <DependentUpon>UCtrlExamCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrlExaminee.resx">
       <DependentUpon>UCtrlExaminee.cs</DependentUpon>

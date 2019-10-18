@@ -52,6 +52,16 @@ namespace DatabaseAccessLayer
             }
         }
 
+        public void IncreaseExamineeExamTaken(int examineeId)
+        {
+            using (_context = new ExaminationContext())
+            {
+                Examinee examinee = _context.Examinee.Find(examineeId);
+                examinee.ExamTakes += 1;
+                _context.SaveChanges();
+            }
+        }
+
         public PagedResult<ExamineeViewModel> GetExamineeListByNameOrEmailViewModel(int pageNumber, int pageSize, string nameOrEmail)
         {
             PagedResult<ExamineeViewModel> examineeListViewModel;
@@ -112,12 +122,7 @@ namespace DatabaseAccessLayer
             return examineeListViewModel;
         }
 
-        /// <summary>
-        /// Get database server current date and time.
-        /// </summary>
-        /// <param name="context">DBContext</param>
-        /// <returns></returns>
-        private DateTime GetServerDateTime()
+        public DateTime GetServerDateTime()
         {
             //DateTime dbServerDateTime = _context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
             //return dbServerDateTime;

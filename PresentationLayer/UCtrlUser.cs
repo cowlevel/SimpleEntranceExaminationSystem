@@ -162,10 +162,13 @@ namespace PresentationLayer
 
         private void txtLastName_Leave(object sender, EventArgs e)
         {
-            if ((btnAdd.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0) 
-                || (btnEdit.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0))    //  ADD NEW
+            if (btnAdd.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0)    //  ADD NEW
             {
                 lblUsernameOutput.Text = txtLastName.Text.ToLower().Replace(" ", "") + _userCount.ToString("000");
+            }
+            else if (btnEdit.Text == "&CANCEL" && txtLastName.Text.Replace(" ", "").Length != 0)
+            {
+                lblUsernameOutput.Text = txtLastName.Text.ToLower().Replace(" ", "") + _userId.ToString("000"); 
             }
         }
 

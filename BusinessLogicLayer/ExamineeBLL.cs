@@ -81,9 +81,19 @@ namespace BusinessLogicLayer
             _examineeDAL.DeleteExaminee(examineeId);
         }
 
-        public void GetExaminee()
+        public void IncreaseExamineeExamTaken(int examineeId)
         {
-            //var v = GetExamineeListViewModel(1, 5);
+            _examineeDAL.IncreaseExamineeExamTaken(examineeId);
+        }
+
+        public int GetExamineeCount()
+        {
+            return _examineeDAL.GetExamineeCount();
+        }
+
+        public DateTime GetServerDateTime()
+        {
+            return _examineeDAL.GetServerDateTime();
         }
 
         public PagedResult<ExamineeViewModel> GetExamineeListViewModel(int pageNumber, int pageSize)

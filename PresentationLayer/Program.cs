@@ -17,7 +17,7 @@ namespace PresentationLayer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FrmLogIn());
-            Application.Run(new FrmMain());
+            Application.Run(new FrmLogIn());
 
             //Application.Run(new FrmAbout());
 

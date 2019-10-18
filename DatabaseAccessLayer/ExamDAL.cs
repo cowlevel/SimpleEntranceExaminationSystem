@@ -38,6 +38,15 @@ namespace DatabaseAccessLayer
                 _context.SaveChanges();
             }
         }
+
+        public void SendExamToArchieve(int examId)
+        {
+            using (_context = new ExaminationContext())
+            {
+                _context.Exam.Where(e => e.ExamId == examId).Single().Archived = true;
+                _context.SaveChanges();
+            }
+        }
         
         public List<ExamViewModel> GetExamViewModelList()
         {
@@ -48,7 +57,7 @@ namespace DatabaseAccessLayer
                 examViewModelList = _context.Exam.Include(u => u.SystemUser)
                     .Include(s => s.Subject)
                     .Include(q => q.QuestionBank)
-                    .Where(e => e.Archieved == false)
+                    .Where(e => e.Archived == false)
                     .OrderBy(e => e.ExamId)
                     .Select(e => new ExamViewModel
                     {
@@ -70,6 +79,28 @@ namespace DatabaseAccessLayer
             }
 
             return examViewModelList;
+        }
+
+        public List<Exam> GetActiveExamList()
+        {
+            List<Exam> examList;
+
+            using (_context = new ExaminationContext())
+            {
+                examList = _context.Exam.Include(q => q.QuestionBank).Include(s => s.Subject).Include(s => s.QuestionBank)
+                    .Where(q => q.Archived == false && q.QuestionBank.Any(z => z.Question != null))
+                    .ToList();
+            }
+
+            return examList;
+        }
+
+        public DateTime GetDateTime()
+        {
+            using (_context = new ExaminationContext())
+            {
+                return _context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();
+            }
         }
 
         private DateTime GetServerDateTime(ExaminationContext context)

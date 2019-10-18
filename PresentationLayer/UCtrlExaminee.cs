@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
+﻿using BusinessLogicLayer;
+using System;
 using System.Data;
+using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BusinessLogicLayer;
+using Utility;
 using ValueObject;
 using ValueObject.ViewModel;
-using Utility;
 
 namespace PresentationLayer
 {
@@ -33,11 +29,11 @@ namespace PresentationLayer
         {
             InitializeComponent();
 
-            numYearGraduated.Maximum = DateTime.Now.Year + 1;
+            _examineeBLL = new ExamineeBLL();
+
+            numYearGraduated.Maximum = _examineeBLL.GetServerDateTime().Year + 1;
             numYearGraduated.Value = numYearGraduated.Maximum - 1;
             dgvExaminee.AutoGenerateColumns = false;
-
-            _examineeBLL = new ExamineeBLL();
 
             PopulateExamineeDatagridView();
 
@@ -237,7 +233,7 @@ namespace PresentationLayer
             }
             else
             {
-                lblSearchResult.Text = "Please enter name to search";
+                lblSearchResult.Text = "Please enter name/email to search";
             }
         }
 
@@ -580,7 +576,7 @@ namespace PresentationLayer
                 txtSchoolName.Text = _examineeViewModelList.Results[index].LastSchoolAttended;
                 numYearGraduated.Value = _examineeViewModelList.Results[index].YearGraduated;
 
-                lblExamTakes.Text = string.Format("Exam takes: {0} time(s)", _examineeViewModelList.Results[index].ExamTakes);
+                lblExamTakes.Text = string.Format("Exam take: {0} time(s)", _examineeViewModelList.Results[index].ExamTakes);
                 lblDateTimeAdded.Text = string.Format("Date and time added:\n{0}", _examineeViewModelList.Results[index].DateTimeAdded);
 
                 btnEdit.Enabled = true; //  enable EDIT button

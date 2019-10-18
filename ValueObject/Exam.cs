@@ -30,7 +30,7 @@ namespace ValueObject
 
         public DateTime? DateTimeAdded { get; set; }
 
-        public bool? Archieved { get; set; }
+        public bool? Archived { get; set; }
 
         public virtual Subject Subject { get; set; }
 

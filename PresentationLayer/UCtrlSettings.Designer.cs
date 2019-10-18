@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblStatus = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -62,6 +62,10 @@
             this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.rectangleShape6 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape4 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape5 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPassingRate)).BeginInit();
@@ -120,6 +124,7 @@
             this.dgvPassingRate.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dgvPassingRate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.dgvPassingRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPassingRate.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvPassingRate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPassingRate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colRate,
@@ -131,8 +136,8 @@
             this.dgvPassingRate.Name = "dgvPassingRate";
             this.dgvPassingRate.ReadOnly = true;
             this.dgvPassingRate.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvPassingRate.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvPassingRate.RowsDefaultCellStyle = dataGridViewCellStyle42;
             this.dgvPassingRate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPassingRate.Size = new System.Drawing.Size(1031, 397);
             this.dgvPassingRate.TabIndex = 120;
@@ -140,8 +145,8 @@
             // colRate
             // 
             this.colRate.DataPropertyName = "Rate";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colRate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colRate.DefaultCellStyle = dataGridViewCellStyle40;
             this.colRate.HeaderText = "Passing Rate";
             this.colRate.Name = "colRate";
             this.colRate.ReadOnly = true;
@@ -152,9 +157,9 @@
             // colDateTimeModified
             // 
             this.colDateTimeModified.DataPropertyName = "DateTimeModified";
-            dataGridViewCellStyle2.Format = "G";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colDateTimeModified.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle41.Format = "G";
+            dataGridViewCellStyle41.NullValue = null;
+            this.colDateTimeModified.DefaultCellStyle = dataGridViewCellStyle41;
             this.colDateTimeModified.HeaderText = "Date Time";
             this.colDateTimeModified.Name = "colDateTimeModified";
             this.colDateTimeModified.ReadOnly = true;
@@ -174,12 +179,12 @@
             // 
             // lblPassingRate
             // 
-            this.lblPassingRate.BackColor = System.Drawing.Color.Gray;
+            this.lblPassingRate.BackColor = System.Drawing.Color.Transparent;
             this.lblPassingRate.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassingRate.ForeColor = System.Drawing.Color.White;
-            this.lblPassingRate.Location = new System.Drawing.Point(12, 13);
+            this.lblPassingRate.ForeColor = System.Drawing.Color.Teal;
+            this.lblPassingRate.Location = new System.Drawing.Point(13, 14);
             this.lblPassingRate.Name = "lblPassingRate";
-            this.lblPassingRate.Size = new System.Drawing.Size(325, 35);
+            this.lblPassingRate.Size = new System.Drawing.Size(323, 33);
             this.lblPassingRate.TabIndex = 119;
             this.lblPassingRate.Text = "The Current Passing Rate Is:";
             this.lblPassingRate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -201,12 +206,12 @@
             // 
             // lblExample
             // 
-            this.lblExample.BackColor = System.Drawing.Color.Gray;
+            this.lblExample.BackColor = System.Drawing.Color.Transparent;
             this.lblExample.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExample.ForeColor = System.Drawing.Color.White;
-            this.lblExample.Location = new System.Drawing.Point(346, 13);
+            this.lblExample.ForeColor = System.Drawing.Color.Teal;
+            this.lblExample.Location = new System.Drawing.Point(347, 14);
             this.lblExample.Name = "lblExample";
-            this.lblExample.Size = new System.Drawing.Size(699, 72);
+            this.lblExample.Size = new System.Drawing.Size(697, 72);
             this.lblExample.TabIndex = 117;
             this.lblExample.Text = "Ex. Subject \'A\' with total item of 100";
             this.lblExample.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -262,6 +267,8 @@
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape3,
+            this.rectangleShape6,
             this.rectangleShape1});
             this.shapeContainer1.Size = new System.Drawing.Size(1052, 507);
             this.shapeContainer1.TabIndex = 121;
@@ -271,9 +278,9 @@
             // 
             this.rectangleShape1.BorderColor = System.Drawing.Color.Gainsboro;
             this.rectangleShape1.Enabled = false;
-            this.rectangleShape1.Location = new System.Drawing.Point(9, 101);
+            this.rectangleShape1.Location = new System.Drawing.Point(9, 102);
             this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(1032, 395);
+            this.rectangleShape1.Size = new System.Drawing.Size(1032, 394);
             // 
             // tabPage2
             // 
@@ -300,6 +307,7 @@
             this.dgvExamineeFailure.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dgvExamineeFailure.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.dgvExamineeFailure.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvExamineeFailure.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvExamineeFailure.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExamineeFailure.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -311,8 +319,8 @@
             this.dgvExamineeFailure.Name = "dgvExamineeFailure";
             this.dgvExamineeFailure.ReadOnly = true;
             this.dgvExamineeFailure.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvExamineeFailure.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvExamineeFailure.RowsDefaultCellStyle = dataGridViewCellStyle39;
             this.dgvExamineeFailure.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvExamineeFailure.Size = new System.Drawing.Size(1031, 397);
             this.dgvExamineeFailure.TabIndex = 125;
@@ -320,8 +328,8 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "WaitDays";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle37;
             this.dataGridViewTextBoxColumn1.HeaderText = "Days To Wait";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -332,9 +340,9 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "DateTimeModified";
-            dataGridViewCellStyle5.Format = "G";
-            dataGridViewCellStyle5.NullValue = null;
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle38.Format = "G";
+            dataGridViewCellStyle38.NullValue = null;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle38;
             this.dataGridViewTextBoxColumn2.HeaderText = "Date Time";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -380,24 +388,24 @@
             // 
             // lblExamineeFail
             // 
-            this.lblExamineeFail.BackColor = System.Drawing.Color.Gray;
+            this.lblExamineeFail.BackColor = System.Drawing.Color.Transparent;
             this.lblExamineeFail.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExamineeFail.ForeColor = System.Drawing.Color.White;
-            this.lblExamineeFail.Location = new System.Drawing.Point(346, 13);
+            this.lblExamineeFail.ForeColor = System.Drawing.Color.Teal;
+            this.lblExamineeFail.Location = new System.Drawing.Point(347, 14);
             this.lblExamineeFail.Name = "lblExamineeFail";
-            this.lblExamineeFail.Size = new System.Drawing.Size(699, 72);
+            this.lblExamineeFail.Size = new System.Drawing.Size(697, 72);
             this.lblExamineeFail.TabIndex = 123;
             this.lblExamineeFail.Text = "Please set day(s) to wait for failed examinee";
             this.lblExamineeFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblWaitDays
             // 
-            this.lblWaitDays.BackColor = System.Drawing.Color.Gray;
+            this.lblWaitDays.BackColor = System.Drawing.Color.Transparent;
             this.lblWaitDays.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWaitDays.ForeColor = System.Drawing.Color.White;
-            this.lblWaitDays.Location = new System.Drawing.Point(12, 13);
+            this.lblWaitDays.ForeColor = System.Drawing.Color.Teal;
+            this.lblWaitDays.Location = new System.Drawing.Point(13, 14);
             this.lblWaitDays.Name = "lblWaitDays";
-            this.lblWaitDays.Size = new System.Drawing.Size(325, 35);
+            this.lblWaitDays.Size = new System.Drawing.Size(323, 33);
             this.lblWaitDays.TabIndex = 122;
             this.lblWaitDays.Text = "Please set days to wait";
             this.lblWaitDays.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -435,6 +443,8 @@
             this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer2.Name = "shapeContainer2";
             this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape5,
+            this.rectangleShape4,
             this.rectangleShape2});
             this.shapeContainer2.Size = new System.Drawing.Size(1052, 507);
             this.shapeContainer2.TabIndex = 126;
@@ -456,6 +466,38 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Exam Archieve";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // rectangleShape6
+            // 
+            this.rectangleShape6.BorderColor = System.Drawing.Color.Gainsboro;
+            this.rectangleShape6.Enabled = false;
+            this.rectangleShape6.Location = new System.Drawing.Point(9, 10);
+            this.rectangleShape6.Name = "rectangleShape6";
+            this.rectangleShape6.Size = new System.Drawing.Size(324, 34);
+            // 
+            // rectangleShape3
+            // 
+            this.rectangleShape3.BorderColor = System.Drawing.Color.Gainsboro;
+            this.rectangleShape3.Enabled = false;
+            this.rectangleShape3.Location = new System.Drawing.Point(343, 10);
+            this.rectangleShape3.Name = "rectangleShape3";
+            this.rectangleShape3.Size = new System.Drawing.Size(698, 73);
+            // 
+            // rectangleShape4
+            // 
+            this.rectangleShape4.BorderColor = System.Drawing.Color.Gainsboro;
+            this.rectangleShape4.Enabled = false;
+            this.rectangleShape4.Location = new System.Drawing.Point(9, 10);
+            this.rectangleShape4.Name = "rectangleShape4";
+            this.rectangleShape4.Size = new System.Drawing.Size(324, 34);
+            // 
+            // rectangleShape5
+            // 
+            this.rectangleShape5.BorderColor = System.Drawing.Color.Gainsboro;
+            this.rectangleShape5.Enabled = false;
+            this.rectangleShape5.Location = new System.Drawing.Point(343, 10);
+            this.rectangleShape5.Name = "rectangleShape5";
+            this.rectangleShape5.Size = new System.Drawing.Size(698, 73);
             // 
             // UCtrlSettings
             // 
@@ -508,5 +550,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer2;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape6;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape3;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape4;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape5;
     }
 }

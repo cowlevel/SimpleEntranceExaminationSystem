@@ -25,7 +25,7 @@ namespace ValueObject
 
         public int UserId { get; set; }
 
-        public DateTime CodeDateTimeIssued { get; set; }
+        public DateTime? CodeDateTimeIssued { get; set; }
 
         public DateTime? ExamDateTimeTaken { get; set; }
 

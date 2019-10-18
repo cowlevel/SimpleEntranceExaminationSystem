@@ -44,7 +44,7 @@ namespace PresentationLayer
             List<KeyValuePair<ExamType, string>> kvp = new List<KeyValuePair<ExamType, string>>();
             kvp.Add(new KeyValuePair<ExamType, string>(ExamType.MultipleChoice, "Multiple Choice"));
             kvp.Add(new KeyValuePair<ExamType, string>(ExamType.TrueOrFalse, "True or False"));
-            kvp.Add(new KeyValuePair<ExamType, string>(ExamType.WriteTheAnswer, "Write the Answer"));
+            kvp.Add(new KeyValuePair<ExamType, string>(ExamType.TypeTheAnswer, "Type the Answer"));
 
             cboExamType.ValueMember = "Key";
             cboExamType.DisplayMember = "Value";
@@ -94,7 +94,7 @@ namespace PresentationLayer
                     exam.ExaminationType = (int)cboExamType.SelectedValue;
                     exam.TimeLimit = (int)numTimeLimit.Value;
                     exam.ItemCount = (int)numItems.Value;
-                    exam.Archieved = false;
+                    exam.Archived = false;
                     //exam.DateTimeAdded to DAL
 
                     for (int i = 1; i <= exam.ItemCount; i++)
@@ -142,6 +142,20 @@ namespace PresentationLayer
                 {
                     ShowQuestionFrom(_examId);
                 }
+
+                if (columnIndex == 6)   //  if user clicked ARCHIEVE button in DataGridView
+                {
+                    DialogResult result = MessageBox.Show(this, "Are you sure you want send this exam to archieve?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        _examBLL.SendExamToArchieve(_examId);
+                        lblStatus.Text = "  Successfully sent exam to archieve";
+
+                        SetExamDatagridViewDataScource();
+                        SetExamTotalDataGridViewDataSource();
+                    }
+                }
             }
         }
 
@@ -156,7 +170,7 @@ namespace PresentationLayer
                 return ExamType.TrueOrFalse;
             }
 
-            return ExamType.WriteTheAnswer;
+            return ExamType.TypeTheAnswer;
         }
 
         private void ShowQuestionFrom(int examId)
@@ -173,7 +187,7 @@ namespace PresentationLayer
                 _frmTrueOrFalse.ExamId = examId;
                 _frmTrueOrFalse.ShowDialog(this);
             }
-            else if (_selectedExamType == ExamType.WriteTheAnswer)
+            else if (_selectedExamType == ExamType.TypeTheAnswer)
             {
                 _frmWriteTheAnswer = new FrmWriteTheAnswer();
                 _frmWriteTheAnswer.ExamId = examId;
@@ -207,10 +221,6 @@ namespace PresentationLayer
                 dgvExam.DataSource = _examViewModelList;
                 dgvExam.ClearSelection();
             }
-            //if (dgvExam.Rows.Count != 0)
-            //{
-            //    dgvExam.CurrentCell.Selected = false;
-            //}
 
             SetItemCountWarning();
         }

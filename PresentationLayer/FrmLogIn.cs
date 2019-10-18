@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ValueObject.ViewModel;
-using BusinessLogicLayer;
+﻿using BusinessLogicLayer;
+using System;
 using System.Threading;
+using System.Windows.Forms;
+using ValueObject;
+using ValueObject.ViewModel;
 
 namespace PresentationLayer
 {
@@ -19,7 +13,6 @@ namespace PresentationLayer
         {
             InitializeComponent();
         }
-
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
@@ -50,11 +43,6 @@ namespace PresentationLayer
                 DoLogIn();
                 e.SuppressKeyPress = true;
             }
-        }
-
-        private void OpenMainForm()
-        {
-            Application.Run(new FrmMain());
         }
 
         private bool InputsAreValid()
@@ -89,15 +77,38 @@ namespace PresentationLayer
                 });
                 thread.SetApartmentState(ApartmentState.STA);
                 thread.Start();
-                //this.Visible = false;
-                //txtUsername.Text = string.Empty;
-                //txtPassword.Text = string.Empty;
-                //_frmMain = new FrmMain();
-                //_frmMain.Show(this);
             }
             else
             {
                 MessageBox.Show(this, "Invalid Username or Password!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void FrmLogIn_Load(object sender, EventArgs e)
+        {
+            SystemUserBLL userBLL = new SystemUserBLL();
+            int userCount = userBLL.GetUserCount();
+
+            if (userCount == 0)
+            {
+                SystemUser examinee = new SystemUser
+                {
+                    LastName = "Admin",
+                    FirstName = "Admin",
+                    Username = "admin001",
+                    UserLevel = "Administrator",
+                    Pword = "admin001",
+                    AccountStatus = true
+                };
+
+                userBLL.InsertUser(examinee);
+
+                MessageBox.Show("There is no user account in this software.\n\nThe software created an Administrator account.\nUsername: admin001\nPassword: admin001\n\nPlease change its information after this log in.\nThank you", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtUsername.Text = "admin001";
+                txtPassword.Text = "admin001";
+
+                DoLogIn();
             }
         }
     }

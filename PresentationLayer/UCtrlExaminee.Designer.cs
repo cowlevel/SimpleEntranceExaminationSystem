@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.lblPage = new System.Windows.Forms.Label();
@@ -58,6 +58,8 @@
             this.colDateTimeAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape5 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.tabExaminee = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblReqFirstName = new System.Windows.Forms.Label();
@@ -120,7 +122,7 @@
             this.btnDelete.Enabled = false;
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Location = new System.Drawing.Point(361, 198);
             this.btnDelete.Name = "btnDelete";
@@ -217,7 +219,7 @@
             this.btnSave.Enabled = false;
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(245, 198);
             this.btnSave.Name = "btnSave";
@@ -233,7 +235,7 @@
             this.btnEdit.Enabled = false;
             this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
             this.btnEdit.Location = new System.Drawing.Point(129, 198);
             this.btnEdit.Name = "btnEdit";
@@ -248,7 +250,7 @@
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(166)))), ((int)(((byte)(235)))));
             this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(166)))), ((int)(((byte)(235)))));
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Location = new System.Drawing.Point(13, 198);
             this.btnAdd.Name = "btnAdd";
@@ -277,14 +279,14 @@
             this.dgvExaminee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.dgvExaminee.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvExaminee.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvExaminee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvExaminee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvExaminee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExaminee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colExamineeId,
@@ -306,8 +308,8 @@
             this.dgvExaminee.Name = "dgvExaminee";
             this.dgvExaminee.ReadOnly = true;
             this.dgvExaminee.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvExaminee.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvExaminee.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvExaminee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvExaminee.Size = new System.Drawing.Size(1059, 245);
             this.dgvExaminee.TabIndex = 7;
@@ -440,10 +442,28 @@
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape2,
+            this.rectangleShape5,
             this.rectangleShape1});
             this.shapeContainer1.Size = new System.Drawing.Size(1102, 609);
             this.shapeContainer1.TabIndex = 114;
             this.shapeContainer1.TabStop = false;
+            // 
+            // rectangleShape2
+            // 
+            this.rectangleShape2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.rectangleShape2.Enabled = false;
+            this.rectangleShape2.Location = new System.Drawing.Point(828, 127);
+            this.rectangleShape2.Name = "rectangleShape2";
+            this.rectangleShape2.Size = new System.Drawing.Size(246, 57);
+            // 
+            // rectangleShape5
+            // 
+            this.rectangleShape5.BorderColor = System.Drawing.Color.Gainsboro;
+            this.rectangleShape5.Enabled = false;
+            this.rectangleShape5.Location = new System.Drawing.Point(828, 66);
+            this.rectangleShape5.Name = "rectangleShape5";
+            this.rectangleShape5.Size = new System.Drawing.Size(246, 57);
             // 
             // tabExaminee
             // 
@@ -848,24 +868,24 @@
             // 
             // lblExamTakes
             // 
-            this.lblExamTakes.BackColor = System.Drawing.Color.Gray;
+            this.lblExamTakes.BackColor = System.Drawing.Color.Transparent;
             this.lblExamTakes.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExamTakes.ForeColor = System.Drawing.Color.White;
-            this.lblExamTakes.Location = new System.Drawing.Point(827, 66);
+            this.lblExamTakes.ForeColor = System.Drawing.Color.Teal;
+            this.lblExamTakes.Location = new System.Drawing.Point(829, 67);
             this.lblExamTakes.Name = "lblExamTakes";
-            this.lblExamTakes.Size = new System.Drawing.Size(247, 59);
+            this.lblExamTakes.Size = new System.Drawing.Size(245, 56);
             this.lblExamTakes.TabIndex = 116;
-            this.lblExamTakes.Text = "Exam taken:";
+            this.lblExamTakes.Text = "Exam take:";
             this.lblExamTakes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblDateTimeAdded
             // 
-            this.lblDateTimeAdded.BackColor = System.Drawing.Color.Gray;
+            this.lblDateTimeAdded.BackColor = System.Drawing.Color.Transparent;
             this.lblDateTimeAdded.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTimeAdded.ForeColor = System.Drawing.Color.White;
-            this.lblDateTimeAdded.Location = new System.Drawing.Point(827, 129);
+            this.lblDateTimeAdded.ForeColor = System.Drawing.Color.Teal;
+            this.lblDateTimeAdded.Location = new System.Drawing.Point(829, 128);
             this.lblDateTimeAdded.Name = "lblDateTimeAdded";
-            this.lblDateTimeAdded.Size = new System.Drawing.Size(247, 57);
+            this.lblDateTimeAdded.Size = new System.Drawing.Size(245, 56);
             this.lblDateTimeAdded.TabIndex = 117;
             this.lblDateTimeAdded.Text = "Date and time added:";
             this.lblDateTimeAdded.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -985,5 +1005,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colContactNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colExamTakes;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDateTimeAdded;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape5;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
     }
 }

@@ -4,8 +4,7 @@
     {
         public static int UserId
         {
-            get { return 1; }
-            set { } 
+            get; set;
         }
 
 
@@ -13,8 +12,23 @@
         
         public static string UserLevel
         {
-            get { return "Administrator"; }
-            set { }
+            get; set;
         }
+
+
+        //public static int UserId
+        //{
+        //    get { return 1; }
+        //    set { }
+        //}
+
+
+        //public static string CurrentUser { get; set; }
+
+        //public static string UserLevel
+        //{
+        //    get { return "Administrator"; }
+        //    set { }
+        //}
     }
 }

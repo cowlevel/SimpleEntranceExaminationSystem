@@ -89,7 +89,7 @@ namespace ValueObject.ViewModel
                 {
                     output = "True or False";
                 }
-                else if (ExaminationType == (int)ExamType.WriteTheAnswer)
+                else if (ExaminationType == (int)ExamType.TypeTheAnswer)
                 {
                     output = "Write the Answer";
                 }

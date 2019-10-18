@@ -12,7 +12,7 @@ namespace ValueObject.ViewModel
         public string FullName { get; set; }
         public string Email { get; set; }
         public DateTime CurrentDateTime { get; set; }
-        public DateTime CodeIssuedDateTime { get; set; }
+        public DateTime? CodeIssuedDateTime { get; set; }
         public DateTime? AllowExamAfterDateTime { get; set; }
 
         public bool IsAllowedToGetExam

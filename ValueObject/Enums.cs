@@ -14,7 +14,7 @@ namespace ValueObject
     {
         MultipleChoice = 0,
         TrueOrFalse = 1,
-        WriteTheAnswer = 2
+        TypeTheAnswer = 2
     }
     #endregion
 }

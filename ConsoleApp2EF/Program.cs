@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Globalization;
+using System.Diagnostics;
+using System.Timers;
 
 namespace ConsoleApp2EF
 {
@@ -235,36 +237,109 @@ namespace ConsoleApp2EF
                 ////    })
                 ////    .ToList();
 
-                DateTime dt = context.Database.SqlQuery< DateTime>("SELECT GETDATE()").First();
+                //DateTime dt = context.Database.SqlQuery< DateTime>("SELECT GETDATE()").First();
 
-                var getDaysToWait = context.Examinee.Include(e => e.ExamineeTake)
-                    .GroupBy(g => new
-                    {
-                        g.ExamineeId,
-                        CurrentDateTime = dt,
-                        FullName = string.Concat(g.LastName + ", " + g.FirstName + " " + (string.IsNullOrEmpty(g.MiddleName) ? "" : g.MiddleName)),
-                        g.Email,
-                        WaitDays = g.ExamineeTake.OrderByDescending(o => o.CodeDateTimeIssued).FirstOrDefault().CodeDateTimeIssued
-                    })
-                    .Select(e => new GetDaysToWait
-                    {
-                        ExamineeId = e.Key.ExamineeId,
-                        FullName = e.Key.FullName,
-                        EmailX = e.Key.Email,
-                        CurrentDateTime = e.Key.CurrentDateTime,
-                        WaitDays = e.Key.WaitDays == null ? null : DbFunctions.AddDays(e.Key.WaitDays, 60)
-                    })
-                    .ToList();
+                //var getDaysToWait = context.Examinee.Include(e => e.ExamineeTake)
+                //    .GroupBy(g => new
+                //    {
+                //        g.ExamineeId,
+                //        CurrentDateTime = dt,
+                //        FullName = string.Concat(g.LastName + ", " + g.FirstName + " " + (string.IsNullOrEmpty(g.MiddleName) ? "" : g.MiddleName)),
+                //        g.Email,
+                //        WaitDays = g.ExamineeTake.OrderByDescending(o => o.CodeDateTimeIssued).FirstOrDefault().CodeDateTimeIssued
+                //    })
+                //    .Select(e => new GetDaysToWait
+                //    {
+                //        ExamineeId = e.Key.ExamineeId,
+                //        FullName = e.Key.FullName,
+                //        EmailX = e.Key.Email,
+                //        CurrentDateTime = e.Key.CurrentDateTime,
+                //        WaitDays = e.Key.WaitDays == null ? null : DbFunctions.AddDays(e.Key.WaitDays, 60)
+                //    })
+                //    .ToList();
 
-                foreach (var examinee in getDaysToWait)
-                {
-                    Console.WriteLine(examinee.ExamineeId + "|" + examinee.FullName + "|" + examinee.CurrentDateTime + "|" + examinee.WaitDays);
-                }
+                //foreach (var examinee in getDaysToWait)
+                //{
+                //    Console.WriteLine(examinee.ExamineeId + "|" + examinee.FullName + "|" + examinee.CurrentDateTime + "|" + examinee.WaitDays);
+                //}
+
+
+
+
+
+
+                //var examList = context.Exam.Include(q => q.QuestionBank)
+                //    .Where(q => q.Archived == false && q.QuestionBank.Any(z => z.Question != null))
+                //    //.GroupBy(g => new
+                //    //{
+                //    //    g.ExamId,
+                //    //    g.Subject.SubjectName,
+                //    //    QuestionNumber = g.QuestionBank.Where(q => q.Question != null && q.ExamId == g.ExamId).FirstOrDefault().QuestionNumber,
+                //    //    Question = g.QuestionBank.Where(q => q.Question != null && q.ExamId == g.ExamId).FirstOrDefault().Question
+                //    //})
+                //    //.Select(s => new
+                //    //{
+                //    //    s.ExamId,
+                //    //    s.Subject.SubjectName,
+                //    //    s.QuestionBank.FirstOrDefault().QuestionNumber,
+                //    //    s.QuestionBank.FirstOrDefault().Question
+                //    //})
+                //    .ToList();
+
+                //Console.WriteLine("LIST COUNT " + examList.Count);
+                //Console.WriteLine("LIST[0] QUESTION COUNT " + examList[0].QuestionBank.Count);
+                //foreach (var ex in examList)
+                //{
+                //    //Console.WriteLine(ex.ExamId + "| "+ ex.Subject.SubjectName + "|" + ex.QuestionBank.FirstOrDefault().QuestionNumber+ ". " + ex.QuestionBank.FirstOrDefault().Question);
+                //    Console.WriteLine("ID:" + ex.ExamId + "|" + ex.Subject.SubjectName);
+
+                //    foreach (var x in ex.QuestionBank)
+                //    {
+                //        Console.WriteLine("-----" + x.QuestionNumber + ". " + x.Question);
+                //    }
+                //}
             }
 
 
+            //Random random = new Random();
+            //int choice = 0;
+            //int codeChar = 0;
+            //StringBuilder sb = new StringBuilder();
+
+            //for (int i = 0; i < 8; i++)
+            //{
+            //    choice = random.Next(0, 2);
+            //    Console.WriteLine(choice);
+            //    if (choice == 0)
+            //    {
+            //        codeChar = random.Next(65, 90);
+            //    }
+            //    else
+            //    {
+            //        codeChar = random.Next(48, 57);
+            //    }
+
+            //    sb.Append((char)codeChar);
+            //}
+
+            //Console.WriteLine(sb.ToString());
+
+            // Create a 1 min timer 
+            var timer = new System.Timers.Timer(60000);
+
+            // Hook up the Elapsed event for the timer.
+            timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+
+            timer.Enabled = true;
+
             Console.WriteLine("press any key to close.");
             Console.ReadKey();
+        }
+
+        private static void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            Console.WriteLine("wow");
+            // Your code
         }
 
         public class GetDaysToWait

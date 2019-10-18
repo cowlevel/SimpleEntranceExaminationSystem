@@ -27,9 +27,29 @@ namespace BusinessLogicLayer
             return true;
         }
 
+        public void SendExamToArchieve(int examId)
+        {
+            _examDAL.SendExamToArchieve(examId);
+        }
+
+        public void DeleteExam(int examId)
+        {
+            _examDAL.DeleteExam(examId);
+        }
+
         public List<ExamViewModel> GetExamViewModelList()
         {
             return _examDAL.GetExamViewModelList();
+        }
+
+        public List<Exam> GetActiveExamList()
+        {
+            return _examDAL.GetActiveExamList();
+        }
+
+        public DateTime GetDateTime()
+        {
+            return _examDAL.GetDateTime();
         }
     }
 }

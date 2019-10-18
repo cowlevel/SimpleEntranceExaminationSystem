@@ -53,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionBank.cs" />
     <Compile Include="QuestionBankHistory.cs" />
+    <Compile Include="Structs.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="SystemUser.cs" />
     <Compile Include="ViewModel\ExamineeFailureViewModel.cs" />
@@ -72,6 +73,9 @@
       <Project>{f96785f9-baec-430d-a870-e21fb8bb5d63}</Project>
       <Name>Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Report\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

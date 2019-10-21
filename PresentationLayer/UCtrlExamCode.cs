@@ -1,9 +1,13 @@
 ﻿using BusinessLogicLayer;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 using ValueObject;
+using ValueObject.Report;
 using ValueObject.ViewModel;
 
 namespace PresentationLayer
@@ -149,6 +153,52 @@ namespace PresentationLayer
                 dtpIn.Enabled = false;
                 dtpFrom.Enabled = true;
                 dtpTo.Enabled = true;
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (!rdbIn.Checked && !rdbFrom.Checked)
+            {
+                lblPrintStatus.Text = "  Please choose date.";
+            }
+            else
+            {
+                lblPrintStatus.Text = string.Empty;
+
+                //string exeFolder = Application.StartupPath;
+                //string reportPath = Path.Combine(exeFolder, @"Reports\ExamineeCodeReport.rdlc");
+
+                IList<ExamineeCodeReport> codeReports;
+                ReportParameter[] reportParameters = new ReportParameter[1];
+
+                FrmReport frmReport = new FrmReport();
+
+                if (rdbIn.Checked)
+                {
+                    //reportParameters[0] = new ReportParameter("ExamCodeDate", "Exam codes issued in " + dtpIn.Value.Date.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture));
+                    reportParameters[0] = new ReportParameter("ExamCodeDate", "Exam codes issued in " + dtpIn.Value.ToShortDateString());
+                    codeReports = _examineeTakeBLL.GetExamineeCodeReport(dtpIn.Value, null);
+
+                    frmReport.LoadReport("ExamineeCodeReport", codeReports, "PresentationLayer.Reports.ExamineeCodeReport.rdlc", reportParameters);
+                    frmReport.ShowDialog(this);
+                }
+                else
+                {
+                    if (dtpFrom.Value.Date >= dtpTo.Value.Date)
+                    {
+                        lblPrintStatus.Text = "  Invalid start date/end date.";
+                    }
+                    else
+                    {
+                        //reportParameters[0] =  new ReportParameter("ExamCodeDate", "Exam codes issued in " + dtpFrom.Value.Date.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture) + " to " + dtpTo.Value.Date.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture));
+                        reportParameters[0] = new ReportParameter("ExamCodeDate", "Exam codes issued in " + dtpFrom.Value.ToShortDateString() + " to " + dtpTo.Value.Date.ToShortDateString());
+                        codeReports = _examineeTakeBLL.GetExamineeCodeReport(dtpFrom.Value, dtpTo.Value);
+
+                        frmReport.LoadReport("ExamineeCodeReport", codeReports, "PresentationLayer.Reports.ExamineeCodeReport.rdlc", reportParameters);
+                        frmReport.ShowDialog(this);
+                    }
+                }
             }
         }
     }

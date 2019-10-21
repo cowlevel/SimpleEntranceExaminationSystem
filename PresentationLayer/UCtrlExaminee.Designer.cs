@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.lblPage = new System.Windows.Forms.Label();
@@ -93,6 +93,7 @@
             this.lblExamTakes = new System.Windows.Forms.Label();
             this.lblDateTimeAdded = new System.Windows.Forms.Label();
             this.lblSearchResult = new System.Windows.Forms.Label();
+            this.btnExamResult = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExaminee)).BeginInit();
             this.tabExaminee.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -279,14 +280,14 @@
             this.dgvExaminee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.dgvExaminee.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvExaminee.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvExaminee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvExaminee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvExaminee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExaminee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colExamineeId,
@@ -308,8 +309,8 @@
             this.dgvExaminee.Name = "dgvExaminee";
             this.dgvExaminee.ReadOnly = true;
             this.dgvExaminee.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvExaminee.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvExaminee.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvExaminee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvExaminee.Size = new System.Drawing.Size(1059, 245);
             this.dgvExaminee.TabIndex = 7;
@@ -873,7 +874,7 @@
             this.lblExamTakes.ForeColor = System.Drawing.Color.Teal;
             this.lblExamTakes.Location = new System.Drawing.Point(829, 67);
             this.lblExamTakes.Name = "lblExamTakes";
-            this.lblExamTakes.Size = new System.Drawing.Size(245, 56);
+            this.lblExamTakes.Size = new System.Drawing.Size(245, 26);
             this.lblExamTakes.TabIndex = 116;
             this.lblExamTakes.Text = "Exam take:";
             this.lblExamTakes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -902,11 +903,28 @@
             this.lblSearchResult.Text = "Search result: ";
             this.lblSearchResult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // btnExamResult
+            // 
+            this.btnExamResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(166)))), ((int)(((byte)(235)))));
+            this.btnExamResult.Enabled = false;
+            this.btnExamResult.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(166)))), ((int)(((byte)(235)))));
+            this.btnExamResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExamResult.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExamResult.ForeColor = System.Drawing.Color.White;
+            this.btnExamResult.Location = new System.Drawing.Point(833, 94);
+            this.btnExamResult.Name = "btnExamResult";
+            this.btnExamResult.Size = new System.Drawing.Size(237, 26);
+            this.btnExamResult.TabIndex = 22;
+            this.btnExamResult.Text = "E&XAM RESULT";
+            this.btnExamResult.UseVisualStyleBackColor = false;
+            this.btnExamResult.Click += new System.EventHandler(this.btnExamResult_Click);
+            // 
             // UCtrlExaminee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnExamResult);
             this.Controls.Add(this.lblSearchResult);
             this.Controls.Add(this.lblDateTimeAdded);
             this.Controls.Add(this.lblExamTakes);
@@ -1007,5 +1025,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDateTimeAdded;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape5;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
+        private System.Windows.Forms.Button btnExamResult;
     }
 }

@@ -31,26 +31,30 @@ namespace PresentationLayer
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            //lblWelcome.Text = string.Format("WELCOME {0}", UserInfo.CurrentUser.ToUpper());
+            lblWelcome.Text = string.Format("WELCOME {0}", UserInfo.CurrentUser.ToUpper());
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //DialogResult result = MessageBox.Show(this, "Are you sure you want to exit?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show(this, "Are you sure you want to exit?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            //if (result == DialogResult.Yes)
-            //{
-            //    Thread thread = new Thread(() =>
-            //    {
-            //        Application.Run(new FrmLogIn());
-            //    });
-            //    thread.SetApartmentState(ApartmentState.STA);
-            //    thread.Start();
-            //}
-            //else
-            //{
-            //    e.Cancel = true;
-            //}
+            if (result == DialogResult.Yes)
+            {
+                UserInfo.CurrentUser = string.Empty;
+                UserInfo.UserId = 0;
+                UserInfo.UserLevel = string.Empty;
+
+                Thread thread = new Thread(() =>
+                {
+                    Application.Run(new FrmLogIn());
+                });
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         private void btnExaminee_Click(object sender, EventArgs e)

@@ -298,6 +298,143 @@ namespace ConsoleApp2EF
                 //        Console.WriteLine("-----" + x.QuestionNumber + ". " + x.Question);
                 //    }
                 //}
+
+                //============REPORTS
+                //============EXAM CODE REPORT
+
+                //DateTime dt = new DateTime(2019, 10, 18);
+
+                //var examCode = context.ExamineeTake.Include(e => e.Examinee).Include(e => e.SystemUser)
+                //    .Where(e => DbFunctions.TruncateTime(e.CodeDateTimeIssued) == dt)//DbFunctions.CreateDateTime(2019, 10, 19,0,0,0))
+                //                                                                     //.AsEnumerable()
+                //    .Select(s => new
+                //    {
+                //        FullName = string.Concat(s.Examinee.LastName + ", " + s.Examinee.FirstName + " " + s.Examinee.MiddleName),
+                //        s.Examinee.Email,
+                //        s.ExamCode,
+                //        s.CodeDateTimeIssued,
+                //        IssuedBy = string.Concat("[" + s.SystemUser.Username + "] - " + s.SystemUser.LastName + ", " + s.SystemUser.FirstName)
+                //    })
+                //    .AsEnumerable();
+
+                //foreach (var code in examCode)
+                //{
+                //    Console.WriteLine(code.FullName + " | " + code.Email + " | " + code.ExamCode + " | " + code.CodeDateTimeIssued + " | " + code.IssuedBy);
+                //}
+
+
+                //=========================END REPORTS
+
+                //////LOAD EXAM CODES AND INFO ON SELECT
+                //var examResult = context.ExamineeTake
+                //    .Where(e => e.ExamineeId == 1)
+                //    .Select(s => new
+                //    {
+                //        s.ExamCode,
+                //        IssuedBy = "[" + s.SystemUser.LastName + "] - " + s.SystemUser.FirstName + " " + s.SystemUser.LastName,
+                //        s.CodeDateTimeIssued,
+                //        s.ExamDateTimeTaken,
+                //        s.PassingRate,
+                //        Result = s.Result == true ? "PASS" : "FAILED"
+                //    })
+                //    .ToList();
+
+                //foreach (var item in examResult)
+                //{
+                //    Console.WriteLine(item.ExamCode);
+                //}
+
+
+
+                //////LOAD EXAM SUBJECT DETAILS
+                //var examSubjectResult = context.ExamineeExam
+                //    .Where(e => e.ExamineeTake.ExamineeId == 1)
+                //    .GroupBy(g => new
+                //    {
+                //        g.ExamId,
+                //        g.Exam.Subject.SubjectName,
+                //        g.ExamineeTake.PassingRate
+                //    })
+                //    .Select(s => new
+                //    {
+                //        s.Key.ExamId,
+                //        s.Key.SubjectName,
+                //        Items = s.Sum(e => e.Exam.ItemCount),
+                //        Score = s.Sum(e => e.Score),
+                //        s.Key.PassingRate//,
+                //        //Result = s.Sum(e => e.Score) >= (double)(s.Key.PassingRate * s.Sum(e => e.Exam.ItemCount)) / 100,
+                //        //View = s.Sum(e => e.Score) + " >= " + (double)(s.Key.PassingRate * s.Sum(e => e.Exam.ItemCount)) / 100
+                //    })
+                //    .AsEnumerable()
+                //    .Select(s => new
+                //    {
+                //        s.ExamId,
+                //        s.SubjectName,
+                //        s.Items,
+                //        PassingScore = Math.Round((double)(s.PassingRate * s.Items) / 100),
+                //        s.Score,
+                //        Result = s.Score >= Math.Round((double)(s.PassingRate * s.Items) / 100) ? "PASS" : "FAILED",
+                //        View = s.Score + " >= " + Math.Round((double)(s.PassingRate * s.Items) / 100)
+                //    })
+                //    .ToList();
+
+                //foreach (var item in examSubjectResult)
+                //{
+                //    Console.WriteLine("Exam Id: " + item.ExamId + " Subject: " + item.SubjectName + " Items: " + item.Items + " Passing Score: " + item.PassingScore + " Score: " + item.Score + " Result: " + item.Result + " View: " + item.View);
+                //}
+
+
+
+
+
+                //var examAnswer = context.ExamineeAnswer
+                //    .Where(e => e.ExamineeExam.ExamineeTake.ExamineeId == 1)
+                //    //.Select(s => new
+                //    //{
+                //    //    s.QuestionBank.QuestionBankHistory.OrderByDescending(o=>o.DateTimeModified).Take(1).FirstOrDefault(e => e.DateTimeModified <= s.DateTimeAnswered).Question,
+                //    //    s.Answer,
+                //    //    s.IsCorrect
+                //    //})
+                //    .ToList();
+
+                var examAnswer = context.Exam
+                    .Where(e => e.ExamineeExam.Any(x => x.ExamineeTake.ExamineeId == 3))
+                    .Select(s => new
+                    {
+                        s.ExamId,
+                        s.Subject.SubjectName,
+                        s.ExaminationType,
+                        s.ItemCount,
+                        
+                        ExamDoom = context.ExamineeAnswer.Where(e=>e.ExamineeExamId == s.ExamineeExam.FirstOrDefault(ex => ex.ExamineeTake.ExamineeId == 3).ExamineeExamId)
+                                    .Select(e=> new
+                                    {
+                                        e.ExamineeAnswerId,
+                                        e.Answer,
+                                        e.IsCorrect,
+                                        e.DateTimeAnswered,
+                                        e.QuestionId
+                                        ,Quest = context.QuestionBankHistory.OrderByDescending(o => o.DateTimeModified)
+                                            .Where(q=> q.QuestionId == e.QuestionId 
+                                                    && q.DateTimeModified <= e.DateTimeAnswered
+                                                    && q.QuestionBank.ExamId == s.ExamId)
+                                             .Take(1)
+                                             .FirstOrDefault().Question
+                                    })
+                        })
+                        .ToList();
+
+
+                foreach (var item in examAnswer)
+                {
+                    Console.WriteLine(item.SubjectName);
+
+                    foreach (var i in item.ExamDoom)
+                    {
+                        Console.WriteLine("Q:" +i.Quest+" Ans:"+i.Answer + " Correct?:" + i.IsCorrect);
+                    }
+                }
+                    
             }
 
 
@@ -322,15 +459,20 @@ namespace ConsoleApp2EF
             //    sb.Append((char)codeChar);
             //}
 
+            //==============REPORTS=============================
+
             //Console.WriteLine(sb.ToString());
 
             // Create a 1 min timer 
-            var timer = new System.Timers.Timer(60000);
+            //var timer = new System.Timers.Timer(60000);
 
-            // Hook up the Elapsed event for the timer.
-            timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            //// Hook up the Elapsed event for the timer.
+            //timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
 
-            timer.Enabled = true;
+            //timer.Enabled = true;
+
+            
+
 
             Console.WriteLine("press any key to close.");
             Console.ReadKey();

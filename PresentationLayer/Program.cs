@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PresentationLayer
@@ -16,14 +13,7 @@ namespace PresentationLayer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmLogIn());
             Application.Run(new FrmLogIn());
-
-            //Application.Run(new FrmAbout());
-
-            //FrmLogIn frm = new FrmLogIn();
-            //frm.Show();
-            //Application.Run();
         }
     }
 }

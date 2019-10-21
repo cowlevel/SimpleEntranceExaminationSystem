@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Utility;
 using ValueObject;
+using ValueObject.Report;
 using ValueObject.ViewModel;
 
 namespace BusinessLogicLayer
@@ -23,9 +24,14 @@ namespace BusinessLogicLayer
             _examineeTakeDAL.UpdateExamineeTake(examineeTake);
         }
 
-        public void InsertExamineeExam(List<ExamineeExam> examineeExamList)
+        //public void InsertExamineeExam(List<ExamineeExam> examineeExamList)
+        //{
+        //    _examineeTakeDAL.InsertExamineeExam(examineeExamList);
+        //}
+
+        public string[] GetExamineeCodesByExamineeId(int examineeId)
         {
-            _examineeTakeDAL.InsertExamineeExam(examineeExamList);
+            return _examineeTakeDAL.GetExamineeCodesByExamineeId(examineeId);
         }
 
         public ExamineeTake GetExamineeTakeInfo(string examCode)
@@ -101,6 +107,11 @@ namespace BusinessLogicLayer
         public List<ExamineeTakeStatusViewModel> GetExamineeTakeStatusViewModel(int currentDaysToWait, string nameOrEmail)
         {
             return _examineeTakeDAL.GetExamineeTakeStatusViewModel(currentDaysToWait, nameOrEmail);
+        }
+
+        public IList<ExamineeCodeReport> GetExamineeCodeReport(DateTime startDate, DateTime? endDate = null)
+        {
+            return _examineeTakeDAL.GetExamineeCodeReport(startDate, endDate);
         }
 
         private string CreateExamCode()

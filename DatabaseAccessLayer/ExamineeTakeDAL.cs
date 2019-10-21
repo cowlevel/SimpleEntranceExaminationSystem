@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using ValueObject;
+using ValueObject.Report;
 using ValueObject.ViewModel;
 
 namespace DatabaseAccessLayer
@@ -42,14 +43,14 @@ namespace DatabaseAccessLayer
             }
         }
 
-        public void InsertExamineeExam(List<ExamineeExam> examineeExamList)
-        {
-            using (_context = new ExaminationContext())
-            {
-                _context.ExamineeExam.AddRange(examineeExamList);
-                _context.SaveChanges();
-            }
-        }
+        //public void InsertExamineeExam(List<ExamineeExam> examineeExamList)
+        //{
+        //    using (_context = new ExaminationContext())
+        //    {
+        //        _context.ExamineeExam.AddRange(examineeExamList);
+        //        _context.SaveChanges();
+        //    }
+        //}
 
         public ExamineeTake GetExamineeTakeInfo(string examCode)
         {
@@ -84,6 +85,17 @@ namespace DatabaseAccessLayer
             }
 
             return examineeTake.ExamCode;
+        }
+
+        public string[] GetExamineeCodesByExamineeId(int examineeId)
+        {
+            using (_context = new ExaminationContext())
+            {
+                return _context.ExamineeTake.Where(e => e.ExamineeId == examineeId)
+                    .OrderBy(e => e.CodeDateTimeIssued)
+                    .Select(e => e.ExamCode)
+                    .ToArray();
+            }
         }
 
         public bool IsUniqueExamCode(string examCode)
@@ -132,6 +144,46 @@ namespace DatabaseAccessLayer
             }
 
             return examineeTakeStatus;
+        }
+
+        public IList<ExamineeCodeReport> GetExamineeCodeReport(DateTime startDate, DateTime? endDate = null)
+        {
+            IList<ExamineeCodeReport> report;
+
+            using (_context = new ExaminationContext())
+            {
+                if (endDate == null)
+                {
+                    report = _context.ExamineeTake.Include(e => e.Examinee).Include(e => e.SystemUser)
+                        .Where(e => DbFunctions.TruncateTime(e.CodeDateTimeIssued) == DbFunctions.TruncateTime(startDate))
+                        .Select(s => new ExamineeCodeReport
+                        {
+                            FullName = string.Concat(s.Examinee.LastName + ", " + s.Examinee.FirstName + " " + s.Examinee.MiddleName),
+                            Email = s.Examinee.Email,
+                            ExamCode = s.ExamCode,
+                            CodeDateTimeIssued = s.CodeDateTimeIssued,
+                            IssuedBy = string.Concat("[" + s.SystemUser.Username + "] - " + s.SystemUser.LastName + ", " + s.SystemUser.FirstName)
+                        })
+                        .ToList();
+                }
+                else
+                {
+                    report = _context.ExamineeTake.Include(e => e.Examinee).Include(e => e.SystemUser)
+                        .Where(e => DbFunctions.TruncateTime(e.CodeDateTimeIssued) >= DbFunctions.TruncateTime(startDate)
+                                    && DbFunctions.TruncateTime(e.CodeDateTimeIssued) <= DbFunctions.TruncateTime(endDate))
+                        .Select(s => new ExamineeCodeReport
+                        {
+                            FullName = string.Concat(s.Examinee.LastName + ", " + s.Examinee.FirstName + " " + s.Examinee.MiddleName),
+                            Email = s.Examinee.Email,
+                            ExamCode = s.ExamCode,
+                            CodeDateTimeIssued = s.CodeDateTimeIssued,
+                            IssuedBy = string.Concat("[" + s.SystemUser.Username + "] - " + s.SystemUser.LastName + ", " + s.SystemUser.FirstName)
+                        })
+                        .ToList();
+                }
+            }
+
+            return report;
         }
 
         private DateTime GetServerDateTime(ExaminationContext context)

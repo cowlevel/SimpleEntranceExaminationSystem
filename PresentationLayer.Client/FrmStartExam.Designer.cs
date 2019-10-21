@@ -58,7 +58,6 @@
             this.txtExamCode.PasswordChar = '*';
             this.txtExamCode.Size = new System.Drawing.Size(262, 26);
             this.txtExamCode.TabIndex = 0;
-            this.txtExamCode.Text = "D5PC0BE3";
             this.txtExamCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnConfirm

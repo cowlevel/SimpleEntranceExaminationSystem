@@ -60,7 +60,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.rdbFrom = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblPrintStatus = new System.Windows.Forms.Label();
             this.lblSearchResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExaminee)).BeginInit();
             this.SuspendLayout();
@@ -338,6 +338,7 @@
             this.btnPrint.TabIndex = 9;
             this.btnPrint.Text = "&PRINT";
             this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // dtpIn
             // 
@@ -420,16 +421,16 @@
             this.label3.Text = "Print Exam Codes";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // lblPrintStatus
             // 
-            this.label5.BackColor = System.Drawing.Color.Teal;
-            this.label5.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(539, 368);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(536, 26);
-            this.label5.TabIndex = 132;
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblPrintStatus.BackColor = System.Drawing.Color.Teal;
+            this.lblPrintStatus.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrintStatus.ForeColor = System.Drawing.Color.White;
+            this.lblPrintStatus.Location = new System.Drawing.Point(539, 368);
+            this.lblPrintStatus.Name = "lblPrintStatus";
+            this.lblPrintStatus.Size = new System.Drawing.Size(536, 26);
+            this.lblPrintStatus.TabIndex = 132;
+            this.lblPrintStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSearchResult
             // 
@@ -448,7 +449,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblSearchResult);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblPrintStatus);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.rdbFrom);
             this.Controls.Add(this.label4);
@@ -503,7 +504,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton rdbFrom;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblPrintStatus;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape4;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape5;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape6;

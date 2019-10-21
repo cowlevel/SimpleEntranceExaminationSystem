@@ -1,16 +1,10 @@
-﻿using System;
+﻿using BusinessLogicLayer;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utility;
 using ValueObject;
 using ValueObject.ViewModel;
-using BusinessLogicLayer;
 
 namespace PresentationLayer
 {
@@ -134,7 +128,7 @@ namespace PresentationLayer
                 SetWaitDaysHistory();
 
                 lblWaitDays.Text = string.Format("The Current Days To Wait is {0} days", newWaitDays);
-                lblExamineeFail.Text = string.Format("Failed examinee must wait for {0} days to get another exam.", newWaitDays);
+                lblExamineeFail.Text = string.Format("Failed examinee must wait for {0} days onwards to get another exam.", newWaitDays);
                 lblStatus.Text = "  Successfully set wait days";
             }
         }
@@ -151,7 +145,7 @@ namespace PresentationLayer
             {
                 numWaitDays.Value = _currentWaitDays;
                 lblWaitDays.Text = string.Format("Days to wait: {0}", _currentWaitDays);
-                lblExamineeFail.Text = string.Format("Failed examinee must wait for {0} days to get another exam.", _currentWaitDays);
+                lblExamineeFail.Text = string.Format("Failed examinee must wait for {0} days onwards to get another exam.", _currentWaitDays);
             }
 
             SetWaitDaysHistory();

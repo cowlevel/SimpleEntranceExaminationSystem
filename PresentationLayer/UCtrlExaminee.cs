@@ -580,17 +580,23 @@ namespace PresentationLayer
                 lblDateTimeAdded.Text = string.Format("Date and time added:\n{0}", _examineeViewModelList.Results[index].DateTimeAdded);
 
                 btnEdit.Enabled = true; //  enable EDIT button
-
-                //if (_examineeViewModelList.Results[index].ExamTakes == 0)
-                //{
-                //    btnDelete.Enabled = true;
-                //}
-                //else
-                //{
-                //    btnDelete.Enabled = false;
-                //}
-                btnDelete.Enabled = _examineeViewModelList.Results[index].ExamTakes == 0 ? true : false;
+                //btnDelete.Enabled = _examineeViewModelList.Results[index].ExamTakes == 0 ? true : false;
+                if (_examineeViewModelList.Results[index].ExamTakes == 0)
+                {
+                    btnDelete.Enabled = true;
+                    btnExamResult.Enabled = false;
+                }
+                else
+                {
+                    btnDelete.Enabled = false;
+                    btnExamResult.Enabled = true;
+                }
             }
+        }
+
+        private void btnExamResult_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

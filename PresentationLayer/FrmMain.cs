@@ -16,18 +16,29 @@ namespace PresentationLayer
     public partial class FrmMain : Form
     {
         private UCtrlExaminee _ctrlExaminee;
-        private UCtrlExamCode _CtrlExamCode;
+        private UCtrlExamCode _ctrlExamCode;
         private UCtrlExam _ctrlExam;
         private UCtrlUser _ctrlUser;
         private UCtrlPassword _ctrlPassword;
         private UCtrlSubject _ctrlSubject;
         private UCtrlSettings _ctrlSettings;
+        private UCtrlReport _ctrlReport;
         
         public FrmMain()
         {
             InitializeComponent();
-        }
 
+            if (UserInfo.UserLevel == "Clerk")
+            {
+                btnReport.Left = btnCreateExam.Left;
+                btnReport.Top = btnCreateExam.Top;
+
+                btnCreateExam.Visible = false;
+                btnUser.Visible = false;
+                btnSubject.Visible = false;
+                btnSettings.Visible = false;
+            }
+        }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
@@ -137,23 +148,25 @@ namespace PresentationLayer
 
         private void SetButtonColor(string buttonName)
         {
-            foreach (Control control in this.Controls)
+            foreach (Button control in this.Controls.OfType<Button>())
             {
-                if (control is Button)
-                {
+                //if (control is Button)
+                //{
                     if (control.Name != buttonName)
                     {
                         control.ForeColor = Color.Teal;
                         //(control as Button).FlatAppearance.BorderColor = Color.White;
-                        (control as Button).BackColor = Color.White;
+                        //(control as Button).BackColor = Color.White;
+                        control.BackColor = Color.White;
                     }
                     else
                     {
                         control.ForeColor = Color.White;
                         //(control as Button).FlatAppearance.BorderColor = Color.Teal;
-                        (control as Button).BackColor = Color.Teal;
+                        //(control as Button).BackColor = Color.Teal;
+                        control.BackColor = Color.Teal;
                     }
-                }
+                //}
             }
         }
 
@@ -171,8 +184,18 @@ namespace PresentationLayer
             SetMarkerProperties(btnExamCode.Top);
 
             DisposePanelControl();
-            _CtrlExamCode = new UCtrlExamCode();
-            pnlMain.Controls.Add(_CtrlExamCode);
+            _ctrlExamCode = new UCtrlExamCode();
+            pnlMain.Controls.Add(_ctrlExamCode);
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            SetButtonColor("btnReport");
+            SetMarkerProperties(btnReport.Top);
+
+            DisposePanelControl();
+            _ctrlReport = new UCtrlReport();
+            pnlMain.Controls.Add(_ctrlReport);
         }
     }
 }

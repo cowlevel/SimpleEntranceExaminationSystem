@@ -195,6 +195,12 @@
     <Compile Include="UCtrlQuestion.Designer.cs">
       <DependentUpon>UCtrlQuestion.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCtrlReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrlReport.Designer.cs">
+      <DependentUpon>UCtrlReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrlSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -276,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrlQuestion.resx">
       <DependentUpon>UCtrlQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrlReport.resx">
+      <DependentUpon>UCtrlReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrlSettings.resx">
       <DependentUpon>UCtrlSettings.cs</DependentUpon>

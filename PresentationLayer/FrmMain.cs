@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ValueObject;
 using ValueObject.ViewModel;
 
 namespace PresentationLayer
@@ -87,7 +81,6 @@ namespace PresentationLayer
             DisposePanelControl();
             _ctrlExam = new UCtrlExam();
             pnlMain.Controls.Add(_ctrlExam);
-
         }
 
         private void btnUser_Click(object sender, EventArgs e)
@@ -150,23 +143,17 @@ namespace PresentationLayer
         {
             foreach (Button control in this.Controls.OfType<Button>())
             {
-                //if (control is Button)
-                //{
-                    if (control.Name != buttonName)
-                    {
-                        control.ForeColor = Color.Teal;
-                        //(control as Button).FlatAppearance.BorderColor = Color.White;
-                        //(control as Button).BackColor = Color.White;
-                        control.BackColor = Color.White;
-                    }
-                    else
-                    {
-                        control.ForeColor = Color.White;
-                        //(control as Button).FlatAppearance.BorderColor = Color.Teal;
-                        //(control as Button).BackColor = Color.Teal;
-                        control.BackColor = Color.Teal;
-                    }
-                //}
+                if (control.Name != buttonName)
+                {
+                    control.ForeColor = Color.Teal;
+                    control.BackColor = Color.White;
+                }
+                else
+                {
+                    control.ForeColor = Color.White;
+
+                    control.BackColor = Color.Teal;
+                }
             }
         }
 

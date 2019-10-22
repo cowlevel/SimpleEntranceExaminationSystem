@@ -81,6 +81,14 @@ namespace DatabaseAccessLayer
             return examViewModelList;
         }
 
+        public bool HasIncompleteExam()
+        {
+            using (_context = new ExaminationContext())
+            {
+                return _context.Exam.Where(e => e.Archived == false && e.QuestionBank.Any(q => q.Question == null)).Count() > 0; ;
+            }
+        }
+
         public List<Exam> GetActiveExamList()
         {
             List<Exam> examList;

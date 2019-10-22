@@ -43,7 +43,6 @@
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.lblExamType = new System.Windows.Forms.Label();
             this.lblItems = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblTimeLimit = new System.Windows.Forms.Label();
             this.lblCounter = new System.Windows.Forms.Label();
@@ -53,7 +52,6 @@
             this.chkChoice2 = new System.Windows.Forms.CheckBox();
             this.chkChoice3 = new System.Windows.Forms.CheckBox();
             this.chkChoice4 = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.lblSelect = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -210,16 +208,6 @@
             this.lblItems.Text = "Items:";
             this.lblItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(878, 697);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 173;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // lblTimeLimit
             // 
             this.lblTimeLimit.BackColor = System.Drawing.Color.Teal;
@@ -328,16 +316,6 @@
             this.chkChoice4.MouseEnter += new System.EventHandler(this.chkChoice4_MouseEnter);
             this.chkChoice4.MouseLeave += new System.EventHandler(this.chkChoice4_MouseLeave);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(797, 697);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 176;
-            this.button2.Text = "EXIT";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // lblSelect
             // 
             this.lblSelect.BackColor = System.Drawing.Color.LightCoral;
@@ -358,7 +336,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1026, 828);
             this.Controls.Add(this.lblSelect);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.chkChoice4);
             this.Controls.Add(this.chkChoice3);
             this.Controls.Add(this.chkChoice2);
@@ -369,7 +346,6 @@
             this.Controls.Add(this.chkFalse);
             this.Controls.Add(this.lblCounter);
             this.Controls.Add(this.lblTimeLimit);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblItems);
             this.Controls.Add(this.lblExamType);
             this.Controls.Add(this.lblSubject);
@@ -400,7 +376,6 @@
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
         private System.Windows.Forms.Label lblItems;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtAnswer;
         private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.Timer timer1;
@@ -414,7 +389,6 @@
         private System.Windows.Forms.CheckBox chkChoice2;
         private System.Windows.Forms.CheckBox chkChoice3;
         private System.Windows.Forms.CheckBox chkChoice4;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblSelect;
     }
 }

@@ -42,17 +42,7 @@ namespace PresentationLayer.Client
 
             if (examineeTake != null)
             {
-                examineeTakeBLL.SetExamineeTakeChildInfo(examineeTake);//==============================UNCOMMENT LATER
-                ////examineeTake.ExamDateTimeTaken = DateTime.Now.Date;
-                ////examineeTakeBLL.UpdateOne(examineeTake);
-
-                //foreach (var item in examineeTake.ExamineeExam)
-                //{
-                //    foreach (var ans in item.ExamineeAnswer)
-                //    {
-                //        Console.WriteLine("EA Id: " + ans.ExamineeAnswerId);
-                //    }
-                //}
+                examineeTakeBLL.SetExamineeTakeChildInfo(examineeTake);
 
                 Thread thread = new Thread(() =>
                 {

@@ -414,81 +414,7 @@ namespace PresentationLayer.Client
             checkBox.ForeColor = foreColor;
             checkBox.BackColor = backColor;
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //foreach (var item in _examineeExamList)
-            //{
-            //    foreach (var x in item.ExamineeAnswer)
-            //    {
-            //        Console.WriteLine(x.QuestionId + " " + x.Answer);
-            //    }
-            //}
-
-            //foreach (var item in _examineeExamList)
-            //{
-            //    Console.WriteLine(item.Score);
-            //}
-
-            //int index = 0;
-            //foreach (var exam in _examList)
-            //{
-            //    Console.WriteLine("Subject: " + exam.Subject.SubjectName + "|Examination Type: " + SetExaminationType((ExamType)exam.ExaminationType) + "|Items: " + exam.ItemCount
-            //        + "|Score: " + _examineeExamList[index].Score);
-
-            //    foreach (var q in exam.QuestionBank)
-            //    {
-            //        string answer = _examineeExamList[index].ExamineeAnswer.Single(a => a.QuestionId == q.QuestionId).Answer;
-            //        bool isCorrect = _examineeExamList[index].ExamineeAnswer.Single(a => a.QuestionId == q.QuestionId).IsCorrect;
-            //        Console.WriteLine("-Question: " + q.Question + "|Correct Answer: " + q.CorrectAnswer);
-            //        Console.WriteLine("--Examinee Answer: " + answer + "|Is Correct: " + isCorrect);
-            //    }
-
-            //    index++;
-            //}
-
-
-
-
-            //_examineeTakeBLL = new ExamineeTakeBLL();
-            //_examineeTakeBLL.UpdateExamineeTake(this.ExamineeTakeInfo);
-
-            _timeSpan = new TimeSpan(0, 0, 5);
-
-            //List<SubjectScore> ss = new List<SubjectScore>
-            //{
-            //    new SubjectScore { SubjectName = "Science", ItemCount = 5, Score = 3 },
-            //    new SubjectScore { SubjectName = "Science", ItemCount = 5, Score = 3 },
-            //    new SubjectScore { SubjectName = "English", ItemCount = 5, Score = 2 },
-            //    new SubjectScore { SubjectName = "English", ItemCount = 5, Score = 3 },
-            //    new SubjectScore { SubjectName = "Math", ItemCount = 11, Score = 3 }
-            //};
-
-            //var summary = ss
-            //            .GroupBy(g => new
-            //            {
-            //                g.SubjectName,
-            //            })
-            //            .Select(s => new
-            //            {
-            //                s.Key.SubjectName,
-            //                ItemCount = s.Sum(ic => ic.ItemCount),
-            //                TotalScore = s.Sum(ts => ts.Score),
-            //                StrMode = s.Sum(ts => ts.Score) + " >= " + Math.Round(Compute.GetPercentage((double)this.ExamineeTakeInfo.PassingRate, s.Sum(ic => ic.ItemCount))),
-            //                Result = s.Sum(ts => ts.Score) >= Math.Round(Compute.GetPercentage((double)this.ExamineeTakeInfo.PassingRate, s.Sum(ic => ic.ItemCount))) ? true : false
-            //            });
-
-            //Console.WriteLine("Passing Rate: " + this.ExamineeTakeInfo.PassingRate);
-
-            //foreach (var item in summary)
-            //{
-            //    Console.WriteLine("Subj: " + item.SubjectName + " |Items: " + item.ItemCount + " |Total Score: " + item.TotalScore + " |Result: " + item.Result);
-            //    Console.WriteLine("--" + item.StrMode);
-            //}
-        }
-
-
-
+        
         private void chkTrue_CheckedChanged(object sender, EventArgs e)
         {
             if (chkTrue.Checked)
@@ -664,11 +590,6 @@ namespace PresentationLayer.Client
             {
                 SetCheckBoxColor(chkChoice4, Color.Black, Color.White);
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

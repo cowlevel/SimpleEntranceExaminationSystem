@@ -15,14 +15,22 @@ namespace PresentationLayer.Client
         
         private void btnTakeExam_Click(object sender, EventArgs e)
         {
-            this.Close();
 
-            Thread thread = new Thread(() =>
+            if (SettingsAreOK())
             {
-                Application.Run(new FrmStartExam());
-            });
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+                this.Close();
+
+                Thread thread = new Thread(() =>
+                {
+                    Application.Run(new FrmStartExam());
+                });
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+            }
+            else
+            {
+                MessageBox.Show("Cant proceed to take exam.\nPlease notify clerk that some settings were incomplete.\nThank you.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -60,6 +68,39 @@ namespace PresentationLayer.Client
 
                 MessageBox.Show(this, "Successfully registered!\nPlease get your exam code then start your exam.\nThank you.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private bool SettingsAreOK()
+        {
+            PassingRateBLL passingRateBLL = new PassingRateBLL();
+            int passingRate = passingRateBLL.GetCurrentPassingRate();
+
+            if (passingRate == 0)
+            {
+                //Console.WriteLine("PASSING RATE NOT SET");
+                return false;
+            }
+
+            ExamineeFailureBLL examineeFailureBLL = new ExamineeFailureBLL();
+            int currentWaitDays = examineeFailureBLL.GetCurrentWaitDays();
+
+            if (currentWaitDays == 0)
+            {
+                //Console.WriteLine("WAIT DAYS NOT SET");
+                return false;
+            }
+
+            ExamBLL examBLL = new ExamBLL();
+            bool isIncomplete = false;
+            isIncomplete = examBLL.HasIncompleteExam();
+
+            if (isIncomplete)
+            {
+                //Console.WriteLine("INCOMPLETE ACTIVE EXAM");
+                return false;
+            }
+
+            return true;
         }
 
         private bool InputsAreValid()

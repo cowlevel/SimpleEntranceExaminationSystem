@@ -47,6 +47,11 @@ namespace BusinessLogicLayer
             return _examDAL.GetActiveExamList();
         }
 
+        public bool HasIncompleteExam()
+        {
+            return _examDAL.HasIncompleteExam();
+        }
+
         public DateTime GetDateTime()
         {
             return _examDAL.GetDateTime();

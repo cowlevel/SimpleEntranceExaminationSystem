@@ -18,6 +18,9 @@ namespace PresentationLayer
         private List<ExamineeFailureViewModel> _examineeFailureViewModelList;
         private int _currentWaitDays;
 
+        private ExamBLL _examBLL;
+        private List<ExamViewModel> _examViewModelList;
+
         public UCtrlSettings()
         {
             InitializeComponent();
@@ -25,20 +28,27 @@ namespace PresentationLayer
 
             _passingRateBLL = new PassingRateBLL();
             _currentPassingRate = _passingRateBLL.GetCurrentPassingRate();
+
             _examineeFailureBLL = new ExamineeFailureBLL();
             _currentWaitDays = _examineeFailureBLL.GetCurrentWaitDays();
 
+            _examBLL = new ExamBLL();
+            _examViewModelList = _examBLL.GetExamViewModelList(true);
+
             dgvPassingRate.AutoGenerateColumns = false;
             dgvExamineeFailure.AutoGenerateColumns = false;
+            dgvExam.AutoGenerateColumns = false;
 
             SetPassingRateDefaultSettings();
             SetWaitDaysDefaultSettings();
+            SetArchivedExam();
         }
 
         private void UCtrlSettings_Load(object sender, EventArgs e)
         {
             dgvPassingRate.ClearSelection();
             dgvExamineeFailure.ClearSelection();
+            dgvExam.ClearSelection();
         }
 
         private void numPassingRate_ValueChanged(object sender, EventArgs e)
@@ -160,6 +170,41 @@ namespace PresentationLayer
             {
                 dgvExamineeFailure.DataSource = _examineeFailureViewModelList;
                 dgvExamineeFailure.ClearSelection();
+            }
+        }
+
+        private void SetArchivedExam()
+        {
+            _examViewModelList = _examBLL.GetExamViewModelList(true);
+            dgvExam.DataSource = null;
+
+            if (_examineeFailureViewModelList.Count > 0)
+            {
+                dgvExam.DataSource = _examViewModelList;
+                dgvExam.ClearSelection();
+            }
+        }
+
+        private void dgvExam_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+
+            if (rowIndex >= 0)
+            {
+                int columnIndex = e.ColumnIndex;
+
+                if (columnIndex == 5)
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to restore this exam?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result== DialogResult.Yes)
+                    {
+                        int examId = _examViewModelList[rowIndex].ExamId;
+
+                        _examBLL.SendExamToArchieve(examId, false);
+                        SetArchivedExam();
+                    }
+                }
             }
         }
     }

@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseAccessLayer", "Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{91D3BB36-09CD-499C-AA45-02877873E93A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer.Admin", "PresentationLayer.Admin\PresentationLayer.Admin.csproj", "{BCAA0C8A-5386-40E3-BA86-9F487A61ACD0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueObject", "ValueObject\ValueObject.csproj", "{0B989ED7-A822-4EDA-B624-68DA7FC7419B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{F96785F9-BAEC-430D-A870-E21FB8BB5D63}"
@@ -37,10 +35,6 @@ Global
 		{91D3BB36-09CD-499C-AA45-02877873E93A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91D3BB36-09CD-499C-AA45-02877873E93A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91D3BB36-09CD-499C-AA45-02877873E93A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BCAA0C8A-5386-40E3-BA86-9F487A61ACD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCAA0C8A-5386-40E3-BA86-9F487A61ACD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCAA0C8A-5386-40E3-BA86-9F487A61ACD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCAA0C8A-5386-40E3-BA86-9F487A61ACD0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0B989ED7-A822-4EDA-B624-68DA7FC7419B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B989ED7-A822-4EDA-B624-68DA7FC7419B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B989ED7-A822-4EDA-B624-68DA7FC7419B}.Release|Any CPU.ActiveCfg = Release|Any CPU

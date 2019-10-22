@@ -27,9 +27,9 @@ namespace BusinessLogicLayer
             return true;
         }
 
-        public void SendExamToArchieve(int examId)
+        public void SendExamToArchieve(int examId, bool toArchive)
         {
-            _examDAL.SendExamToArchieve(examId);
+            _examDAL.SendExamToArchieve(examId, toArchive);
         }
 
         public void DeleteExam(int examId)
@@ -37,9 +37,9 @@ namespace BusinessLogicLayer
             _examDAL.DeleteExam(examId);
         }
 
-        public List<ExamViewModel> GetExamViewModelList()
+        public List<ExamViewModel> GetExamViewModelList(bool isArchived)
         {
-            return _examDAL.GetExamViewModelList();
+            return _examDAL.GetExamViewModelList(isArchived);
         }
 
         public List<Exam> GetActiveExamList()

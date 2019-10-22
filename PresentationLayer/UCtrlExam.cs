@@ -149,7 +149,7 @@ namespace PresentationLayer
 
                     if (result == DialogResult.Yes)
                     {
-                        _examBLL.SendExamToArchieve(_examId);
+                        _examBLL.SendExamToArchieve(_examId, true);
                         lblStatus.Text = "  Successfully sent exam to archieve";
 
                         SetExamDatagridViewDataScource();
@@ -213,7 +213,7 @@ namespace PresentationLayer
 
         public void SetExamDatagridViewDataScource()
         {
-            _examViewModelList = _examBLL.GetExamViewModelList();
+            _examViewModelList = _examBLL.GetExamViewModelList(false);
             dgvExam.DataSource = null;
 
             if (_examViewModelList.Count > 0)

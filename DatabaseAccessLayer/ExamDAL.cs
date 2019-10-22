@@ -39,16 +39,16 @@ namespace DatabaseAccessLayer
             }
         }
 
-        public void SendExamToArchieve(int examId)
+        public void SendExamToArchieve(int examId, bool toArchive)
         {
             using (_context = new ExaminationContext())
             {
-                _context.Exam.Where(e => e.ExamId == examId).Single().Archived = true;
+                _context.Exam.Where(e => e.ExamId == examId).Single().Archived = toArchive;
                 _context.SaveChanges();
             }
         }
         
-        public List<ExamViewModel> GetExamViewModelList()
+        public List<ExamViewModel> GetExamViewModelList(bool IsArchived)
         {
             List<ExamViewModel> examViewModelList;
 
@@ -57,7 +57,7 @@ namespace DatabaseAccessLayer
                 examViewModelList = _context.Exam.Include(u => u.SystemUser)
                     .Include(s => s.Subject)
                     .Include(q => q.QuestionBank)
-                    .Where(e => e.Archived == false)
+                    .Where(e => e.Archived == IsArchived)
                     .OrderBy(e => e.ExamId)
                     .Select(e => new ExamViewModel
                     {

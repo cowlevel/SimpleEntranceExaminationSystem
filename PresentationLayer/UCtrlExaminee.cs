@@ -596,7 +596,8 @@ namespace PresentationLayer
 
         private void btnExamResult_Click(object sender, EventArgs e)
         {
-
+            FrmExamResult frmExamResult = new FrmExamResult(_examineeId);
+            frmExamResult.ShowDialog(this);
         }
     }
 }

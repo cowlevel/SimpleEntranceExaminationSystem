@@ -44,6 +44,11 @@ namespace BusinessLogicLayer
             _examineeTakeDAL.UpdateOne(examineeTake);
         }
 
+        public List<ExamResultViewModel> GetExamResultByExamineeId(int examineeId)
+        {
+            return _examineeTakeDAL.GetExamResultByExamineeId(examineeId);
+        }
+
         public void SetExamineeTakeChildInfo(ExamineeTake examineeTake)
         {
             ExamBLL examBLL = new ExamBLL();
@@ -107,6 +112,11 @@ namespace BusinessLogicLayer
         public List<ExamineeTakeStatusViewModel> GetExamineeTakeStatusViewModel(int currentDaysToWait, string nameOrEmail)
         {
             return _examineeTakeDAL.GetExamineeTakeStatusViewModel(currentDaysToWait, nameOrEmail);
+        }
+
+        public List<ExamResultDetailsViewModel> GetExamResultDetailsViewModel(int examineeId, int examineeTakeId, string subjectName)
+        {
+            return _examineeTakeDAL.GetExamResultDetailsViewModel(examineeId, examineeTakeId, subjectName);
         }
 
         public IList<ExamineeCodeReport> GetExamineeCodeReport(DateTime startDate, DateTime? endDate = null)

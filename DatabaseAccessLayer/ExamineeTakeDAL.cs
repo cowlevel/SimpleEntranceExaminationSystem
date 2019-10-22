@@ -186,6 +186,95 @@ namespace DatabaseAccessLayer
             return report;
         }
 
+        public List<ExamResultViewModel> GetExamResultByExamineeId(int examineeId)
+        {
+            using (_context = new ExaminationContext())
+            {
+                return _context.ExamineeTake
+                    .Where(e => e.ExamineeId == examineeId)
+                    .Select(s => new ExamResultViewModel
+                    {
+                        ExamineeTakeId = s.ExamineeTakeId,
+                        ExamCode = s.ExamCode,
+                        IssuedBy = "[" + s.SystemUser.Username + "] - " + s.SystemUser.FirstName + " " + s.SystemUser.LastName,
+                        CodeDateTimeIssued = s.CodeDateTimeIssued,
+                        ExamDateTimeTaken = s.ExamDateTimeTaken,
+                        PassingRate = s.PassingRate,
+                        Result = s.Result == true ? "PASSED" : "FAILED",
+
+                        ExamSubjectResult = _context.ExamineeExam.Where(e => e.ExamineeTake.ExamineeId == examineeId
+                                                && e.ExamineeTakeId == s.ExamineeTakeId)
+                            .GroupBy(g => new
+                            {
+                                
+                                g.Exam.Subject.SubjectName,
+                                g.ExamineeTake.PassingRate,
+                            })
+                            .Select(e => new
+                            {
+                                
+                                e.Key.SubjectName,
+                                Items = e.Sum(x => x.Exam.ItemCount),
+                                Score = e.Sum(x => x.Score),
+                                e.Key.PassingRate
+                            })
+                            .AsEnumerable()
+                            .Select(w => new ExamSubjectResult
+                            {
+                                
+                                SubjectName = w.SubjectName,
+                                Items = w.Items,
+                                PassingScore = (int)Math.Ceiling((double)(w.PassingRate * w.Items) / 100),
+                                Score = w.Score,
+                                Result = w.Score >= Math.Ceiling((double)(w.PassingRate * w.Items) / 100) ? "PASSED" : "FAILED"//,
+                                //View = w.Score + " >= " + Math.Round((double)(w.PassingRate * w.Items) / 100)
+                            })
+                    })
+                    .ToList();
+            }
+        }
+
+        public List<ExamResultDetailsViewModel> GetExamResultDetailsViewModel(int examineeId, int examineeTakeId, string subjectName)
+        {
+            using (_context = new ExaminationContext())
+            {
+                return _context.Exam
+                    .Where(e => e.ExamineeExam.Any(x => x.ExamineeTake.ExamineeId == examineeId 
+                                                && x.ExamineeTakeId == examineeTakeId
+                                                && x.Exam.Subject.SubjectName == subjectName))
+                    //.Where(e => e.ExamineeExam.Any(x => x.ExamineeTake.ExamineeId == examineeId && x.ExamineeTakeId == examineeTakeId) && e.ExamId == examId)
+                    .Select(s => new ExamResultDetailsViewModel
+                    {
+                        ExamId = s.ExamId,
+                        SubjectName = s.Subject.SubjectName,
+                        ExaminationType = s.ExaminationType,
+                        ItemCount = s.ItemCount,
+                        Score = s.ExamineeExam.FirstOrDefault(e => e.ExamineeTake.ExamineeId == examineeId && e.ExamineeTakeId == examineeTakeId).Score,
+
+                        ExamDetails = _context.ExamineeAnswer.Where(e => e.ExamineeExamId == s.ExamineeExam
+                                              .FirstOrDefault(ex => ex.ExamineeTake.ExamineeId == examineeId 
+                                                                && ex.ExamineeTakeId == examineeTakeId).ExamineeExamId)
+                                    .Select(e => new ExamDetails
+                                    {
+                                        ExamineeAnswerId = e.ExamineeAnswerId,
+                                        Answer = e.Answer,
+                                        IsCorrect = e.IsCorrect,
+                                        DateTimeAnswered = e.DateTimeAnswered,
+                                        QuestionId = e.QuestionId,
+
+                                        Quest = _context.QuestionBankHistory.OrderByDescending(o => o.DateTimeModified)
+                                            .Where(q => q.QuestionId == e.QuestionId
+                                                    && q.DateTimeModified <= e.DateTimeAnswered
+                                                    && q.QuestionBank.ExamId == s.ExamId)
+                                             .Take(1)
+                                             .FirstOrDefault().Question
+                                    })
+                    })
+                    .ToList();
+
+            }
+        }
+
         private DateTime GetServerDateTime(ExaminationContext context)
         {
             //DateTime dbServerDateTime = _context.Database.SqlQuery<DateTime>("Select GETDATE();").FirstOrDefault();

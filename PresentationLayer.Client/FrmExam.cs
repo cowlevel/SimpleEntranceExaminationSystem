@@ -264,8 +264,14 @@ namespace PresentationLayer.Client
                             s.Key.SubjectName,
                             ItemCount = s.Sum(ic => ic.ItemCount),
                             TotalScore = s.Sum(ts => ts.Score),
-                            Result = s.Sum(ts => ts.Score) >= Math.Round(Compute.GetPercentage((double)_examineeTakeInfo.PassingRate, s.Sum(ic => ic.ItemCount))) ? true : false
+                            Result = s.Sum(ts => ts.Score) >= Math.Ceiling(Compute.GetPercentage((double)_examineeTakeInfo.PassingRate, s.Sum(ic => ic.ItemCount))) ? true : false
+                            //,View = s.Sum(ts => ts.Score) + " >= " + Math.Ceiling(Compute.GetPercentage((double)_examineeTakeInfo.PassingRate, s.Sum(ic => ic.ItemCount)))
                         });
+
+                    //foreach (var item in examScoreSummary)
+                    //{
+                    //    Console.WriteLine("Items: " + item.ItemCount + "     Score:" + item.TotalScore + "   |View:" + item.View);
+                    //}
 
                     bool passedExam = examScoreSummary.Where(e => e.Result == false).Count() == 0;   //  if list got no failed(false) exam score
                     _examineeTakeInfo.Result = passedExam;

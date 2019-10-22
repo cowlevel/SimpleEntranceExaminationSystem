@@ -61,6 +61,7 @@
     <Compile Include="ViewModel\ExamineeTakeStatusViewModel.cs" />
     <Compile Include="ViewModel\ExamineeTakeViewModel.cs" />
     <Compile Include="ViewModel\ExamineeViewModel.cs" />
+    <Compile Include="ViewModel\ExamResultViewModel.cs" />
     <Compile Include="ViewModel\ExamViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\PassingRateViewModel.cs" />

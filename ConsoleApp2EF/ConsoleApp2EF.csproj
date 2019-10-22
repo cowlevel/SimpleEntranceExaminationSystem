@@ -71,5 +71,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ValueObject\ValueObject.csproj">
+      <Project>{0b989ed7-a822-4eda-b624-68da7fc7419b}</Project>
+      <Name>ValueObject</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Diagnostics;
 using System.Timers;
+using ValueObject.ViewModel;
 
 namespace ConsoleApp2EF
 {
@@ -325,6 +326,8 @@ namespace ConsoleApp2EF
 
                 //=========================END REPORTS
 
+
+
                 //////LOAD EXAM CODES AND INFO ON SELECT
                 //var examResult = context.ExamineeTake
                 //    .Where(e => e.ExamineeId == 1)
@@ -384,57 +387,111 @@ namespace ConsoleApp2EF
                 //}
 
 
-
-
-
-                //var examAnswer = context.ExamineeAnswer
-                //    .Where(e => e.ExamineeExam.ExamineeTake.ExamineeId == 1)
-                //    //.Select(s => new
-                //    //{
-                //    //    s.QuestionBank.QuestionBankHistory.OrderByDescending(o=>o.DateTimeModified).Take(1).FirstOrDefault(e => e.DateTimeModified <= s.DateTimeAnswered).Question,
-                //    //    s.Answer,
-                //    //    s.IsCorrect
-                //    //})
-                //    .ToList();
-
-                var examAnswer = context.Exam
-                    .Where(e => e.ExamineeExam.Any(x => x.ExamineeTake.ExamineeId == 3))
-                    .Select(s => new
+                var examResult = context.ExamineeTake
+                    .Where(e => e.ExamineeId == 1)
+                    .Select(s => new 
                     {
-                        s.ExamId,
-                        s.Subject.SubjectName,
-                        s.ExaminationType,
-                        s.ItemCount,
-                        
-                        ExamDoom = context.ExamineeAnswer.Where(e=>e.ExamineeExamId == s.ExamineeExam.FirstOrDefault(ex => ex.ExamineeTake.ExamineeId == 3).ExamineeExamId)
-                                    .Select(e=> new
-                                    {
-                                        e.ExamineeAnswerId,
-                                        e.Answer,
-                                        e.IsCorrect,
-                                        e.DateTimeAnswered,
-                                        e.QuestionId
-                                        ,Quest = context.QuestionBankHistory.OrderByDescending(o => o.DateTimeModified)
-                                            .Where(q=> q.QuestionId == e.QuestionId 
-                                                    && q.DateTimeModified <= e.DateTimeAnswered
-                                                    && q.QuestionBank.ExamId == s.ExamId)
-                                             .Take(1)
-                                             .FirstOrDefault().Question
-                                    })
-                        })
-                        .ToList();
+                        ExamCode = s.ExamCode,
+                        IssuedBy = "[" + s.SystemUser.LastName + "] - " + s.SystemUser.FirstName + " " + s.SystemUser.LastName,
+                        CodeDateTimeIssued = s.CodeDateTimeIssued,
+                        ExamDateTimeTaken = s.ExamDateTimeTaken,
+                        PassingRate = s.PassingRate,
+                        Result = s.Result == true ? "PASS" : "FAILED",
 
+                        ExamSubjectResult = context.ExamineeExam.Where(e => e.ExamineeTake.ExamineeId == 1
+                                                && e.ExamineeTakeId == s.ExamineeTakeId)
+                            .GroupBy(g => new
+                            {
+                                
+                                g.Exam.Subject.SubjectName,
+                                g.ExamineeTake.PassingRate
+                            })
+                            .Select(e => new
+                            {
+                                
+                                e.Key.SubjectName,
+                                Items = e.Sum(x => x.Exam.ItemCount),
+                                Score = e.Sum(x => x.Score),
+                                e.Key.PassingRate
+                            })
+                            .AsEnumerable()
+                            .Select(w => new 
+                            {
+                                
+                                SubjectName = w.SubjectName,
+                                Items = w.Items,
+                                PassingScore = (int)Math.Round((double)(w.PassingRate * w.Items) / 100),
+                                Score = w.Score,
+                                Result = w.Score >= Math.Round((double)(w.PassingRate * w.Items) / 100) ? "PASS" : "FAILED"//,
+                                //View = w.Score + " >= " + Math.Round((double)(w.PassingRate * w.Items) / 100)
+                            })
+                    })
+                    .ToList();
 
-                foreach (var item in examAnswer)
+                foreach (var item in examResult)
                 {
-                    Console.WriteLine(item.SubjectName);
+                    Console.WriteLine(item.ExamCode);
 
-                    foreach (var i in item.ExamDoom)
+                    foreach (var i in item.ExamSubjectResult)
                     {
-                        Console.WriteLine("Q:" +i.Quest+" Ans:"+i.Answer + " Correct?:" + i.IsCorrect);
+
+                        Console.WriteLine("Subj:" + i.SubjectName + " |Item:" + i.Items + " |Passing Score:" + i.PassingScore + " |Score:" + i.Score + " |Result:" + i.Result);
                     }
                 }
-                    
+
+
+
+                ////DONE EXAM DETAILS
+                //var examAnswer = context.Exam
+                //    .Where(e => e.ExamineeExam.Any(x => x.ExamineeTake.ExamineeId == 1 && x.ExamineeTakeId == 1) && e.ExamId == 2)
+                //    .Select(s => new
+                //    {
+                //        s.ExamId,
+                //        s.Subject.SubjectName,
+                //        s.ExaminationType,
+                //        s.ItemCount,
+                //        s.ExamineeExam.FirstOrDefault(e=>e.ExamineeTake.ExamineeId == 1 && e.ExamineeTakeId == 1).Score,
+
+                //        ExamDetails = context.ExamineeAnswer.Where(e => e.ExamineeExamId == s.ExamineeExam.FirstOrDefault(ex => ex.ExamineeTake.ExamineeId == 1 && ex.ExamineeTakeId == 1).ExamineeExamId)
+                //                    .Select(e => new
+                //                    {
+                //                        e.ExamineeAnswerId,
+                //                        e.Answer,
+                //                        e.IsCorrect,
+                //                        e.DateTimeAnswered,
+                //                        e.QuestionId
+                //                        ,
+                //                        Quest = context.QuestionBankHistory.OrderByDescending(o => o.DateTimeModified)
+                //                            .Where(q => q.QuestionId == e.QuestionId
+                //                                    && q.DateTimeModified <= e.DateTimeAnswered
+                //                                    && q.QuestionBank.ExamId == s.ExamId)
+                //                             .Take(1)
+                //                             .FirstOrDefault().Question
+                //                    })
+                //    })
+                //    .ToList();
+
+                //foreach (var item in examAnswer)
+                //{
+                //    Console.WriteLine("ExamId:"+item.ExamId + " |Subj:" + item.SubjectName + " |ExaminationType:" + item.ExaminationType + " |Items:" +item.ItemCount + " |Score:" + item.Score);
+
+                //    foreach (var i in item.ExamDetails)
+                //    {
+                //        Console.WriteLine("--Q:" + i.Quest + " |Ans:"+i.Answer + " |Correct?:"+i.IsCorrect);
+                //    }
+                //}
+
+                //foreach (var item in examAnswer)
+                //{
+                //    Console.WriteLine(item.SubjectName);
+
+                //    foreach (var i in item.ExamDetails)
+                //    {
+                //        Console.WriteLine("Q:" +i.Quest+" Ans:"+i.Answer + " Correct?:" + i.IsCorrect);
+                //    }
+                //}
+                //////END EXAM DETAILS
+
             }
 
 

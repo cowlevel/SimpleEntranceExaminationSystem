@@ -16,16 +16,16 @@ Password: bityo002
 User Level: Clerk
 
 **Modules For Administrator/Clerk**
-LogIn - Administrator/Clerk must enter username and password to be able to use the program.
-Examinee - You can add/edit/delete users here.
-Exam Code - You can generate/print exam codes for examinees here.
-Create Exam - You can create examination, send examination to archive here.
-Subject - You can add/edit/delete subjects here.
-Report - You can print exam result, examinee info here.
-Settings - You can set passing rate(ex. 50 %), set days to wait if an examinee got exam code, restore examination.
-Change Password - You can change your password here.
+* LogIn - Administrator/Clerk must enter username and password to be able to use the program.
+* Examinee - You can add/edit/delete users here.
+* Exam Code - You can generate/print exam codes for examinees here.
+* Create Exam - You can create examination, send examination to archive here.
+* Subject - You can add/edit/delete subjects here.
+* Report - You can print exam result, examinee info here.
+* Settings - You can set passing rate(ex. 50 %), set days to wait if an examinee got exam code, restore examination.
+* Change Password - You can change your password here.
 
 **Modules For Examinee**
-Register - Examinee can register here by fillin up the needed info.
-StartExam - The examinee must enter the right exam code to take an exam.
-Exam - This is the module where examinee can read and answer the exam.
+* Register - Examinee can register here by fillin up the needed info.
+* StartExam - The examinee must enter the right exam code to take an exam.
+* Exam - This is the module where examinee can read and answer the exam.

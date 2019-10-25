@@ -4,7 +4,7 @@ Simple Entrance Examination System using C# winform and SQL Server
 I include the database files(Database Files.zip). 1 with sample data and 1 without sample data.
 Please attach it to your SQL Server before using there program.
 <br/>'Set as StartUp project PresentationLayer' if you want to use the modules for Administrators/Clerk.
-<br/>'Set as StartUp project PresentationLayer' if you want to use the modules for Examinee.
+<br/>'Set as StartUp project PresentationLayer.Client' if you want to use the modules for Examinee.
 
 <br/>Login users from database with sample data:
 <br/>Username: arm001

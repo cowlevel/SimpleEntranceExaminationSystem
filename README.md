@@ -15,6 +15,7 @@ Username: bityo002
 <br/>Password: bityo002
 <br/>User Level: Clerk
 
+
 **Modules For Administrator/Clerk**
 * LogIn - Administrator/Clerk must enter username and password to be able to use the program.
 * Examinee - You can add/edit/delete users here.

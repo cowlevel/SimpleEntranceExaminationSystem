@@ -56,5 +56,24 @@ namespace PresentationLayer
 
             reportViewer1.RefreshReport();
         }
+
+        public void LoadReport<T>(string dataSetName, T dataSource, string reportFilePath, ReportParameterCollection reportParameters = null)
+        {
+            ReportDataSource rds = new ReportDataSource(dataSetName, dataSource);
+
+            reportViewer1.Reset();
+            reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
+            //reportViewer1.ProcessingMode = ProcessingMode.Local;
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(rds);
+            reportViewer1.LocalReport.ReportEmbeddedResource = reportFilePath;
+
+            if (reportParameters != null)
+            {
+                reportViewer1.LocalReport.SetParameters(reportParameters);
+            }
+
+            reportViewer1.RefreshReport();
+        }
     }
 }

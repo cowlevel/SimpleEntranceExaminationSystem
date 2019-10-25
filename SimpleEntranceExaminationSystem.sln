@@ -13,9 +13,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueObject", "ValueObject\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{F96785F9-BAEC-430D-A870-E21FB8BB5D63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2EF", "ConsoleApp2EF\ConsoleApp2EF.csproj", "{3F56F8FA-2F1D-42BF-A453-CBB126AEE545}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer.Client", "PresentationLayer.Client\PresentationLayer.Client.csproj", "{15398C50-D3E4-487C-BA16-20FC7DDE5553}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{C6A8F406-32F6-4D79-A0BF-25AE898B4AC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB with sample data", "DB with sample data", "{B260AF12-6AD0-4F56-89AB-E5F17CB80358}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\ExamSys Pictures\DB with sample data\ExaminationSystemDb.mdf = ..\..\..\Desktop\ExamSys Pictures\DB with sample data\ExaminationSystemDb.mdf
+		..\..\..\Desktop\ExamSys Pictures\DB with sample data\ExaminationSystemDb_log.ldf = ..\..\..\Desktop\ExamSys Pictures\DB with sample data\ExaminationSystemDb_log.ldf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB no data", "DB no data", "{57292CC0-234D-4366-AFDA-042E160C5E6B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\ExamSys Pictures\DB No Data\ExaminationSystemDb.mdf = ..\..\..\Desktop\ExamSys Pictures\DB No Data\ExaminationSystemDb.mdf
+		..\..\..\Desktop\ExamSys Pictures\DB No Data\ExaminationSystemDb_log.ldf = ..\..\..\Desktop\ExamSys Pictures\DB No Data\ExaminationSystemDb_log.ldf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +55,6 @@ Global
 		{F96785F9-BAEC-430D-A870-E21FB8BB5D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F96785F9-BAEC-430D-A870-E21FB8BB5D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F96785F9-BAEC-430D-A870-E21FB8BB5D63}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F56F8FA-2F1D-42BF-A453-CBB126AEE545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F56F8FA-2F1D-42BF-A453-CBB126AEE545}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F56F8FA-2F1D-42BF-A453-CBB126AEE545}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F56F8FA-2F1D-42BF-A453-CBB126AEE545}.Release|Any CPU.Build.0 = Release|Any CPU
 		{15398C50-D3E4-487C-BA16-20FC7DDE5553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{15398C50-D3E4-487C-BA16-20FC7DDE5553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15398C50-D3E4-487C-BA16-20FC7DDE5553}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,6 +62,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B260AF12-6AD0-4F56-89AB-E5F17CB80358} = {C6A8F406-32F6-4D79-A0BF-25AE898B4AC4}
+		{57292CC0-234D-4366-AFDA-042E160C5E6B} = {C6A8F406-32F6-4D79-A0BF-25AE898B4AC4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5FDA21FF-31EF-4C1A-B449-742EF5AFB29D}

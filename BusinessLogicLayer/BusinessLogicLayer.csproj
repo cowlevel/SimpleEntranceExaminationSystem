@@ -45,14 +45,11 @@
     <Compile Include="ExamBLL.cs" />
     <Compile Include="ExamineeBLL.cs" />
     <Compile Include="ExamineeFailureBLL.cs" />
-    <Compile Include="ExamineeResultBLL.cs" />
     <Compile Include="ExamineeTakeBLL.cs" />
-    <Compile Include="ExamTakeBLL.cs" />
     <Compile Include="LoginViewModelBLL.cs" />
     <Compile Include="PassingRateBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionBankBLL.cs" />
-    <Compile Include="SettingsBLL.cs" />
     <Compile Include="SubjectBLL.cs" />
     <Compile Include="SystemUserBLL.cs" />
     <Compile Include="ValueObjectValidator.cs" />

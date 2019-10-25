@@ -7,41 +7,41 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>261311bc-e4c7-43c3-aa95-eb8e94ebe4b8</rd:DataSourceID>
+      <rd:DataSourceID>02aca11f-257e-4c89-ac9f-2b10b3316951</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="ExamineeCodeReport">
+    <DataSet Name="ExamResultDS">
       <Query>
         <DataSourceName>ValueObjectReport</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="CodeDateTimeIssued">
-          <DataField>CodeDateTimeIssued</DataField>
-          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        <Field Name="ContactNo">
+          <DataField>ContactNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Email">
           <DataField>Email</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="ExamCode">
-          <DataField>ExamCode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="ExamDateTimeTaken">
+          <DataField>ExamDateTimeTaken</DataField>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="FullName">
           <DataField>FullName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="IssuedBy">
-          <DataField>IssuedBy</DataField>
+        <Field Name="Result">
+          <DataField>Result</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>ValueObject.Report</rd:DataSetName>
-        <rd:TableName>ExamineeCodeReport</rd:TableName>
-        <rd:ObjectDataSourceType>ValueObject.Report.ExamineeCodeReport, ValueObject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>ExamResultReport</rd:TableName>
+        <rd:ObjectDataSourceType>ValueObject.Report.ExamResultReport, ValueObject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -53,19 +53,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>6.5cm</Width>
+                  <Width>6.6275cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5cm</Width>
+                  <Width>4.99297cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.05563cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.2cm</Width>
+                  <Width>6.38937cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.5cm</Width>
+                  <Width>3.24083cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -74,7 +74,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox2">
+                        <Textbox Name="Textbox1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -92,7 +92,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -104,11 +104,12 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox4">
+                        <Textbox Name="Textbox3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -126,7 +127,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -142,14 +143,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox6">
+                        <Textbox Name="Textbox5">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Exam Code</Value>
+                                  <Value>Contact No</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -160,7 +161,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -176,14 +177,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox8">
+                        <Textbox Name="Textbox7">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Issued In</Value>
+                                  <Value>Exam Date Time Taken</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -194,7 +195,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -210,14 +211,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox10">
+                        <Textbox Name="Textbox9">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Issued By</Value>
+                                  <Value>Result</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -228,7 +229,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                          <rd:DefaultName>Textbox9</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -309,21 +310,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ExamCode">
+                        <Textbox Name="ContactNo">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ExamCode.Value</Value>
+                                  <Value>=Fields!ContactNo.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>ExamCode</rd:DefaultName>
+                          <rd:DefaultName>ContactNo</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -339,14 +340,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CodeDateTimeIssued">
+                        <Textbox Name="ExamDateTimeTaken">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CodeDateTimeIssued.Value</Value>
+                                  <Value>=Fields!ExamDateTimeTaken.Value</Value>
                                   <Style>
                                     <Format>d MMM yyyy h:mm:ss tt</Format>
                                   </Style>
@@ -355,7 +356,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>CodeDateTimeIssued</rd:DefaultName>
+                          <rd:DefaultName>ExamDateTimeTaken</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -371,21 +372,23 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="IssuedBy">
+                        <Textbox Name="Result">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!IssuedBy.Value</Value>
+                                  <Value>=Fields!Result.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>IssuedBy</rd:DefaultName>
+                          <rd:DefaultName>Result</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -423,10 +426,10 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>ExamineeCodeReport</DataSetName>
-            <Left>0.05cm</Left>
+            <DataSetName>ExamResultDS</DataSetName>
+            <Left>0.3937cm</Left>
             <Height>1.2cm</Height>
-            <Width>24.7cm</Width>
+            <Width>24.3063cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -437,21 +440,21 @@
         <Height>0.47244in</Height>
         <Style />
       </Body>
-      <Width>9.90928in</Width>
+      <Width>9.875in</Width>
       <Page>
         <PageHeader>
           <Height>1.22646cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Textbox Name="Textbox1">
+            <Textbox Name="Textbox2">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Exam Codes</Value>
+                      <Value>Exam Result</Value>
                       <Style>
                         <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -476,14 +479,14 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Textbox3">
+            <Textbox Name="Textbox4">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!ExamCodeDate.Value</Value>
+                      <Value>=Parameters!ExamResultDate.Value</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -518,7 +521,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>0.77266cm</Height>
+          <Height>0.76466cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -567,16 +570,16 @@
         <PageHeight>21cm</PageHeight>
         <PageWidth>29.7cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
-        <RightMargin>1.5cm</RightMargin>
+        <RightMargin>2cm</RightMargin>
         <TopMargin>2cm</TopMargin>
-        <BottomMargin>1.5cm</BottomMargin>
+        <BottomMargin>2cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="ExamCodeDate">
+    <ReportParameter Name="ExamResultDate">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -589,11 +592,11 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>ExamCodeDate</ParameterName>
+          <ParameterName>ExamResultDate</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>87b8e4b0-b644-4d06-a970-4fb8ac254eb1</rd:ReportID>
+  <rd:ReportID>b358a893-43f2-48a6-83a9-42fe82645f49</rd:ReportID>
 </Report>

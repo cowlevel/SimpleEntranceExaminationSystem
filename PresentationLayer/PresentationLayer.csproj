@@ -268,6 +268,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Reports\ExamineeCodeReport.rdlc" />
+    <EmbeddedResource Include="Reports\ExamineeReport.rdlc" />
+    <EmbeddedResource Include="Reports\ExamResultReport.rdlc" />
     <EmbeddedResource Include="UCtrlExam.resx">
       <DependentUpon>UCtrlExam.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +299,8 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ValueObject.Report.ExamineeCodeReport.datasource" />
+    <None Include="Properties\DataSources\ValueObject.Report.ExamResult.datasource" />
+    <None Include="Properties\DataSources\ValueObject.Report.ExamResultReport.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

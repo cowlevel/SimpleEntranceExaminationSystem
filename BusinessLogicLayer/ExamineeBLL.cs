@@ -8,6 +8,7 @@ using ValueObject;
 using ValueObject.ViewModel;
 using DatabaseAccessLayer;
 using Utility;
+using ValueObject.Report;
 
 namespace BusinessLogicLayer
 {
@@ -104,6 +105,11 @@ namespace BusinessLogicLayer
         public PagedResult<ExamineeViewModel> GetExamineeListByNameOrEmailViewModel(int pageNumber, int pageSize, string nameOrEmail)
         {
             return _examineeDAL.GetExamineeListByNameOrEmailViewModel(pageNumber, pageSize, nameOrEmail);
+        }
+
+        public List<ExamineeReport> GetExamineeList(DateTime startDate, DateTime? endDate = null)
+        {
+            return _examineeDAL.GetExamineeList(startDate, endDate);
         }
     }
 }

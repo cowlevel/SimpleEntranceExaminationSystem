@@ -192,7 +192,7 @@ namespace PresentationLayer
                     else
                     {
                         //reportParameters[0] =  new ReportParameter("ExamCodeDate", "Exam codes issued in " + dtpFrom.Value.Date.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture) + " to " + dtpTo.Value.Date.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture));
-                        reportParameters[0] = new ReportParameter("ExamCodeDate", "Exam codes issued in " + dtpFrom.Value.ToShortDateString() + " to " + dtpTo.Value.Date.ToShortDateString());
+                        reportParameters[0] = new ReportParameter("ExamCodeDate", "Exam codes issued from " + dtpFrom.Value.ToShortDateString() + " to " + dtpTo.Value.Date.ToShortDateString());
                         codeReports = _examineeTakeBLL.GetExamineeCodeReport(dtpFrom.Value, dtpTo.Value);
 
                         frmReport.LoadReport("ExamineeCodeReport", codeReports, "PresentationLayer.Reports.ExamineeCodeReport.rdlc", reportParameters);

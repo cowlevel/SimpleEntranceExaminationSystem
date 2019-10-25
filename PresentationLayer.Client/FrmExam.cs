@@ -239,6 +239,7 @@ namespace PresentationLayer.Client
                 if (_index < examCount)
                 {
                     _examId = _examineeExamList[_index].ExamId;
+                    _examItemCount = _examList.Single(e => e.ExamId == _examId).ItemCount;
 
                     SetExaminationInfo();
                     SetQuestionLabelText();

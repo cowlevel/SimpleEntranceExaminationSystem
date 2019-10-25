@@ -324,6 +324,25 @@ namespace ConsoleApp2EF
                 //}
 
 
+                ////EXAM RESULT REPORT [D O N E]
+                //var examResult = context.ExamineeTake
+                //        .Select(s => new
+                //        {
+                //            FullName = s.Examinee.LastName + ", " + s.Examinee.FirstName + " " + s.Examinee.MiddleName,
+                //            s.Examinee.Email,
+                //            s.Examinee.ContactNo,
+                //            s.ExamDateTimeTaken,
+                //            Result = s.Result == true ? "PASSED" : "FAILED"
+                //        })
+                //        .ToList();
+
+                //foreach (var item in examResult)
+                //{
+                //    Console.WriteLine(item.FullName + " " + item.Email + " " + item.ExamDateTimeTaken + " " + item.Result);
+                //}
+
+                
+
                 //=========================END REPORTS
 
 
@@ -387,57 +406,57 @@ namespace ConsoleApp2EF
                 //}
 
 
-                var examResult = context.ExamineeTake
-                    .Where(e => e.ExamineeId == 1)
-                    .Select(s => new 
-                    {
-                        ExamCode = s.ExamCode,
-                        IssuedBy = "[" + s.SystemUser.LastName + "] - " + s.SystemUser.FirstName + " " + s.SystemUser.LastName,
-                        CodeDateTimeIssued = s.CodeDateTimeIssued,
-                        ExamDateTimeTaken = s.ExamDateTimeTaken,
-                        PassingRate = s.PassingRate,
-                        Result = s.Result == true ? "PASS" : "FAILED",
+                //var examResult = context.ExamineeTake
+                //    .Where(e => e.ExamineeId == 1)
+                //    .Select(s => new 
+                //    {
+                //        ExamCode = s.ExamCode,
+                //        IssuedBy = "[" + s.SystemUser.LastName + "] - " + s.SystemUser.FirstName + " " + s.SystemUser.LastName,
+                //        CodeDateTimeIssued = s.CodeDateTimeIssued,
+                //        ExamDateTimeTaken = s.ExamDateTimeTaken,
+                //        PassingRate = s.PassingRate,
+                //        Result = s.Result == true ? "PASS" : "FAILED",
 
-                        ExamSubjectResult = context.ExamineeExam.Where(e => e.ExamineeTake.ExamineeId == 1
-                                                && e.ExamineeTakeId == s.ExamineeTakeId)
-                            .GroupBy(g => new
-                            {
+                //        ExamSubjectResult = context.ExamineeExam.Where(e => e.ExamineeTake.ExamineeId == 1
+                //                                && e.ExamineeTakeId == s.ExamineeTakeId)
+                //            .GroupBy(g => new
+                //            {
                                 
-                                g.Exam.Subject.SubjectName,
-                                g.ExamineeTake.PassingRate
-                            })
-                            .Select(e => new
-                            {
+                //                g.Exam.Subject.SubjectName,
+                //                g.ExamineeTake.PassingRate
+                //            })
+                //            .Select(e => new
+                //            {
                                 
-                                e.Key.SubjectName,
-                                Items = e.Sum(x => x.Exam.ItemCount),
-                                Score = e.Sum(x => x.Score),
-                                e.Key.PassingRate
-                            })
-                            .AsEnumerable()
-                            .Select(w => new 
-                            {
+                //                e.Key.SubjectName,
+                //                Items = e.Sum(x => x.Exam.ItemCount),
+                //                Score = e.Sum(x => x.Score),
+                //                e.Key.PassingRate
+                //            })
+                //            .AsEnumerable()
+                //            .Select(w => new 
+                //            {
                                 
-                                SubjectName = w.SubjectName,
-                                Items = w.Items,
-                                PassingScore = (int)Math.Round((double)(w.PassingRate * w.Items) / 100),
-                                Score = w.Score,
-                                Result = w.Score >= Math.Round((double)(w.PassingRate * w.Items) / 100) ? "PASS" : "FAILED"//,
-                                //View = w.Score + " >= " + Math.Round((double)(w.PassingRate * w.Items) / 100)
-                            })
-                    })
-                    .ToList();
+                //                SubjectName = w.SubjectName,
+                //                Items = w.Items,
+                //                PassingScore = (int)Math.Round((double)(w.PassingRate * w.Items) / 100),
+                //                Score = w.Score,
+                //                Result = w.Score >= Math.Round((double)(w.PassingRate * w.Items) / 100) ? "PASS" : "FAILED"//,
+                //                //View = w.Score + " >= " + Math.Round((double)(w.PassingRate * w.Items) / 100)
+                //            })
+                //    })
+                //    .ToList();
 
-                foreach (var item in examResult)
-                {
-                    Console.WriteLine(item.ExamCode);
+                //foreach (var item in examResult)
+                //{
+                //    Console.WriteLine(item.ExamCode);
 
-                    foreach (var i in item.ExamSubjectResult)
-                    {
+                //    foreach (var i in item.ExamSubjectResult)
+                //    {
 
-                        Console.WriteLine("Subj:" + i.SubjectName + " |Item:" + i.Items + " |Passing Score:" + i.PassingScore + " |Score:" + i.Score + " |Result:" + i.Result);
-                    }
-                }
+                //        Console.WriteLine("Subj:" + i.SubjectName + " |Item:" + i.Items + " |Passing Score:" + i.PassingScore + " |Score:" + i.Score + " |Result:" + i.Result);
+                //    }
+                //}
 
 
 

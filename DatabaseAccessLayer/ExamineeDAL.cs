@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Utility;
 using ValueObject;
+using ValueObject.Report;
 using ValueObject.ViewModel;
 
 namespace DatabaseAccessLayer
@@ -120,6 +121,34 @@ namespace DatabaseAccessLayer
             }
 
             return examineeListViewModel;
+        }
+
+        public List<ExamineeReport> GetExamineeList(DateTime startDate, DateTime? endDate = null)
+        {
+            IQueryable<Examinee> examineeList;
+
+            using (_context = new ExaminationContext())
+            {
+                if (endDate == null)
+                {
+                    examineeList = _context.Examinee.Where(e => DbFunctions.TruncateTime(e.DateTimeAdded) == DbFunctions.TruncateTime(startDate));
+                }
+                else
+                {
+                    examineeList = _context.Examinee.Where(e => DbFunctions.TruncateTime(e.DateTimeAdded) >= DbFunctions.TruncateTime(startDate)
+                                                                && DbFunctions.TruncateTime(e.DateTimeAdded) <= DbFunctions.TruncateTime(endDate));
+                }
+
+                return examineeList.Select(s => new ExamineeReport
+                                    {
+                                        FullName = s.LastName + ", " + s.FirstName + " " + s.MiddleName,
+                                        Email = s.Email,
+                                        ContactNo = s.ContactNo,
+                                        City = s.City,
+                                        DateTimeRegisteredOrAdded = s.DateTimeAdded
+                                    })
+                                    .ToList();
+            }
         }
 
         public DateTime GetServerDateTime()

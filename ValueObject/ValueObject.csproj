@@ -54,6 +54,8 @@
     <Compile Include="QuestionBank.cs" />
     <Compile Include="QuestionBankHistory.cs" />
     <Compile Include="Report\ExamineeCodeReport.cs" />
+    <Compile Include="Report\ExamineeReport.cs" />
+    <Compile Include="Report\ExamResultReport.cs" />
     <Compile Include="Structs.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="SystemUser.cs" />
@@ -77,6 +79,8 @@
       <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Properties\DataSources\ValueObject.Report.ExamineeReport.datasource" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

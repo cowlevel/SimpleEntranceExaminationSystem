@@ -75,6 +75,8 @@
             this.colTimeLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colItemCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArchieve = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.rectangleShape7 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPassingRate)).BeginInit();
@@ -504,6 +506,7 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dgvExam);
+            this.tabPage3.Controls.Add(this.shapeContainer3);
             this.tabPage3.Location = new System.Drawing.Point(4, 27);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1058, 513);
@@ -528,7 +531,7 @@
             this.colItemCount,
             this.colArchieve});
             this.dgvExam.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgvExam.Location = new System.Drawing.Point(13, 14);
+            this.dgvExam.Location = new System.Drawing.Point(12, 14);
             this.dgvExam.MultiSelect = false;
             this.dgvExam.Name = "dgvExam";
             this.dgvExam.ReadOnly = true;
@@ -536,7 +539,7 @@
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvExam.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvExam.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExam.Size = new System.Drawing.Size(1031, 484);
+            this.dgvExam.Size = new System.Drawing.Size(1032, 482);
             this.dgvExam.TabIndex = 4;
             this.dgvExam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExam_CellClick);
             // 
@@ -604,6 +607,25 @@
             this.colArchieve.UseColumnTextForButtonValue = true;
             this.colArchieve.Width = 90;
             // 
+            // rectangleShape7
+            // 
+            this.rectangleShape7.BorderColor = System.Drawing.Color.Gainsboro;
+            this.rectangleShape7.Enabled = false;
+            this.rectangleShape7.Location = new System.Drawing.Point(11, 14);
+            this.rectangleShape7.Name = "rectangleShape7";
+            this.rectangleShape7.Size = new System.Drawing.Size(1033, 484);
+            // 
+            // shapeContainer3
+            // 
+            this.shapeContainer3.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer3.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer3.Name = "shapeContainer3";
+            this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape7});
+            this.shapeContainer3.Size = new System.Drawing.Size(1058, 513);
+            this.shapeContainer3.TabIndex = 5;
+            this.shapeContainer3.TabStop = false;
+            // 
             // UCtrlSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -668,5 +690,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTimeLimit;
         private System.Windows.Forms.DataGridViewTextBoxColumn colItemCount;
         private System.Windows.Forms.DataGridViewButtonColumn colArchieve;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer3;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape7;
     }
 }

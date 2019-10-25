@@ -98,6 +98,45 @@ namespace DatabaseAccessLayer
             }
         }
 
+        public List<ExamResultReport> GetExamResultList(bool includeFailedExaminee, DateTime startDate, DateTime? endDate = null)
+        {
+            //IQueryable<ExamineeTake> examResult;
+            using (_context = new ExaminationContext())
+            {
+                IQueryable<ExamineeTake> examResult = _context.ExamineeTake;//.Where(e => DbFunctions.TruncateTime(e.ExamDateTimeTaken) == DbFunctions.TruncateTime(startDate));
+
+                if (endDate == null)
+                {
+                    examResult = examResult.Where(e => DbFunctions.TruncateTime(e.ExamDateTimeTaken) == DbFunctions.TruncateTime(startDate));
+                    
+                }
+                else
+                {
+                    examResult = examResult.Where(e => DbFunctions.TruncateTime(e.ExamDateTimeTaken) >= DbFunctions.TruncateTime(startDate)
+                                    && DbFunctions.TruncateTime(e.ExamDateTimeTaken) <= DbFunctions.TruncateTime(endDate));
+                }
+
+                if (includeFailedExaminee == true)
+                {
+                    examResult = examResult.Where(e => e.Result == true || e.Result == false);// (e => e.Result == true && e.Result == false);
+                }
+                else
+                {
+                    examResult = examResult.Where(e => e.Result == true);
+                }
+
+                return examResult.Select(s => new ExamResultReport
+                            {
+                                FullName = s.Examinee.LastName + ", " + s.Examinee.FirstName + " " + s.Examinee.MiddleName,
+                                Email = s.Examinee.Email,
+                                ContactNo = s.Examinee.ContactNo,
+                                ExamDateTimeTaken = s.ExamDateTimeTaken,
+                                Result = s.Result == true ? "PASSED" : "FAILED"
+                            })
+                            .ToList();
+            }
+        }
+
         public bool IsUniqueExamCode(string examCode)
         {
             bool isUnique;

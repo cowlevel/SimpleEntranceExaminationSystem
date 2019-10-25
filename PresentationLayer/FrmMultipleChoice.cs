@@ -91,8 +91,8 @@ namespace PresentationLayer
             txtQuestion.Text = _question.Question;
             txtCorrectAnswer.Text = _question.CorrectAnswer;
             txtWrongAnswer1.Text = _question.WrongAnswer1;
-            txtWrongAnswer2.Text = _question.WrongAnswer1;
-            txtWrongAnswer3.Text = _question.WrongAnswer1;
+            txtWrongAnswer2.Text = _question.WrongAnswer2;
+            txtWrongAnswer3.Text = _question.WrongAnswer3;
 
             if (_frmHistory != null && _frmHistory.Visible == true)
             {

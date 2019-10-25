@@ -29,6 +29,11 @@ namespace BusinessLogicLayer
         //    _examineeTakeDAL.InsertExamineeExam(examineeExamList);
         //}
 
+        public List<ExamResultReport> GetExamResultList(bool includeFailedExaminee, DateTime startDate, DateTime? endDate = null)
+        {
+            return _examineeTakeDAL.GetExamResultList(includeFailedExaminee, startDate, endDate: endDate);
+        }
+
         public string[] GetExamineeCodesByExamineeId(int examineeId)
         {
             return _examineeTakeDAL.GetExamineeCodesByExamineeId(examineeId);

@@ -138,12 +138,6 @@
     <Compile Include="FrmReport.Designer.cs">
       <DependentUpon>FrmReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmRptExamCode.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmRptExamCode.Designer.cs">
-      <DependentUpon>FrmRptExamCode.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmTOFWTAHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,9 +239,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReport.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmRptExamCode.resx">
-      <DependentUpon>FrmRptExamCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTOFWTAHistory.resx">
       <DependentUpon>FrmTOFWTAHistory.cs</DependentUpon>

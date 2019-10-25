@@ -8,20 +8,11 @@ Please attach it to your SQL Server before using there program.
 
 **Login users from database with sample data:**
 <br/>Username: arm001
-
-Password: admin001
-
-
-User Level: Administrator
-
-
-Username: bityo002
-
-
-Password: bityo002
-
-
-User Level: Clerk
+<br/>Password: admin001
+<br/>User Level: Administrator
+<br/>Username: bityo002
+<br/>Password: bityo002
+<br/>User Level: Clerk
 
 **Modules For Administrator/Clerk**
 * LogIn - Administrator/Clerk must enter username and password to be able to use the program.

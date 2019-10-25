@@ -7,13 +7,24 @@ Please attach it to your SQL Server before using there program.
 'Set as StartUp project PresentationLayer.Client' if you want to use the modules for Examinee.
 
 **Login users from database with sample data:**
-- Username: arm001
-- Password: admin001
-- User Level: Administrator
 
-- Username: bityo002
-- Password: bityo002
-- User Level: Clerk
+
+Username: arm001
+
+
+Password: admin001
+
+
+User Level: Administrator
+
+
+Username: bityo002
+
+
+Password: bityo002
+
+
+User Level: Clerk
 
 **Modules For Administrator/Clerk**
 * LogIn - Administrator/Clerk must enter username and password to be able to use the program.

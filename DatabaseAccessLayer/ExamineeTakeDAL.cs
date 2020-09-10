@@ -143,7 +143,8 @@ namespace DatabaseAccessLayer
 
             using (_context = new ExaminationContext())
             {
-                isUnique = _context.ExamineeTake.Where(e => e.ExamCode == examCode).Count() == 0;
+                isUnique = _context.ExamineeTake.Where(e => e.ExamCode == examCode)
+                    .Count() == 0;
             }
 
             return isUnique;

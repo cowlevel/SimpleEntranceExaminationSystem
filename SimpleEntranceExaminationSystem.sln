@@ -15,11 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer.Client", "PresentationLayer.Client\PresentationLayer.Client.csproj", "{15398C50-D3E4-487C-BA16-20FC7DDE5553}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Script", "Database Script", "{D4D29339-D566-48B4-8F33-BC1E6D121036}"
-	ProjectSection(SolutionItems) = preProject
-		F:\#DotNet Applications\Database Script\ExaminationSystemDb Script.sql = F:\#DotNet Applications\Database Script\ExaminationSystemDb Script.sql
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
